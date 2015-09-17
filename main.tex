@@ -1,7 +1,7 @@
 % FILE: main.tex  Version 2.1
 % AUTHOR:
-% Universität Duisburg-Essen, Standort Duisburg
-% AG Prof. Dr. Günter Törner
+% UniversitÃ¤t Duisburg-Essen, Standort Duisburg
+% AG Prof. Dr. GÃ¼nter TÃ¶rner
 % Verena Gondek, Andy Braune, Henning Kerstan
 % Fachbereich Mathematik
 % Lotharstr. 65., 47057 Duisburg
@@ -14,13 +14,21 @@
 % DNB - Deutsche Nationalbibliothek
 
 % Dies ist die Hauptdatei Ihrer Dissertation. Mit * gekennzeichnete
-% Elemente sind optional und können durch Entfernen/Hinzufügen des
-% %-Zeichens gewählt/abgewählt werden. Weitere Informationen
-% entnehmen Sie bitte der beiliegenden Broschüre!
+% Elemente sind optional und kÃ¶nnen durch Entfernen/HinzufÃ¼gen des
+% %-Zeichens gewÃ¤hlt/abgewÃ¤hlt werden. Weitere Informationen
+% entnehmen Sie bitte der beiliegenden BroschÃ¼re!
 
 % Dokumentenklasse
 \RequirePackage[patch]{kvoptions} 
-\documentclass{DissOnlineLatex}
+\documentclass{DissOnlineLatex} % in DissOnlineLatex geometry
+                                % Einstellungen geÃ¤ndert, da
+                                % OptionsÃ¼bergabe nicht klappt
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage[babel,german=guillemets]{csquotes}
+\usepackage{biblatex}
+\bibliography{bibliography}
+%\bibliographystyle{plaindin}
 
 % Eigene Trennungsregeln* 
 \include{hyphenations} 
@@ -31,8 +39,8 @@
 % Dokumentenanfang
 \begin{document}
 
-% Seitennummerierung für Titel, Widmung, Danksagung, Zusammenfassung,
-% Inhaltsverzeichnis werden in römischen Zahlen gesetzt
+% Seitennummerierung fÃ¼r Titel, Widmung, Danksagung, Zusammenfassung,
+% Inhaltsverzeichnis werden in rÃ¶mischen Zahlen gesetzt
 \pagenumbering{roman}
 \pagestyle{empty} 
 
@@ -63,6 +71,9 @@
 \pagestyle{myheadings} 
 
 % Kapitel
+\onehalfspacing % eigener Befehl aus dem empfohlenen Paket setspace,
+                % DeckblÃ¤tter auch mit anderthalbfachem Zeilenabstand?
+                % Dann Befehl an den Anfang stellen
 \include{chapter01}
 \include{chapter02}
 \include{chapter03}
@@ -77,13 +88,12 @@
 % usw
 
 % Literaturverzeichnis
-\bibliography{bibliography}
-\bibliographystyle{plaindin} 
+\printbibliography
 
 % Lebenslauf*
 %\include{cv}
 
-% Selbstständigkeiterklärung
+% SelbststÃ¤ndigkeiterklÃ¤rung
 %\include{declaration}
 
 % Dokumentenende
