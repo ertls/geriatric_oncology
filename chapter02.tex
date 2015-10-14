@@ -161,23 +161,12 @@ Empfehlungen ein Standard etabliert \cite{Hurria2014}.
   \end{itemize}
 \end{itemize}
 
-Der DemTect-Test, Demenz-Detektions-Test, wird an den Kliniken
-Essen-Mitte seit ??? zusätzlich regelhaft durchgeführt, um die
-zusätzliche Sensitivität, die dieser Test bezogen auf den MMST hat zu nutzen.
 Das geriatrisches Assessment, das in dieser Arbeit benutzt wurde,
 entwickelte sich in unserer Klinik kontinuierlich gemäß den in der
 täglichen Anwendung gewonnenen
 Erfahrungen. Begonnen wurde mit den in Tabelle ? gezeigten
-Tests. Unsere Erfahrung bei der Anwendung des GDS zeigte, das die in
-diesem Test gestellten Fragen, von Patienten mit neu diagnostizierter
-Krebserkrankung zum großen Teil mit großem Befremden aufgenommen
-werden. Problematisch waren zum Beispiel Fragen wie: 'Finden Sie es
-schön, jetzt zu leben?' oder 'Kommen Sie sich in Ihrem jetzigen
-Zustand ziemlich wertlos vor?' Nach Absprache mit dem kooperierenden
-Geriater wechselten wir den GDS gegen den DIA-S
-aus. Verweis ANHANG Die Aussagen dieses Tests wurden weitaus besser toleriert,
-worarufhin wir diesen Depressions-Score beibehielten.
-
+Tests.
+ 
 Aufgrund häufigen klinischen Verdachts einer Demenz und grenzwertiger
 MMST Ergebnisse führten wir auf Veranlassung in der Konferenz noch
 zusätzlich den DemTect wegen
@@ -239,6 +228,7 @@ beobachtet man eine Überlappung beider Skalen.
 -> Abbildung
 
 \subsection{Kongnition}
+\label{sec:kongnition}
 
 Ein kognitives Assessment bei onkologischen Patienten ist wichtig, um
 subklinische kognitive Defizite frühzeitig zu erfassen. Damit kann
@@ -263,7 +253,14 @@ jährige und über 60 jährige getrennt. Maximal sind 18 Punkte
 erreichbar, bei weniger als 8
 Punkten besteht der Verdacht auf das Vorliegen einer Demenz.
 
+Der DemTect-Test, Demenz-Detektions-Test, wird an den Kliniken
+Essen-Mitte seit Februar 2015 zusätzlich regelhaft durchgeführt, um die
+zusätzliche Sensitivität in der Erkennung einer klinisch sehr
+relevanten, frühen Demenz hat, zu nutzen.
+
 \subsection{Depression}
+\label{sec:depression}
+
 Jeder Mensch geht anders mit einer belastenden Lebenssituation um. Die
 Grenze zwischen normaler Traurigkeit aufgrund schlechter Nachrichten
 und einer interventionsbedürftigen Depression ist fließend. Oft werden
@@ -274,7 +271,15 @@ der Geriatric Depression Scale erfolgen \cite{Yesavage1982}. Gestellt werden 15
 Fragen, die mit Ja oder Nein beantwortet werden. Ein Punktwert von
 mehr als 5 spricht für das Vorliegen einer Depression.
 
-DIA-S Beschreibung, Erklärung Austausch GDS, Zeitpunkt Austausch
+Die Erfahrung bei der Anwendung des GDS der Ergotherapeutin zeigte, das die in
+diesem Test gestellten Fragen, von Patienten mit neu diagnostizierter
+Krebserkrankung zum großen Teil mit großem Befremden aufgenommen
+werden. Problematisch waren zum Beispiel Fragen wie: 'Finden Sie es
+schön, jetzt zu leben?' oder 'Kommen Sie sich in Ihrem jetzigen
+Zustand ziemlich wertlos vor?' Nach Absprache mit dem kooperierenden
+Geriater wurde ab September 2014 der GDS gegen den DIA-S getauscht.
+Verweis ANHANG Die Aussagen dieses Tests wurden durch die Patienten
+deutlich positiver aufgenommen.
 
 \subsection{Mobilität}
 
@@ -453,15 +458,15 @@ Logistische Regression bezeichnet die Erweiterung einer linearen
 Regression auf ein Klassifizierungsproblem, in dem die
 Wahrscheinlichkeit modelliert wird, in eine der zur Verfügung
 stehenden Klassen eingestuft zu werden. Sehr breite Verwendung findet
-das Modell für zwei zur Verfüngung stehenden Klassen, z.B. tod/lebend,
-krank/gesund, Merkmal X/kein Merkmal X. Im vorliegenden Fall wird die
+das Modell für zwei zur Verfügung stehende Klassen, z.B. tod/lebend,
+krank/gesund. Im vorliegenden Fall wird die
 Erweiterung auf drei Klassen notwendig. Dabei wird die
 Wahrscheinlichkeit modelliert in eine der drei Klassen nicht
 therapiefähig/eingeschränkt therapiefähig/uneingeschränkt
 therapiefähig eingeteilt zu werden. In der Vorhersagefunktion dieses
 Modells findet die Ermittlung der Wahrscheinlichkeit statt, nach der
 dann die Klassifikation erfolgt. Im Falle von nur zwei zur Verfügung
-stehenden Klassen lässt sich die logistische Regression in eine
+stehenden Klassen, lässt sich die logistische Regression in eine
 lineare Gleichung überführen. Bei drei Klassen ist ein
 Gleichungssystem mit zwei Gleichungen zu lösen.
 
@@ -472,3 +477,93 @@ Gleichungssystem mit zwei Gleichungen zu lösen.
 \subsection{Neuronale Netze}
 
 (alle 3: James et al, ISLR)
+
+\section{Code book des Datensatzes}
+
+Die geriatrisch-onkologische Konferenz der Kliniken Essen-Mitte findet
+zweimal wöchentlich, Dienstags und Donnerstags statt. Anwesend sind die
+verschiedenen Berufsgruppen, die das geriatrische Assessment
+durchführen, also die
+behandelnden Ärzte, Physiotherapeuten, Ergotherapeuten,
+Pflegemitarbeiter. Die Konferenz wird geleitet von einem Facharzt für
+Geriatrie und einem Facharzt für Onkologie.
+Die Ergebnisse des Assessments und der Konferenzbeschluss
+werden in eine Excel-Tabelle eingetragen und in einer Ordnerstruktur
+im Intranet archiviert (Abb. 15). Jedes Jahr entspricht einem Ordner,
+jeder Monat einem Unterordner, in denen sich dann die entsprechenden
+Excel-Dateien für einzelne Patienten befinden.
+
+Abb. 15 Beispiel einer Assessmentvorlage (Excel-Datei)
+
+Der verwendete Datensatz wird dynamisch aus dieser Ordnerstruktur
+heraus erstellt. Aus Sicherheitsgründen wird die einzulesenen
+Ordnerstruktur aus dem Intranet in ein lokales Verzeichnis
+kopiert. Daraus liest dann ein R-Script rekursiv
+jede einzelne Excel-Datei aus und legt die Daten \emph{nach Entfernung des
+Namens des Patienten} in jeweils einer Zeile eines data frames ab. Ein
+zweites R-Script bereitet diese Daten weiter auf. Es werden
+den Datenfeldern die entsprechenden Skalenniveaus zugewiesen. Das
+Alter wird aus dem Geburtsdatum und dem Datum der Konferenz
+berechnet. Nach der Berechnung des Alters in Jahren wird zusätzlich
+noch \emph{das Geburtsdatum aus dem Datensatz entfernt.} Damit sind die Daten
+ab diesem Schritt \emph{anonymisiert.}
+
+Das Ergebnis ist ein Datensatz, der lokal gespeichert wird. Im
+folgenden wird die interne Struktur dieses Datensatzes weiter beschrieben.
+Eine Zeile entspricht einem Patienten. In den einzelnen
+Spalten befinden sich die erhobenen Daten, sowie der
+Konferenzbeschluss. NA (not available) bedeutet, dass der ensprechende
+Wert fehlt. Der Demtect-Test wurde wie in \vref{sec:kognition}
+beschrieben, regelhaft erst seit
+Februar 2015 im Assessment zusätzlich zum MMST erhoben. Der GDS wurde
+aus dem in \vref{sec:kognition} genannten Gründen seit
+September 2014 durch den DIA-S ersetzt. Alle anderen punktuellen NA
+dokumentieren im Einzelfall nicht erhobene Befunde oder nicht
+eingetragenen und damit auch in der Konferenz nicht zur Verfügung
+stehende Parameter.
+
+Die einzelnen Spalten werden im folgenden beschrieben:
+
+\begin{table}{htbp}
+\caption{Beschreibung des verwendeten Datensatzes}
+\label{tab:Datensatzbeschreibung}
+\centering
+\begin{tabular}[ll]
+\toprule
+Datenfeld & Beschreibung\\
+\midrule
+barthel & Barthel-Index, diskrete Skala von 0 bis 100, Inkrement 5 \\
+iadl & IADL-Skala, diskrete Skala von 0 bis 8, Inkrement 1 \\
+mmst & MMS-Test, diskrete Skala von 0 bis 30, Inkrement 1 \\
+DemTect & DEMTECT, diskrete Skala von 0 bis 18, Inkrement 1 \\
+gds & Geriatric Depression Score, diskrete Skala 0 bis 15, Inkrement 1 \\
+dia & Depression im Alter, diskrete Skala 0 bis 10, Inkrement 1 \\
+tug & Timed up and go, kontinuierliche Zeitskala in Sekunden, Messung
+auf Sekunde genau
+tinetti & Tinetti-Test, zweigeteilte diskrete Skala, Inkrement 1, hier
+Summe beider Anteile von 0 bis 28 \\
+height & Größe in cm, kontinuierliche Skala, Messung auf cm genau \\
+weight & Gewicht in kg, kontinuierliche Skala, Messung auf kg genau \\
+mna & Mini Nutritional Assessment, diskrete Skala 0 bis 14, Inkrement 1 \\
+charlson & Charlson-Komorbiditäts-Score, diskrete Skala, 0 bis 37, Inkrement 1 \\
+sozial & Sozialanamnese, freier Text \\
+konferenz & Datum der Konferenz, Date format (R base package) \\
+beschluss & freier Text des Konferenzbeschlusses \\
+diagnose & freierText der Diagnose \\
+personal\_ssessment & freier Text der persönlichen Einschätzung der Behandlers \\
+sex & kategorielle Variable, ungeordnet, 2 Ausprägungen "male" und "female" \\
+beschluss\_f & kategorielle Variable, 3 Ausprägungen, geordnet, "no\_go", "slow\_go", "go\_go" \\
+personal\_ assessment\_f & kategorielle Variable, 3 Ausprägungen, geordnet, "no\_go", "slow\_go", "go\_go" \\
+alter & diskrete Skala des Alters in Jahren von 60 bis 93, Inkrement 1 \\
+tug\_possible & kategorielle Variable, 2 Ausprägungen, "TRUE", "FALSE", beschreibt, ob TUG Test möglich war oder nicht \\
+tinetti1 & Tinetti-Test, diskrete Skala von 0 bis 16, erster Teil, Inkrement 1 \\
+tinetti2 & Tinetti-Test, diskrete Skala von 0 bis 12 zweiter Teil, Inkrement 1 \\
+bmi & Body Mass Index, kontinuierliche Skala aus height und weight berechnet, auf 2 Nachkommastellen gerundet \\
+living\_ alone & kategorielle Variable, 2 Ausprägungen, "TRUE", "FALSE", aus Variable sozial gebildet, beschreibt alleinlebend oder nicht \\
+alter\_days & diskrete Skala, Inkrement 1, Alter in Tagen berechnet
+\bottomrule
+\end{table}
+
+Geburtsdatum und Aufnahmedatum oder Konferenzdatum oder Monat der
+Besprechung, Geburtsdatum im Rahmen der Anonymisierung nach
+Datensammlung aus Exceltabelle entfernt.

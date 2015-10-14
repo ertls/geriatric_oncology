@@ -15,107 +15,26 @@
 
 \chapter{Ergebnisse}
 
-\section{Code book}
-
-Die geriatrisch-onkologische Konferenz findet zweimal wöchentlich
-statt. Die Ergebnisse des Assessments und der Konferenzbeschluss
-werden in eine Excel-Tabelle eingetragen und in einer Ordnerstruktur
-im Intranet archiviert (Abb. 15). Jedes Jahr entspricht einem Ordner,
-jeder Monat einem Unterordner, in denen sich dann die entsprechenden
-Excel-Dateien der Patienten befinden, die in diesem Monat besprochen
-wurden.
-
-Abb. 15 Beispiel einer Assessmentvorlage (Excel-Datei)
-
-Der verwendete Datensatz wird dynamisch aus dieser Ordnerstruktur
-heraus erstellt. Aus Sicherheitsgründen wird die einzulesenen
-Ordnerstruktur aus dem Intranet in ein lokales Verzeichnis
-kopiert. Daraus liest dann das R-Script gather\_data\_V3.Rmd rekursiv
-jede einzelen Excel-Datei aus und legt die Daten nach Entfernung des
-Namens des Patienten in jeweils einer Zeile eines data frames ab. Das
-R-Script tidying\_data.Rmd bereitet diese Daten weiter auf. Es werden
-den Datenfeldern die entsprechenden Skalenniveaus zugewiesen. Das
-Alter wird aus dem Geburtsdatum und dem Datum der Konferenz
-berechnet. Nach der Berechnung des Alters in Jahren wird das
-Geburtsdatum und der Name aus den Daten entfernt. Damit sind die Daten
-ab diesem Schritt anonymisiert.
-Ergebnis ist ein data frame, der zur weiteren Benutzung aus der Datei
-tidy\_data.rds eingelesen wird. Im folgenden wird die Struktur dieses
-data frame weiter beschrieben.
-Eine Zeile entspricht einem Konferenzbeschluss. In den einzelnen
-Spalten befinden sich die erhobenen Daten, sowie der abschließende
-Konferenzbeschluss. NA (not available) bedeutet, dass das ensprechende
-Merkmal nicht erhoben wurde. Der Demtect-Test wurde erst seit dem
-Februar 2015 im Assessment erhoben, also gibt es diesen Wert auch erst
-ab diesem Zeitpunkt. Der GDS wurde wegen besserer Durchführbarkeit ab
-September 2014 durch den DIA-S ersetzt. Alle anderen punktuellen NA
-dokumentieren im Einzelfall nicht erhobene Befunde.
-
-Die einzelnen Spalten werden im folgenden beschrieben:
-
-\begin{longtable}{llr}
-\caption{Beschreibung des verwendeten Datensatzes}
-\hline
-Datenfeld & Beschreibung
-\hline\hline\endfirsthead
-\caption{Fortsetzung}
-Datenfeld & Beschreibung
-\endhead
-barthel & Barthel-Index, diskrete Skala von 0 bis 100, Inkrement 5 \\
-iadl & IADL-Skala, diskrete Skala von 0 bis 8, Inkrement 1 \\
-mmst & MMS-Test, diskrete Skala von 0 bis 30, Inkrement 1 \\
-DemTect & DEMTECT, diskrete Skala von 0 bis 18, Inkrement 1 \\
-gds & Geriatric Depression Score, diskrete Skala 0 bis 15, Inkrement 1 \\
-dia & Depression im Alter, diskrete Skala 0 bis 10, Inkrement 1 \\
-tug & Timed up and go, kontinuierliche Zeitskala in Sekunden, Messung
-  auf Sekunde genau
-tinetti & Tinetti-Test, zweigeteilte diskrete Skala, Inkrement 1, hier
-  Summe beider Anteile von 0 bis 28 \\
-height & Größe in cm, kontinuierliche Skala, Messung auf cm genau \\
-weight & Gewicht in kg, kontinuierliche Skala, Messung auf kg genau \\
-mna & Mini Nutritional Assessment, diskrete Skala 0 bis 14, Inkrement 1 \\
-charlson & Charlson-Komorbiditäts-Score, diskrete Skala, 0 bis 37, Inkrement 1 \\
-sozial & Sozialanamnese, freier Text \\
-konferenz & Datum der Konferenz, Date format (R base package) \\
-beschluss & freier Text des Konferenzbeschlusses \\
-diagnose & freierText der Diagnose \\
-personal\_ssessment & freier Text der persönlichen Einschätzung der Behandlers \\
-sex & kategorielle Variable, ungeordnet, 2 Ausprägungen "male" und "female" \\
-beschluss\_f & kategorielle Variable, 3 Ausprägungen, geordnet, "no\_go", "slow\_go", "go\_go" \\
-personal\_ assessment\_f & kategorielle Variable, 3 Ausprägungen, geordnet, "no\_go", "slow\_go", "go\_go" \\
-alter & diskrete Skala des Alters in Jahren von 60 bis 93, Inkrement 1 \\
-tug\_possible & kategorielle Variable, 2 Ausprägungen, "TRUE", "FALSE", beschreibt, ob TUG Test möglich war oder nicht \\
-tinetti1 & Tinetti-Test, diskrete Skala von 0 bis 16, erster Teil, Inkrement 1 \\
-tinetti2 & Tinetti-Test, diskrete Skala von 0 bis 12 zweiter Teil, Inkrement 1 \\
-bmi & Body Mass Index, kontinuierliche Skala aus height und weight berechnet, auf 2 Nachkommastellen gerundet \\
-living\_ alone & kategorielle Variable, 2 Ausprägungen, "TRUE", "FALSE", aus Variable sozial gebildet, beschreibt alleinlebend oder nicht \\
-alter\_days & diskrete Skala, Inkrement 1, Alter in Tagen berechnet aus \\
-\end{longtable}
-
-Geburtsdatum und Aufnahmedatum oder Konferenzdatum oder Monat der
-Besprechung, Geburtsdatum im Rahmen der Anonymisierung nach
-Datensammlung aus Exceltabelle entfernt.
-
 \section{Analyse der Daten des geriatrischen Assessments}
 
-\subsection{Beschreibung der analysierten Population}
+\subsection{Beschreibung der analysierten Patienten}
 
 Von Januar 2014 bis Juni 2015 wurden 307 Patienten in der
-geriatrisch-onkologischen Konferenz besprochen, 153 (45 \%) Männer,
-184 (55 \%) Frauen.
+geriatrisch-onkologischen Konferenz besprochen, 153 (45\%) Männer,
+184 (55\%) Frauen.
 Abbildung 2 zeigt ein Histogramm der Altersverteilung der
 Patienten. Der jüngste Patient war 60 Jahre alt, der
 älteste 92. Insgesamt wurde bei 7 Patienten, die jünger waren als 65,
-formal fälschlicherweise (Voraussetzung für Assessment >= 65 Jahre)
+formal fälschlicherweise (Voraussetzung für Assessment \geq 65 Jahre)
 ein Assessment durchgeführt. Drei davon waren jedoch schon so
 beeinträchtigt, dass trotz des jungen Alters eine eingeschränkte
 Therapiefähigkeit festgestellt wurde. Dies zeigt, dass eine starre
 Altersgrenze bei der Definition eines geriatrisch-onkologischen
 Patienten nicht sinnvoll ist. Stattdessen ist eine Orientierung an der
 klinischen Gesamtsituation sinnvoll, und wenn bei einem unter 65 Jahre
-alten Patienten geriatrische Probleme bestehen ist natürlich auch die
-Durchführung eines Assessments und anschließende Besprechung in der
-geriatrisch-onkologischen Konferenz sinnvoll.
+alten Patienten geriatrische Probleme bestehen, kann auch hier die
+Durchführung eines Assessments und die anschließende Besprechung in der
+geriatrisch-onkologischen Konferenz sinnvoll sein.
 
 \includegraphics{Grafiken/alter.eps}
 Abbildung 2
@@ -125,23 +44,22 @@ Bei der Ansicht der Verteilung des Konferenzbeschlusses über die
 jeweiligen Jahrgänge ist die ungefähre Gleichverteilung der laut
 Beschluss nicht therapiefähigen Patienten interessant. Bei der
 Verteilung der als eingeschränkt therapiefähig beurteilten Patienten
-ist jedoch wie erwartet ein Trend zum höheren Lebensalter
-erkennbar. Jedoch sind auch einzelne Patienten jenseits der 80
-Lebensjahre noch als uneingeschränkt therapiefähig eingeschätzt
-worden. Dies bestätigt den oft zitierten klinischen Eindruck der
+ist wie erwartet jedoch ein Trend zum höheren Lebensalter
+erkennbar. Auch einzelne Patienten jenseits der 80
+Lebensjahre sind als uneingeschränkt therapiefähig eingeschätzt
+worden. Das bestätigt den oft zitierten klinischen Eindruck der
 höheren Bedeutung des biologischen Alters gegenüber dem
-chronologischem Alter. Die zeigt in einer etwas anderen Darstellung
+chronologischem Alter. Dies zeigt auch in einer etwas anderen Darstellung
 ebenfalls die Abbildung 13.
 
 Abbildung 13
 Altersverteilung je nach Konferenzbeschluss
 
-Zur Einordnung dieser Alterverteilung zeigt Abbildung 4 die allgemeine
+Zur Einordnung der Alterverteilung zeigt Abbildung 4 die allgemeine
 Altersverteilung der Patienten in der onkologischen Klinik aus dem
 Jahr 2014. 62 \% aller 2014 in der Onkologie behandelten Patienten
-waren 65 Jahre oder älter, was noch einmal die Wichtigkeit des Themas
-geriatrische Onkologie unterstreicht (Grafik und Diskussion eher an
-den Anfang der Arbeit stellen?)
+waren 65 Jahre oder älter, was noch einmal die Bedeutung des Themas
+geriatrische Onkologie unterstreicht.
 
 Abbildung 4
 Patientenalter in der Onkologie des Huyssenstift der KEM 2014
@@ -149,20 +67,23 @@ Patientenalter in der Onkologie des Huyssenstift der KEM 2014
 Abbildung 3 zeigt als Balkendiagramm die absolute Verteilung der
 einzelnen Kategorien des Konferenzbeschlusses. 307 Patienten wurden
 von Januar 2014 bis Juni 2015 in der geriatrisch-onkologischen
-Konferenz besprochen. Bei 290 Patienten (94 \%) wurde eine Empfehlung
-ausgesprochen. 31 oder 11 \% der beurteilten Patienten wurden als
-nicht \% therapiefähig von der Konferenz \% eingeschätzt, 113
-Patienten (39 \%) als eingeschränkt therapiefähig und 146 Patienten
-(50 \%) als uneingeschränkt therapiefähig. Von den 17 Patienten (6
-\%), bei denen kein Konferenzbeschluss zustande kam waren zum
-Zeitpunkt der Konferenz 2 Patienten verstorben, bei 7 Patienten war
+Konferenz besprochen. Bei 290 Patienten (94\%) wurde eine Empfehlung
+ausgesprochen. 31 oder 11\% der beurteilten Patienten wurden als
+nicht therapiefähig eingeschätzt, 113
+Patienten (39\%) als eingeschränkt therapiefähig und 146 Patienten
+(50\%) als uneingeschränkt therapiefähig. Von den 17 Patienten (6\%),
+bei denen kein Konferenzbeschluss zustande kam, waren zum
+Zeitpunkt der Konferenz 2 Patienten verstorben. Bei 7 Patienten war
 das Assessment so unvollständig, dass eine Einschätzung nicht möglich
-war, bei den restlichen 8 Patienten gab es verschiedene Gründe für
-eine fehlende Konferenzentscheidung. Ein Patient war als nicht
-geriatrisch klassifiziert worden, mit 62 Jahren, ein Patient hatte
-keine Tumorerkrankung, bei einem Patienten gab es aktuell keine
-Behandlungsindikation, bei drei Patienten wurde als Konferenzbeschluss
-eine Therapie empfohlen jedoch keine Angabe zur Einschätzung gegeben,
+war. Bei den restlichen 8 Patienten gab es verschiedene Gründe für
+eine fehlende Konferenzentscheidung. Ein Patient war aufgrund des
+Alters (62 Jahre) und fehlender spezifischer Probleme als nicht
+geriatrisch klassifiziert worden; ein Patient hatte
+keine Tumorerkrankung; bei einem Patienten gab es keine
+Behandlungsindikation; bei drei Patienten aus den Anfängen der
+Konferenz wurde als Beschluss
+eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
+Behandlungsfähigkeit gegeben;
 bei einem Patienten wurde eine geriatrische Komplexbehandlung
 empfohlen und bei einem Patienten ein Reassessment nach Abschluss
 einer Hirnschädelbestrahlung empfohlen.
@@ -176,7 +97,7 @@ Balkendiagramm zur Verteilung der jeweiligen Konferenzbeschlüsse
 
 Abbildung 4 zeigt als Boxplot die Verteilung des Barthel-Indexes in
 den einzelnen Kategorien. Man sieht eine scharfe Auftrennung nach den
-einzelnen Kategorien. Dabei ist wie erwartet der Durchschnitt von
+einzelnen Kategorien. Dabei ist - wie erwartet - der Durchschnitt von
 nicht therapiefähig über eingeschränkt therapiefähig bis hin zu
 uneingeschränkt therapiefähig zunehmend. Der Unterschied des
 Durchschnitts des Barthel-Index in den einzelnen Kategorien ist dabei
@@ -206,7 +127,7 @@ Bis August 2014 wurde innerhalb des Assessments als
 Depressionsscreening der GDS durchgeführt. Seit September 2014 dann
 der DIA-Score. Diese Entscheidung wurde nicht aufgrund von Daten
 gefällt, sondern wegen der Durchführbarkeit. In der Anwendung hat sich
-der für rein geriatrische Patienten entwickelte GDS aufgrund der
+der für geriatrische Patienten ohne Tumorerkrankung entwickelte GDS aufgrund der
 verwendeten Fragen bei onkologischen Patienten als problematisch
 erwiesen. Manche Fragen sind bei einer Tumorerkrankung so
 offensichtlich mit ja zu beantworten, dass erstens die Befragung
@@ -238,14 +159,14 @@ Unterstützung durch einen Lebenspartner oft erheblich. Aber auch die
 Patienten aus. Aus diesem Grund wurde aus dem Sozialassessment dieser
 Parameter generiert, und weiter analysiert. Abbildung 11 zeigt die
 allgemeine Häufigkeit und Abbildung 12 die Häufigkeit in den einzelnen
-Kategorien. Vor allem ausschlaggebend war in der Konferenzdiskussion
-dieser Parameter oft in grenzwertigen Situationen, in denen zwischen
+Kategorien. Ausschlaggebend war dieser Parameter in der Konferenzdiskussion
+oft in grenzwertigen Situationen, in denen zwischen
 uneingeschränkter Therapiefähigkeit und eingeschränkter
 Therapiefähigkeit entschieden werden musste. Entsprechend schlägt sich
 auch das in der Häufigkeit wieder. Der Anteil der allein lebenden
 Patienten ist in der eingeschränkt therapiefähigen Gruppe
-größer. Einige Patienten in dieser Gruppe wären mit entsprechender
-Unterstützung und Überwachung durch den Partner auch für
+größer. Einige Patienten in dieser Gruppe wären wahrscheinlich mit entsprechender
+Unterstützung und Überwachung durch den Partner als
 uneingeschränkt therapiefähig eingeschätzt worden.
 
 Todo: Tabelle erstellen mit allen Assessmentdaten, Mean, Range, p-Wert
@@ -253,23 +174,32 @@ bezogen auf Unterschiede in den Kategorien
 
 \section{Statistisches Modell der Konferenzentscheidung}
 
-\subsection{Unterschied der persönlichen Einschätzung des Behandlers und der Konferenzentscheidung}
+\subsection{Persönliche Einschätzung des Behandlers und Konferenzentscheidung}
+
+Bei der Vorstellung des Patienten in der Konferenz wurde der
+behandelnde Assistenzarzt befragt, wie das Behandlungsteam bestehend
+aus einem Assistenzarzt in Weiterbildung und dem zuständigen
+onkologischen Oberarzt, wie der Patient eingeschätzt wird. Diese
+Einschätzung beruht auf dem klinischen Eindruck, bestehend aus
+Diagnose, Stadium, Anamnese und klinischer Untersuchung ohne
+Einbeziehung der erhobenen Assessmentdaten. Diese Einschätzung wurde
+unter der Bezeichnung persönliche Einschätzung protokolliert.
 
 Tabelle 1
 Konferenzbeschluss versus Persönliche Einschätzung
 
-Bei 229 Patienten gibt es sowohl eine persönliche Einschätzung des
-Behandlers als auch einen Konferenzbeschluss. Insgesamt zeigt sich
+Bei 229 Patienten gibt es sowohl eine persönliche Einschätzung der
+behandelnden Ärzte als auch einen Konferenzbeschluss. Insgesamt zeigt sich
 eine bemerkenswerte Übereinstimmung und Präzision der persönlichen
-Einschätzung. In 85 \% der Fälle stimmen persönliche Einschätzung und
+Einschätzung. In 85\% der Fälle stimmen persönliche Einschätzung und
 Konferenzbeschluss überein. Bemerkenswert ist außerdem, dass die
 beobachteten Abweichungen lediglich benachbarte Einschätzungen
-betreffen. So gibt es keinen Fall, der persönlich als nicht
+betreffen. So gibt es keinen Fall, der als nicht
 therapiefähig eingeschätzt wird, der nach Konferenzbeschluss
 uneingeschränkt therapiefähig eingeschätzt wird. Umgekehrt gibt es
 ebenfalls keinen Fall, der von der Konferenz als nicht therapiefähig
 eingeschätzt wird, der in der persönlichen Einschätzung
-uneingeschränkt therapiefähig wäre. Alle 22 vom Behandler als nicht
+uneingeschränkt therapiefähig bezeichnet wird. Alle 22 vom Behandler als nicht
 therapiefähig eingeschätzten Patienten sind laut Konferenzbeschluss
 nicht therapiefähig. Und nur 4 Patienten, die in der persönlichen
 Einschätzung eingeschränkt therapiefähig eingeschätzt wurden, wurden
@@ -288,10 +218,12 @@ Konferenzbeschluss heruntergestuft, wurden also persönlich als
 uneingeschränkt therapiefähig, von der Konferenz jedoch als
 eingeschränkt therapiefähig klassifiziert.
 Damit ist der positiv prädiktive Wert des persönlichen Assessments wie
-folgt für die einzelnen Kategorien: 88 \% für uneingeschränkt
-therapiefähig, 77 \% für eingeschränkt therapiefähig und 100 \% für
-nicht therapiefähig. Wie gerade ausgeführt entspricht eine
-Fehlklassifizierung jedoch immer nur die benachbarte Kategorie.
+folgt für die einzelnen Kategorien: 88\% für uneingeschränkt
+therapiefähig, 77\% für eingeschränkt therapiefähig und 100\% für
+nicht therapiefähig.
+
+Wie gerade ausgeführt betraf eine
+Fehlklassifikation jedoch immer nur die benachbarte Kategorie.
 Abbildung 1 illustriert in der Gegenüberstellung von
 Konferenzentscheidung und perönlicher Einschätzung die dargelegte
 Situation. Dabei sind besonders gut die zwei möglichen Arten von
@@ -300,23 +232,15 @@ Es sind prinzipiell zwei Arten von Fehler im persönlichen Assessment
 möglich. Entweder werden Patienten durch das persönliche Assessment
 als zu gut oder zu schlecht eingestuft. Mit der jetzt beschriebenen
 Klassifkation kommen beide Arten von Fehlern vor, 17 Patienten wurden
-zu schlecht eingestuft (slow go, in der Konferenz go go) und 18
-Patienten zu gut (4 slow go, in der Konferenz no go und 14 Patienten
+herab- (slow go, in der Konferenz go go) und 18
+Patienten heraufgestuft (4 slow go, in der Konferenz no go und 14 Patienten
 go go, in der Konferenz slow go). Wie bereits erwähnt kommt es bei
-einem Klassifikationsfehler nur zu einer Fehlklassifikation in eine
+einem Klassifikationsfehler also nur zu einer Fehlklassifikation in eine
 benachbarte Kategorie.
+
 An dieser bemerkenswerten Präzision der persönlichen Einschätzung ohne
 Vorliegen eines Assessments muss sich ein statistisches
 Vorhersagemodell messen lassen. 
-Im Literaturvergleich ist diese Präzision der Vorhersage unerreicht
-(Quelle suchen). Jedoch sind alle mir bekannten bisherigen
-Untersuchungen immer in Abteilungen gemacht worden, in der von außen
-ein solches Assessment gleichzeitig durchgeführt wurde. Bei den
-vorliegenden Zahlen erfolgte die persönliche Einschätzung mit dem
-Bewußtsein für die Problematik der geriatrischen Onkologie und
-zusätzlich bereits zweijähriger Erfahrung mit einer
-geriatrisch-onkologischen Konferenz. (2012 und 2013, ab 2014 dann
-systematische Datenauswertung)
 
 \subsection{Logistische Regression}
 
