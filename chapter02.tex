@@ -227,7 +227,7 @@ beobachtet man eine Überlappung beider Skalen.
 
 -> Abbildung
 
-\subsection{Kongnition}
+\subsection{Kognition}
 \label{sec:kognition}
 
 Ein kognitives Assessment bei onkologischen Patienten ist wichtig, um
@@ -315,10 +315,12 @@ Mangelernährung bei geriatrischen Patienten ist eine Depression. Aber
 auch Ursachen wie ein schlechter Zahnstatus oder ungenügende
 Kaufunktion sind häufig. In 43 \% wird jedoch keine spezifische
 Ursache gefunden \cite{Wilson1998}. Der Body Mass Index (BMI) ist ein besseres
-Maß, der er das Gewicht im Verhältnis zur Körpergröße berücksichtigt.
+Maß, der das Gewicht im Verhältnis zur Körpergröße berücksichtigt.
+
 \begin{equation}
-Gewicht / Gr{\"o}{\ss}e ^ 2
+\text{BMI} = \frac{\text{Gewicht in kg}}{(\text{Größe in m})²}
 \end{equation}
+
 Ein BMI kleiner 18,5 gilt als untergewichtig. Durch
 altersbedingte Umverteilungen von Muskelmasse und Fettanteil ist
 jedoch bei geriatrischen Patienten bei einem BMI kleiner als 23
@@ -522,42 +524,46 @@ dokumentieren im Einzelfall nicht erhobene Befunde oder nicht
 eingetragenen und damit auch in der Konferenz nicht zur Verfügung
 stehende Parameter.
 
-Die einzelnen Spalten werden im folgenden beschrieben:
+Die einzelnen Datenfelder werden in Tabelle~\ref{tab:datensatz} beschrieben:
 
-\begin{tabular}{ll}
+\begin{table}[htbp]
+\caption{Beschreibung des Datensatzes}
+\label{tab:datensatz}
+\centering
+\begin{tabular}{p{2.5cm}p{10cm}}
 \toprule
 Datenfeld & Beschreibung \\
 \midrule
-barthel & Barthel-Index, diskrete Skala von 0 bis 100, Inkrement 5 \\
-iadl & IADL-Skala, diskrete Skala von 0 bis 8, Inkrement 1 \\
-mmst & MMS-Test, diskrete Skala von 0 bis 30, Inkrement 1 \\
-DemTect & DEMTECT, diskrete Skala von 0 bis 18, Inkrement 1 \\
-gds & Geriatric Depression Score, diskrete Skala 0 bis 15, Inkrement 1 \\
-dia & Depression im Alter, diskrete Skala 0 bis 10, Inkrement 1 \\
-tug & Timed up and go, kontinuierliche Zeitskala in Sekunden, Messung auf Sekunde genau \\
-tinetti & Tinetti-Test, zweigeteilte diskrete Skala, Inkrement 1, hier
-Summe beider Anteile von 0 bis 28 \\
-height & Größe in cm, kontinuierliche Skala, Messung auf cm genau \\
-weight & Gewicht in kg, kontinuierliche Skala, Messung auf kg genau \\
-mna & Mini Nutritional Assessment, diskrete Skala 0 bis 14, Inkrement 1 \\
-charlson & Charlson-Komorbiditäts-Score, diskrete Skala, 0 bis 37, Inkrement 1 \\
+barthel & Barthel-Index, diskrete Skala von 0 bis 100\\
+iadl & IADL-Skala, diskrete Skala von 0 bis 8\\
+mmst & MMS-Test, diskrete Skala von 0 bis 30\\
+DemTect & DEMTECT, diskrete Skala von 0 bis 18\\
+gds & Geriatric Depression Score, diskrete Skala 0 bis 15\\
+dia & Depression im Alter, diskrete Skala 0 bis 10\\
+tug & Timed up and go, Zeitskala in Sekunden\\
+tinetti & Tinetti-Test, diskrete Skala, hier Summe beider Anteile von 0 bis 28 \\
+height & Größe in cm, kontinuierliche Skala\\
+weight & Gewicht in kg, kontinuierliche Skala\\
+mna & Mini Nutritional Assessment, diskrete Skala 0 bis 14\\
+charlson & Charlson-Komorbiditäts-Score, diskrete Skala, 0 bis 37\\
 sozial & Sozialanamnese, freier Text \\
 konferenz & Datum der Konferenz, Date format (R base package) \\
 beschluss & freier Text des Konferenzbeschlusses \\
-diagnose & freierText der Diagnose \\
-personal\_ssessment & freier Text der persönlichen Einschätzung der Behandlers \\
-sex & kategorielle Variable, ungeordnet, 2 Ausprägungen "male" und "female" \\
-beschluss\_f & kategorielle Variable, 3 Ausprägungen, geordnet, "no\_go", "slow\_go", "go\_go" \\
-personal\_ assessment\_f & kategorielle Variable, 3 Ausprägungen, geordnet, "no\_go", "slow\_go", "go\_go" \\
-alter & diskrete Skala des Alters in Jahren von 60 bis 93, Inkrement 1 \\
-tug\_possible & kategorielle Variable, 2 Ausprägungen, "TRUE", "FALSE", beschreibt, ob TUG Test möglich war oder nicht \\
-tinetti1 & Tinetti-Test, diskrete Skala von 0 bis 16, erster Teil, Inkrement 1 \\
-tinetti2 & Tinetti-Test, diskrete Skala von 0 bis 12 zweiter Teil, Inkrement 1 \\
-bmi & Body Mass Index, kontinuierliche Skala aus height und weight berechnet, auf 2 Nachkommastellen gerundet \\
-living\_ alone & kategorielle Variable, 2 Ausprägungen, "TRUE", "FALSE", aus Variable sozial gebildet, beschreibt alleinlebend oder nicht \\
-alter\_days & diskrete Skala, Inkrement 1, Alter in Tagen berechnet \\
+diagnose & freier Text der Diagnose \\
+personal\_\newline assessment & freier Text der persönlichen Einschätzung der Behandlers \\
+sex & kategorielle Variable, ungeordnet, \emph{male} und \emph{female} \\
+beschluss\_f & kategorielle Variable, geordnet, \emph{no\_go}, \emph{slow\_go}, \emph{go\_go} \\
+personal\_\newline assessment\_f & kategorielle Variable, geordnet, \emph{no\_go}, \emph{slow\_go}, \emph{go\_go} \\
+alter & diskrete Skala des Alters in Jahren von 60 bis 93 \\
+tug\_possible & kategorielle Variable, \emph{TRUE}, \emph{FALSE}, beschreibt, ob TUG Test möglich war oder nicht \\
+tinetti1 & Tinetti-Test, diskrete Skala von 0 bis 16, erster Teil\\
+tinetti2 & Tinetti-Test, diskrete Skala von 0 bis 12 zweiter Teil\\
+bmi & Body Mass Index, kontinuierliche Skala aus height und weight berechnet\\
+living\_ alone & kategorielle Variable, \emph{TRUE}, \emph{FALSE}, aus Variable sozial gebildet, beschreibt alleinlebend oder nicht \\
+alter\_days & diskrete Skala, Alter in Tagen berechnet \\
 \bottomrule
 \end{tabular}
+\end{table}
 
 Geburtsdatum und Aufnahmedatum oder Konferenzdatum oder Monat der
 Besprechung, Geburtsdatum im Rahmen der Anonymisierung nach
