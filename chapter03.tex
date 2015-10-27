@@ -15,89 +15,66 @@
 
 \chapter{Ergebnisse}
 
+% Definition der Ergebnisse, nur hier berechnete Daten eingeben,
+% später im Text dann nur per Variablennamen ansprechen.
+
+% Beschreibung der analysierten Patienten
+\newcommand{\ersterPatient}{Januar 2014}
+\newcommand{\letzterPatient}{Juli 2015}
+\newcommand{\nPatients}{337} % Gesamtzahl der Patienten
+\newcommand{\nMale}{184}
+\newcommand{\nFemale}{153}
+\newcommand{\percentMale}{55}
+\newcommand{\percentFemale}{45}
+\newcommand{\alterMedian}{76}
+\newcommand{\alterMin}{60}
+\newcommand{\alterMax}{93}
+\newcommand{\nUnterAltersDef}{8}
+\newcommand{\percentGeriatrischOnkologie}{54}
+% zwei Abbildungen: altersverteilung.pdf und altersverteilungAllgemein.pdf
+
+% Assessmentkategorien
+
+% Ende Ergebnisdefinition
+
 \section{Analyse der Daten des geriatrischen Assessments}
 
 \subsection{Beschreibung der analysierten Patienten}
 
-Von Januar 2014 bis Juni 2015 wurden 307 Patienten in der
-geriatrisch-onkologischen Konferenz besprochen, 153 (45\%) Männer,
-184 (55\%) Frauen.
+Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
+geriatrisch-onkologischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
+und \nFemale{} Frauen (\percentFemale{}\%).
 Abbildung~\ref{fig:altersverteilung} zeigt ein Histogramm der 
-Altersverteilung der
-Patienten. Der jüngste Patient war 60 Jahre alt, der
-älteste 92. Insgesamt wurde bei 7 Patienten, die jünger waren als 65,
-formal fälschlicherweise (Voraussetzung für Assessment $ \geq $ 65 Jahre)
-ein Assessment durchgeführt. Drei davon waren jedoch schon so
-beeinträchtigt, dass trotz des jungen Alters eine eingeschränkte
-Therapiefähigkeit festgestellt wurde. Dies zeigt, dass eine starre
-Altersgrenze bei der Definition eines geriatrisch-onkologischen
-Patienten nicht sinnvoll ist. Stattdessen ist eine Orientierung an der
-klinischen Gesamtsituation sinnvoll, und wenn bei einem unter 65 Jahre
-alten Patienten geriatrische Probleme bestehen, kann auch hier die
-Durchführung eines Assessments und die anschließende Besprechung in der
-geriatrisch-onkologischen Konferenz sinnvoll sein.
+Altersverteilung der Patienten.
+Das mediane Alter betrug \alterMedian{} Jahre, der jüngste Patient war
+\alterMin{}, der älteste \alterMax{} Jahre alt. Insgesamt wurde bei
+\nUnterAltersDef{} Patienten, die jünger waren als 65 Jahre, ein
+Assessment durchgeführt.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[scale=.8]{grafiken/alter.eps}
-  \caption{Altersverteilung und Konferenzbeschluss}
+  \includegraphics{Grafiken/altersverteilung.pdf}
+  \caption{Alter der untersuchten Patienten}
   \label{fig:altersverteilung}
 \end{figure}
 
-Bei der Ansicht der Verteilung des Konferenzbeschlusses über die
-jeweiligen Jahrgänge ist die ungefähre Gleichverteilung der laut
-Beschluss nicht therapiefähigen Patienten interessant. Bei der
-Verteilung der als eingeschränkt therapiefähig beurteilten Patienten
-ist wie erwartet jedoch ein Trend zum höheren Lebensalter
-erkennbar. Auch einzelne Patienten jenseits der 80
-Lebensjahre sind als uneingeschränkt therapiefähig eingeschätzt
-worden. Das bestätigt den oft zitierten klinischen Eindruck der
-höheren Bedeutung des biologischen Alters gegenüber dem
-chronologischem Alter. Dies zeigt auch in einer etwas anderen Darstellung
-ebenfalls die Abbildung 13.
+Zur Einordnung zeigt Abbildung~\ref{fig:altersverteilungAllgemein} die
+Altersverteilung aller in der onkologischen Klinik behandelten
+Patienten aus dem gleichen Zeitraum. \percentGeriatrischOnkologie{}\%
+der Patienten waren 65 Jahre oder älter.
 
-Abbildung 13
-Altersverteilung je nach Konferenzbeschluss
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{Grafiken/altersverteilungAllgemein.pdf}
+  \caption{Alter aller onkologischer Patienten}
+  \label{fig:altersverteilungAllgemein}
+\end{figure}
 
-Zur Einordnung der Alterverteilung zeigt Abbildung 4 die allgemeine
-Altersverteilung der Patienten in der onkologischen Klinik aus dem
-Jahr 2014. 62 \% aller 2014 in der Onkologie behandelten Patienten
-waren 65 Jahre oder älter, was noch einmal die Bedeutung des Themas
-geriatrische Onkologie unterstreicht.
+Diagnosen der Patienten
 
-Abbildung 4
-Patientenalter in der Onkologie des Huyssenstift der KEM 2014
+\section{Umfassendes Geriatrisches Assessments}
 
-Abbildung 3 zeigt als Balkendiagramm die absolute Verteilung der
-einzelnen Kategorien des Konferenzbeschlusses. 307 Patienten wurden
-von Januar 2014 bis Juni 2015 in der geriatrisch-onkologischen
-Konferenz besprochen. Bei 290 Patienten (94\%) wurde eine Empfehlung
-ausgesprochen. 31 oder 11\% der beurteilten Patienten wurden als
-nicht therapiefähig eingeschätzt, 113
-Patienten (39\%) als eingeschränkt therapiefähig und 146 Patienten
-(50\%) als uneingeschränkt therapiefähig. Von den 17 Patienten (6\%),
-bei denen kein Konferenzbeschluss zustande kam, waren zum
-Zeitpunkt der Konferenz 2 Patienten verstorben. Bei 7 Patienten war
-das Assessment so unvollständig, dass eine Einschätzung nicht möglich
-war. Bei den restlichen 8 Patienten gab es verschiedene Gründe für
-eine fehlende Konferenzentscheidung. Ein Patient war aufgrund des
-Alters (62 Jahre) und fehlender spezifischer Probleme als nicht
-geriatrisch klassifiziert worden; ein Patient hatte
-keine Tumorerkrankung; bei einem Patienten gab es keine
-Behandlungsindikation; bei drei Patienten aus den Anfängen der
-Konferenz wurde als Beschluss
-eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
-Behandlungsfähigkeit gegeben;
-bei einem Patienten wurde eine geriatrische Komplexbehandlung
-empfohlen und bei einem Patienten ein Reassessment nach Abschluss
-einer Hirnschädelbestrahlung empfohlen.
-Innerhalb der einzelnen Balken ist farbkodiert die persönliche
-Einschätzung des Behandlers.
-
-Abbildung 3
-Balkendiagramm zur Verteilung der jeweiligen Konferenzbeschlüsse
-
-\subsection{Ergebnisse in den einzelnen Assessmentkategorien}
+\subsection{Assessmentkategorien}
 
 Abbildung 4 zeigt als Boxplot die Verteilung des Barthel-Indexes in
 den einzelnen Kategorien. Man sieht eine scharfe Auftrennung nach den
@@ -173,6 +150,66 @@ größer. Einige Patienten in dieser Gruppe wären wahrscheinlich mit entsprechende
 Unterstützung und Überwachung durch den Partner als
 uneingeschränkt therapiefähig eingeschätzt worden.
 
+\subsection{Konferenzbeschluss}
+
+Abbildung 3 zeigt als Balkendiagramm die absolute Verteilung der
+einzelnen Kategorien des Konferenzbeschlusses. 307 Patienten wurden
+von Januar 2014 bis Juni 2015 in der geriatrisch-onkologischen
+Konferenz besprochen. Bei 290 Patienten (94\%) wurde eine Empfehlung
+ausgesprochen. 31 oder 11\% der beurteilten Patienten wurden als
+nicht therapiefähig eingeschätzt, 113
+Patienten (39\%) als eingeschränkt therapiefähig und 146 Patienten
+(50\%) als uneingeschränkt therapiefähig. Von den 17 Patienten (6\%),
+bei denen kein Konferenzbeschluss zustande kam, waren zum
+Zeitpunkt der Konferenz 2 Patienten verstorben. Bei 7 Patienten war
+das Assessment so unvollständig, dass eine Einschätzung nicht möglich
+war. Bei den restlichen 8 Patienten gab es verschiedene Gründe für
+eine fehlende Konferenzentscheidung. Ein Patient war aufgrund des
+Alters (62 Jahre) und fehlender spezifischer Probleme als nicht
+geriatrisch klassifiziert worden; ein Patient hatte
+keine Tumorerkrankung; bei einem Patienten gab es keine
+Behandlungsindikation; bei drei Patienten aus den Anfängen der
+Konferenz wurde als Beschluss
+eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
+Behandlungsfähigkeit gegeben;
+bei einem Patienten wurde eine geriatrische Komplexbehandlung
+empfohlen und bei einem Patienten ein Reassessment nach Abschluss
+einer Hirnschädelbestrahlung empfohlen.
+Innerhalb der einzelnen Balken ist farbkodiert die persönliche
+Einschätzung des Behandlers.
+
+Abbildung 3
+Balkendiagramm zur Verteilung der jeweiligen Konferenzbeschlüsse
+
+Abbildung 3 zeigt als Balkendiagramm die absolute Verteilung der
+einzelnen Kategorien des Konferenzbeschlusses. 307 Patienten wurden
+von Januar 2014 bis Juni 2015 in der geriatrisch-onkologischen
+Konferenz besprochen. Bei 290 Patienten (94\%) wurde eine Empfehlung
+ausgesprochen. 31 oder 11\% der beurteilten Patienten wurden als
+nicht therapiefähig eingeschätzt, 113
+Patienten (39\%) als eingeschränkt therapiefähig und 146 Patienten
+(50\%) als uneingeschränkt therapiefähig. Von den 17 Patienten (6\%),
+bei denen kein Konferenzbeschluss zustande kam, waren zum
+Zeitpunkt der Konferenz 2 Patienten verstorben. Bei 7 Patienten war
+das Assessment so unvollständig, dass eine Einschätzung nicht möglich
+war. Bei den restlichen 8 Patienten gab es verschiedene Gründe für
+eine fehlende Konferenzentscheidung. Ein Patient war aufgrund des
+Alters (62 Jahre) und fehlender spezifischer Probleme als nicht
+geriatrisch klassifiziert worden; ein Patient hatte
+keine Tumorerkrankung; bei einem Patienten gab es keine
+Behandlungsindikation; bei drei Patienten aus den Anfängen der
+Konferenz wurde als Beschluss
+eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
+Behandlungsfähigkeit gegeben;
+bei einem Patienten wurde eine geriatrische Komplexbehandlung
+empfohlen und bei einem Patienten ein Reassessment nach Abschluss
+einer Hirnschädelbestrahlung empfohlen.
+Innerhalb der einzelnen Balken ist farbkodiert die persönliche
+Einschätzung des Behandlers.
+
+Abbildung 3
+Balkendiagramm zur Verteilung der jeweiligen Konferenzbeschlüsse
+
 Todo: Tabelle erstellen mit allen Assessmentdaten, Mean, Range, p-Wert
 bezogen auf Unterschiede in den Kategorien
 
@@ -245,6 +282,21 @@ benachbarte Kategorie.
 An dieser bemerkenswerten Präzision der persönlichen Einschätzung ohne
 Vorliegen eines Assessments muss sich ein statistisches
 Vorhersagemodell messen lassen. 
+
+Bei der Ansicht der Verteilung des Konferenzbeschlusses über die
+jeweiligen Jahrgänge ist die ungefähre Gleichverteilung der laut
+Beschluss nicht therapiefähigen Patienten interessant. Bei der
+Verteilung der als eingeschränkt therapiefähig beurteilten Patienten
+ist wie erwartet jedoch ein Trend zum höheren Lebensalter
+erkennbar. Auch einzelne Patienten jenseits der 80
+Lebensjahre sind als uneingeschränkt therapiefähig eingeschätzt
+worden. Das bestätigt den oft zitierten klinischen Eindruck der
+höheren Bedeutung des biologischen Alters gegenüber dem
+chronologischem Alter. Dies zeigt auch in einer etwas anderen Darstellung
+ebenfalls die Abbildung 13.
+
+Abbildung 13
+Altersverteilung je nach Konferenzbeschluss
 
 \subsection{Logistische Regression}
 
