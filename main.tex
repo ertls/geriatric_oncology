@@ -36,10 +36,10 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 %wegen Sweave
-\usepackage{color}
-\usepackage{framed}
-\usepackage{alltt}
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+%\usepackage{color}
+%\usepackage{framed}
+%\usepackage{alltt}
+%\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 \bibliography{bibliography}
 
@@ -87,6 +87,9 @@
 \onehalfspacing % eigener Befehl aus dem empfohlenen Paket setspace,
                 % Deckblätter auch mit anderthalbfachem Zeilenabstand?
                 % Dann Befehl an den Anfang stellen
+\include{ergebnisse} % eigene ergebnisse.tex Datei mit den
+                     % numerischen Ergebnissen, benötigt für
+                     % chapter03.tex
 \include{chapter01}
 \include{chapter02}
 \include{chapter03}

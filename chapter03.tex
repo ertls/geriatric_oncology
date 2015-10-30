@@ -15,31 +15,7 @@
 
 \chapter{Ergebnisse}
 
-% Definition der Ergebnisse, nur hier berechnete Daten eingeben,
-% später im Text dann nur per Variablennamen ansprechen.
-
-% Beschreibung der analysierten Patienten
-\newcommand{\ersterPatient}{Januar 2014}
-\newcommand{\letzterPatient}{Juli 2015}
-\newcommand{\nPatients}{337} % Gesamtzahl der Patienten
-\newcommand{\nMale}{184}
-\newcommand{\nFemale}{153}
-\newcommand{\percentMale}{55}
-\newcommand{\percentFemale}{45}
-\newcommand{\alterMedian}{76}
-\newcommand{\alterMin}{60}
-\newcommand{\alterMax}{93}
-\newcommand{\nUnterAltersDef}{8}
-\newcommand{\percentGeriatrischOnkologie}{54}
-% zwei Abbildungen: altersverteilung.pdf und altersverteilungAllgemein.pdf
-
-% Assessmentkategorien
-
-% Ende Ergebnisdefinition
-
-\section{Analyse der Daten des geriatrischen Assessments}
-
-\subsection{Beschreibung der analysierten Patienten}
+\section{Beschreibung des Patientenkollektivs}
 
 Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
 geriatrisch-onkologischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
@@ -70,39 +46,105 @@ der Patienten waren 65 Jahre oder älter.
   \label{fig:altersverteilungAllgemein}
 \end{figure}
 
-Diagnosen der Patienten
+Die unterschiedlichen Diagnosen der untersuchten Patienten sind in
+Abbildung~\ref{fig:diagnosen} gezeigt.
 
-\section{Umfassendes Geriatrisches Assessments}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{Grafiken/diagnosen.pdf}
+  \caption{Diagnosen und Häufigkeit der untersuchten Patienten}
+  \label{fig:diagnosen}
+\end{figure}
 
-\subsection{Assessmentkategorien}
+Größe/Gewicht/BMI
 
-Abbildung 4 zeigt als Boxplot die Verteilung des Barthel-Indexes in
-den einzelnen Kategorien. Man sieht eine scharfe Auftrennung nach den
-einzelnen Kategorien. Dabei ist - wie erwartet - der Durchschnitt von
-nicht therapiefähig über eingeschränkt therapiefähig bis hin zu
-uneingeschränkt therapiefähig zunehmend. Der Unterschied des
-Durchschnitts des Barthel-Index in den einzelnen Kategorien ist dabei
-signifikant. Der Barthel-Index trennt die einzelnen Kategorien also
-gut auf.
+\section{Ergebnisse des Umfassenden Geriatrischen Assessments}
 
-Abbildung 4 Barthel-Index
+\subsection{Barthel-Index}
 
-Auch der IADL-Index zeigt eine deutliche und signifikante Trennung
-zischen den einzelnen Beschlusskatekorien.
+Der Barthel-Index war bei \nBarthel{} Patienten
+(\percentBarthel{}\%) verfügbar. Den Maximalwert von
+\barthelMax{} erreichten \percentBarthelMax{}\% der Patienten. Der Median
+lag bei \medianBarthel{}.
 
-Abbildung 5 IADL-Index
+\subsection{IADL-Index}
 
-Auch die Mobilitätstests Tinetti und Timed up and go trennen
-signifikant zwischen den Kategorien wie Abbildung 6 und 7 zeigen.
+Der IADL-Index wurde bei \nIadl{} Patienten (\percentIadl{}\%)
+erhoben. Den höchsten Wert von \iadlMax{} erreichten
+\percentIadlMax{}\%. Der Median lag bei \medianIadl{}.
 
-Bei den Kognitionstests MMST und Demtect sind ebenfalls Unterschiede
-in den verschiedenen Kategorien erkennbar. Dabei fällt jedoch auf,
-dass der in der Erkennung einer beginnenden Demenz sensitivere DEMTECT
-deutlich besser trennt, als der MMST.
+\subsection{Tinetti-Test}
 
-Abbildung 7 MMST
+Der Tinetti-Test wurde bei \nTinetti{} Patienten (\percentTinetti{}\%)
+durchgeführt. Den maximalen Wert von \tinettiMax{} erreichten
+\percentTinettiMax{}\% der Patienten. Der Median lag bei \medianTinetti{}. Nach der
+Einschätzung des Tinetti-Tests besteht bei
+\percentTinettiModerateRisk{}\% der untersuchten Patienten ein moderates Sturzrisiko
+($19 \leq Tinetti \leq 24$), bei \percentTinettiHighRisk{}\% ein hohes
+Sturzrisiko ($Tinetti \leq 18$)
 
-Abbildung 8 Demtect
+\subsection{Timed Up And Go}
+
+Der Timed-up-and-go-Test (TUG) wurde bei \nTug{} Patienten
+(\percentTug{}\%) durgeführt. Minimal wurden \tugMin{}~Sekunden
+erreicht, maximal \tugMax{}~ Sekunden. Der Durchschnitt lag bei
+\meanTug{}~Sekunden.
+
+\subsection{Mini-Mental-Status-Test}
+
+Der MMST wurde bei \nMmst{} Patienten (\percentMmst{}\%)
+durchgeführt. Maximale Punktzahl von \mmstMax{} Punkten erreichten
+\percentMmstMax{}\% der Patienten. Nach der Unterteilung der aktuellen
+deutschen S3-Leitlinie Demenz wird je nach Punktwert die in
+Tabelle~\ref{tab:mmst} gezeigte Unterteilung vorgenommen. Daneben
+zeigt die Tabelle den Anteil der untersuchten Patienten in der
+jeweiligen Kategorie.
+
+\begin{table}[htbp]
+\caption{Einteilung einer Demenz nach MMST\autocite{LeitlinieDemenz}}
+\label{tab:mmst}
+\centering
+\begin{tabular}{ccc}
+\toprule
+Schweregrad & MMST-Punktzahl & Anteil in \%\\
+\midrule
+& 27-30 & \percentMmstNormal{}\\
+Leicht & 20-26 & \percentMmstLight{}\\
+Mittel & 10-19 & \percentMmstModerate{}\\
+Schwer & 0-9 & \percentMmstSevere{}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Demenz-Detektions-Test}
+
+Seit Februar 2015 wurde zusätzlich zum MMST der
+Demenz-Detektions-Test, DemTect durchgeführt. Durchgeführt wurde der
+DemTect bei \nDemtect{} Patienten (\percentDemtect\%). Die maximal
+erreicht Punktzahl von \DemtectMax{} Punkten wurde von \percentDemtectMax{}\%
+erreicht. Ein normales Testergebnis ($Demtect \geq 13$) erreichten \percentDemtectNormal{}
+Patienten, eine laut DemTect milde kognitive Beeinträchtigung
+($9 \leq Demtect \leq 12$) besteht bei \percentDemtectLight{} Patienten. Bei
+\percentDemtectDemenz{} Patienten besteht laut DemTect eine
+Demenz. Diese Ergebnisse fasst Tabelle \ref{tab:demtect} noch einmal
+zusammen.
+
+\begin{table}[htbp]
+\caption{Demenz-Detektions-Test \autocite{Demtect}}
+\label{tab:demtect}
+\centering
+\begin{tabular}{ccc}
+\toprule
+Ergebnis & DemTect-Punktzahl & Anteil in \%\\
+\midrule
+Normale kognitive Funktion & 13-18 & \percentDemtectNormal{}\\
+Milde kognitive Beeinträchtigung & 9-12 & \percentDemtectLight{}\\
+Demenz & 0-8 & \percentDemtectDemenz{}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Depressionsassessment}
 
 Bis August 2014 wurde innerhalb des Assessments als
 Depressionsscreening der GDS durchgeführt. Seit September 2014 dann
@@ -114,11 +156,22 @@ erwiesen. Manche Fragen sind bei einer Tumorerkrankung so
 offensichtlich mit ja zu beantworten, dass erstens die Befragung
 schwerfällt und zweitens auch die Auswertung fraglich erscheint. Daher
 wurde ab September 2014 der in der Anwendung und Befragung besser
-angenommene DIA-Score verwendet. (Zahlen von GDS und DIA-S einfügen)
-In der Analyse der Ergebnisse fällt eine bessere Trennung beim GDS
-auf. Auch im DIA-S besteht ein messbarer Unterschied in den
-verschiedenen Kategorien, jedoch ist die Variabilität innerhalb der
-Kategorie größer.
+angenommene DIA-Score verwendet.
+
+\subsubsection{GDS}
+Der GDS wurde bei \nGds{} Patienten (\percentGds{}\%) bestimmt. Der
+maximal bestimmt Wert betrug \gdsMax{}, der mininmal bestimmte
+\gdsMin{}. Nach Einteilung des GDS ist ein Wert bis 5 normale
+einzuschätzen, zwichen 6 und 9 besteht der Verdacht auf eine
+Depression und weitere Diagnostik sollte angestrebt werden, ab einem
+Wert von 10 besteht fast immer auch eine Depression. Nach dieser
+Einteilung wurden \percenGdsNormal{}\% der Patienten als normal
+eingeschätzt, bei \percentGdsSuspect{}\% bestand der Verdacht auf eine
+Depression, und \percenGdsDepression{}\% hatten fast sicher eine Depression.
+
+\subsubsection{DIA-Skala}
+
+\subsection{Komorbidität}
 
 Abbildung 9 zeigt die Erhebung der Komorbidität. Es besteht ein Trend
 zu höherer Komorbidität in den Kategorien. Die Variabilität ist jedoch
@@ -126,9 +179,13 @@ hoch und die Trennung nicht signifikant.
 
 Abbildung 9 Charlson-Score
 
+\subsection{Ernährungsstatus}
+
 Auch die Ernährungsituation erfasst durch den MNA zeigt einen
 Unterschied in den einzelnen Kategorien, jedoch ebenfalls mit einer
 hohen Variabilität.
+
+\subsection{Soziale Situation}
 
 Das Sozialassessment wurde bei der Erhebung rein beschreibend erhoben
 und in der Konferenz diskutiert, falls es die Behandlungfähigkeit
@@ -149,6 +206,8 @@ Patienten ist in der eingeschränkt therapiefähigen Gruppe
 größer. Einige Patienten in dieser Gruppe wären wahrscheinlich mit entsprechender
 Unterstützung und Überwachung durch den Partner als
 uneingeschränkt therapiefähig eingeschätzt worden.
+
+\subsection{Einschätzung des Behandlers}
 
 \subsection{Konferenzbeschluss}
 
