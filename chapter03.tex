@@ -19,7 +19,18 @@
 
 Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
 geriatrisch-onkologischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
-und \nFemale{} Frauen (\percentFemale{}\%).
+und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht war bei
+\percentWeightHeight{}\% der Patienten verfügbar. Wie erwartet folgen
+beide Variablen einer Normalverteilung. Die durchschnittliche Größe
+beträgt \meanHeight{}~cm mit einer Standardabweichung von
+\sdHeight{}~cm. Das durchschnittliche Gewicht
+beträgt \meanWeight{}~kg mit einer Standardabweichung von
+\sdWeight{}~kg. Daraus ergibt sich der Body Mass Index nach der Formel
+\ref{eq:bmi}, der durchschnittliche BMI (wie üblich ohne Einheit
+angegeben) beträgt \meanBmi{} mit einer Standardabweichung von
+\sdBmi{}.
+
+
 Abbildung~\ref{fig:altersverteilung} zeigt ein Histogramm der 
 Altersverteilung der Patienten.
 Das mediane Alter betrug \alterMedian{} Jahre, der jüngste Patient war
@@ -85,9 +96,10 @@ Sturzrisiko ($Tinetti \leq 18$)
 
 \subsection{Timed Up And Go}
 
-Der Timed-up-and-go-Test (TUG) wurde bei \nTug{} Patienten
+Der Timed Up And Go-Test wurde bei \nTug{} Patienten
 (\percentTug{}\%) durgeführt. Minimal wurden \tugMin{}~Sekunden
-erreicht, maximal \tugMax{}~ Sekunden. Der Durchschnitt lag bei
+erreicht, maximal \tugMax{}~ Sekunden, bei \tugNotPossible war der
+Test nicht möglich. Der Durchschnitt der möglichen Tests lag bei
 \meanTug{}~Sekunden.
 
 \subsection{Mini-Mental-Status-Test}
@@ -170,20 +182,26 @@ eingeschätzt, bei \percentGdsSuspect{}\% bestand der Verdacht auf eine
 Depression, und \percenGdsDepression{}\% hatten fast sicher eine Depression.
 
 \subsubsection{DIA-Skala}
+Dia DIA-Skala kam bei \nDia{} Patienten (\percentDia{}\%) zur
+Anwendung. Maximal wurde
+ein Wert von 10 bestimmt. In der Skala des Tests ist ein Wert bis zwei
+normal. Bei einem Wert von 3 besteht Depressionsverdacht und ab einem
+Wert von 4 ist ein Depression von Krankheitswert wahrscheinlich. Nach
+dieser Einteilung hatten \percentDiaNormal{}\% der Patienten einen
+unauffälliges Testergebnis. Bei \percentDiaSuspect{}\% besteht
+Depressionsverdacht und bei \percentDiaDepression{}\% der Patienten
+ist eine Depression von Krankheitswert laut DIA-S wahrscheinlich. 
 
 \subsection{Komorbidität}
-
-Abbildung 9 zeigt die Erhebung der Komorbidität. Es besteht ein Trend
-zu höherer Komorbidität in den Kategorien. Die Variabilität ist jedoch
-hoch und die Trennung nicht signifikant.
-
-Abbildung 9 Charlson-Score
+Der Charlson-Komorbiditätsindex stand bei \nCharlson{} Patienten
+(\percentCharlson{}\%) zur Verfügung. \percentCharlsonZero{}\% der
+Patienten wiesen keine relevante Komorbidität auf, hatten also ein
+Charlson-Index von 0. 3 oder mehr relevante Komorbitäten hatten
+\percentCharlsonThreeOrMore{}\% der Patienten.
 
 \subsection{Ernährungsstatus}
 
-Auch die Ernährungsituation erfasst durch den MNA zeigt einen
-Unterschied in den einzelnen Kategorien, jedoch ebenfalls mit einer
-hohen Variabilität.
+
 
 \subsection{Soziale Situation}
 
