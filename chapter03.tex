@@ -71,21 +71,22 @@ Größe/Gewicht/BMI
 
 \section{Ergebnisse des Umfassenden Geriatrischen Assessments}
 
-\subsection{Barthel-Index}
+Eine Zusammenfassung der nachfolgend beschriebenen Ergebnisse sind in
+Tabelle~\ref{tab:cga_summary} und in
+Abbildung~\ref{fig:cga_summary_boxplot} dargestellt.
 
+\subsection{Barthel-Index}
 Der Barthel-Index war bei \nBarthel{} Patienten
 (\percentBarthel{}\%) verfügbar. Den Maximalwert von
 \barthelMax{} erreichten \percentBarthelMax{}\% der Patienten. Der Median
 lag bei \medianBarthel{}.
 
 \subsection{IADL-Index}
-
 Der IADL-Index wurde bei \nIadl{} Patienten (\percentIadl{}\%)
 erhoben. Den höchsten Wert von \iadlMax{} erreichten
 \percentIadlMax{}\%. Der Median lag bei \medianIadl{}.
 
 \subsection{Tinetti-Test}
-
 Der Tinetti-Test wurde bei \nTinetti{} Patienten (\percentTinetti{}\%)
 durchgeführt. Den maximalen Wert von \tinettiMax{} erreichten
 \percentTinettiMax{}\% der Patienten. Der Median lag bei \medianTinetti{}. Nach der
@@ -95,18 +96,15 @@ Einschätzung des Tinetti-Tests besteht bei
 Sturzrisiko ($Tinetti \leq 18$)
 
 \subsection{Timed Up And Go}
-
 Der Timed Up And Go-Test wurde bei \nTug{} Patienten
 (\percentTug{}\%) durgeführt. Minimal wurden \tugMin{}~Sekunden
 erreicht, maximal \tugMax{}~ Sekunden, bei \tugNotPossible war der
-Test nicht möglich. Der Durchschnitt der möglichen Tests lag bei
-\meanTug{}~Sekunden.
+Test nicht möglich. Der Median der möglichen Tests lag bei
+\medianTug{}~Sekunden.
 
 \subsection{Mini-Mental-Status-Test}
-
 Der MMST wurde bei \nMmst{} Patienten (\percentMmst{}\%)
-durchgeführt. Maximale Punktzahl von \mmstMax{} Punkten erreichten
-\percentMmstMax{}\% der Patienten. Nach der Unterteilung der aktuellen
+durchgeführt. Nach der Unterteilung der aktuellen
 deutschen S3-Leitlinie Demenz wird je nach Punktwert die in
 Tabelle~\ref{tab:mmst} gezeigte Unterteilung vorgenommen. Daneben
 zeigt die Tabelle den Anteil der untersuchten Patienten in der
@@ -129,12 +127,10 @@ Schwer & 0-9 & \percentMmstSevere{}\\
 \end{table}
 
 \subsection{Demenz-Detektions-Test}
-
 Seit Februar 2015 wurde zusätzlich zum MMST der
 Demenz-Detektions-Test, DemTect durchgeführt. Durchgeführt wurde der
-DemTect bei \nDemtect{} Patienten (\percentDemtect\%). Die maximal
-erreicht Punktzahl von \DemtectMax{} Punkten wurde von \percentDemtectMax{}\%
-erreicht. Ein normales Testergebnis ($Demtect \geq 13$) erreichten \percentDemtectNormal{}
+DemTect bei \nDemtect{} Patienten (\percentDemtect\%).
+Ein normales Testergebnis ($Demtect \geq 13$) erreichten \percentDemtectNormal{}
 Patienten, eine laut DemTect milde kognitive Beeinträchtigung
 ($9 \leq Demtect \leq 12$) besteht bei \percentDemtectLight{} Patienten. Bei
 \percentDemtectDemenz{} Patienten besteht laut DemTect eine
@@ -157,7 +153,6 @@ Demenz & 0-8 & \percentDemtectDemenz{}\\
 \end{table}
 
 \subsection{Depressionsassessment}
-
 Bis August 2014 wurde innerhalb des Assessments als
 Depressionsscreening der GDS durchgeführt. Seit September 2014 dann
 der DIA-Score. Diese Entscheidung wurde nicht aufgrund von Daten
@@ -177,9 +172,9 @@ maximal bestimmt Wert betrug \gdsMax{}, der mininmal bestimmte
 einzuschätzen, zwichen 6 und 9 besteht der Verdacht auf eine
 Depression und weitere Diagnostik sollte angestrebt werden, ab einem
 Wert von 10 besteht fast immer auch eine Depression. Nach dieser
-Einteilung wurden \percenGdsNormal{}\% der Patienten als normal
+Einteilung wurden \percentGdsNormal{}\% der Patienten als normal
 eingeschätzt, bei \percentGdsSuspect{}\% bestand der Verdacht auf eine
-Depression, und \percenGdsDepression{}\% hatten fast sicher eine Depression.
+Depression, und \percentGdsDepression{}\% hatten fast sicher eine Depression.
 
 \subsubsection{DIA-Skala}
 Dia DIA-Skala kam bei \nDia{} Patienten (\percentDia{}\%) zur
@@ -200,11 +195,32 @@ Charlson-Index von 0. 3 oder mehr relevante Komorbitäten hatten
 \percentCharlsonThreeOrMore{}\% der Patienten.
 
 \subsection{Ernährungsstatus}
+Der Ernhährungsstatus wurde mittels MNA bei \nMna{} Patienten
+(\percentMna{}\%) durchgeführt. Die einzelnen Grenzwerte und
+Kategorien laut MNA sowie der Anteil der Patienten in der jeweiligen
+Kategorie sind in Tabelle~\ref{tab:mna} zusammengefasst.
 
-
+\begin{table}[htbp]
+\caption{Mini Nutritional Assessment \autocite{Mna}}
+\label{tab:mna}
+\centering
+\begin{tabular}{ccc}
+\toprule
+Ernährungsstatus & MNA-Punktzahl & Anteil in \%\\
+\midrule
+Unauffällig & $ \geq 24 $ & \mnaNormal{}\\
+Risiko für Unterernährung & 17 bis 23,5 & \mnaRisk{}\\
+Unterernährung & > 17 & \mnaMalnourished{}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Soziale Situation}
+Ein Sozialassessment wurde bei \nSocialStatus{} Patienten
+(\percentSocialStatus{}\%) durchgeführt. Nach dem Assessment waren
+\percentSocialAlone{}\% der Patienten alleinlebend.
 
+MEMO: Folgenden Absatz aufteilen zwischen Methoden und Diskussion
 Das Sozialassessment wurde bei der Erhebung rein beschreibend erhoben
 und in der Konferenz diskutiert, falls es die Behandlungfähigkeit
 mitbetraf. Ein Parameter war in den Diskussionen in der Konferenz
@@ -213,9 +229,8 @@ Patienten. Bei der Durchführung einer Chemotherapie ist die häusliche
 Unterstützung durch einen Lebenspartner oft erheblich. Aber auch die
 Überwachung von Symptomen geht oft besser vom Partner als vom
 Patienten aus. Aus diesem Grund wurde aus dem Sozialassessment dieser
-Parameter generiert, und weiter analysiert. Abbildung 11 zeigt die
-allgemeine Häufigkeit und Abbildung 12 die Häufigkeit in den einzelnen
-Kategorien. Ausschlaggebend war dieser Parameter in der Konferenzdiskussion
+Parameter generiert, und weiter analysiert. Ausschlaggebend war dieser
+Parameter in der Konferenzdiskussion
 oft in grenzwertigen Situationen, in denen zwischen
 uneingeschränkter Therapiefähigkeit und eingeschränkter
 Therapiefähigkeit entschieden werden musste. Entsprechend schlägt sich
@@ -225,70 +240,165 @@ größer. Einige Patienten in dieser Gruppe wären wahrscheinlich mit entsprechende
 Unterstützung und Überwachung durch den Partner als
 uneingeschränkt therapiefähig eingeschätzt worden.
 
+\begin{table}[htbp]
+\caption{Zusammenfassung, \nPatients{} Patienten insgesamt}
+\label{tab:cga_summary}
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+& n & in \% & Min & Max & Median & IQR \\ 
+\midrule
+Barthel-Index & 378 & 98 & 0 & 100 & 100 & 20 \\ 
+IADL & 361 & 94 & 0 & 8 & 6 & 3 \\ 
+Tinetti-Test & 366 & 95 & 0 & 28 & 24 & 11 \\ 
+TUG-Test & 335 & 87 & 5 & 120 & 10 & 7,0 \\ 
+MMS-Test & 347 & 90 & 11 & 30 & 29 & 3 \\ 
+DemTect & 130 & 80 & 3 & 18 & 13 & 7 \\ 
+GDS & 115 & 91 & 0 & 14 & 3 & 4 \\ 
+DIA-Skala & 235 & 91 & 0 & 10 & 2 & 3 \\ 
+Charlson-Index & 366 & 95 & 0 & 9 & 1 & 2 \\ 
+MNA & 322 & 84 & 8 & 28,5 & 22,0 & 6,5 \\ 
+Sozial & 347 & 90 &  &  &  \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{Grafiken/cga_summary_boxplot.pdf}
+  \caption{Boxplot der einzelnen Tests im CGA}
+  \label{fig:cga_summary_boxplot}
+\end{figure}
+
+\section{Einschätzungsmöglichkeiten}
+
+\subsection{Alter}
+Tabelle~\ref{tab:cga_alter} zeigt die verschiedenen Parameter des
+Assessments für die verschiedenen Altersgruppen.
+
+\begin{table}[htbp]
+\caption{Median nach verschiedenen Altersgruppen}
+\label{tab:cga_alter}
+\centering
+\begin{tabular}{lccccc}
+  \toprule
+  &\multicolumn{3}{c}{Altersgruppe}&Kruskal-Wallis-Test\\
+  & 65 bis 74 & 75 bis 84 & 85 bis 94&p\\
+  \midrule
+  Patienten & 165 & 174 & 30&\\ 
+  Barthel-Index & 100 & 95 & 85 & <0,001\\ 
+  IADL & 7 & 6 & 5 & <0,001\\
+  Tinetti-Test & 26.0 & 22.0 & 18.0 & <0,001\\ 
+  TUG-Test & 8 & 10 & 12 & <0,001\\ 
+  MMS-Test & 29 & 28 & 27 & 0,012\\ 
+  DemTect & 14 & 13 & 8 & <0,001\\ 
+  GDS & 2.0 & 2.5 & 6.0 & 0,08\\ 
+  DIA-Skala & 3.0 & 2.0 & 2.5 & 0,6\\ 
+  Charlson-Index & 1 & 1 & 1 & 0,1\\ 
+  MNA & 22.5 & 22.0 & 21.5 & 0,5\\ 
+  Alleinlebend & 24\% & 32\% & 20\% & 0,17\\ 
+  \bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Einschätzung des Behandlers}
+Eine Einschätzung des behandelnden Onkologen lag bei \nPersonal{}
+Patienten (\percentPersonal{}\%) vor. Danach wurden
+\percentPersonalGogo{}\% der Patienten als uneingeschränkt
+behandlungsfähig eingeschätzt, \percentPersonalSlowgo{}\% als
+eingeschränkt behandlungsfähig und \percentPersonalNogo{}\% als nicht
+behandlungsfähig. Abbildung~\ref{fig_konferenz} zeigt die Verteilung
+der einzelnen Kategorien in Bezug auf den Konferenzbeschluss.
+
+\subsection{Einteilung nach Balducci}
+Nach der vorgeschlagenen Einteilung von Balducci
+\autocite{Balducci2000} (siehe auch Tabelle \ref{tab:balducci}) können
+\nBalducci{} Patienten (\percentBalducci{}\%) beurteilt werden (Dazu
+muss der Barthel-Index, der IADL-Wert und der
+Charlson-Komorbiditätsindex vorhanden sein).
+Im Vorschlag von Balducci werden die Begriffe gebrechlich, gefährdet
+und fit verwendet. Die jeweiligen Definitionen decken sich mit
+den hier verwendeten Kategorien uneingeschränkt behandlungsfähig, eingeschränkt
+behandlungsfähig und nicht behandlungsfähig.
+\percentBalducciNogo{}\% der Patienten sind nach der Einteilung von Balducci 
+nicht therapiefähig, \percentKonferenzSlowgo{}\% eingeschränkt
+therapiefähig und \percentKonferenzGogo{}\% uneingeschränkt
+therapiefähig.
 
 \subsection{Konferenzbeschluss}
-
-Abbildung 3 zeigt als Balkendiagramm die absolute Verteilung der
-einzelnen Kategorien des Konferenzbeschlusses. 307 Patienten wurden
-von Januar 2014 bis Juni 2015 in der geriatrisch-onkologischen
-Konferenz besprochen. Bei 290 Patienten (94\%) wurde eine Empfehlung
-ausgesprochen. 31 oder 11\% der beurteilten Patienten wurden als
-nicht therapiefähig eingeschätzt, 113
-Patienten (39\%) als eingeschränkt therapiefähig und 146 Patienten
-(50\%) als uneingeschränkt therapiefähig. Von den 17 Patienten (6\%),
-bei denen kein Konferenzbeschluss zustande kam, waren zum
-Zeitpunkt der Konferenz 2 Patienten verstorben. Bei 7 Patienten war
-das Assessment so unvollständig, dass eine Einschätzung nicht möglich
-war. Bei den restlichen 8 Patienten gab es verschiedene Gründe für
-eine fehlende Konferenzentscheidung. Ein Patient war aufgrund des
-Alters (62 Jahre) und fehlender spezifischer Probleme als nicht
-geriatrisch klassifiziert worden; ein Patient hatte
-keine Tumorerkrankung; bei einem Patienten gab es keine
-Behandlungsindikation; bei drei Patienten aus den Anfängen der
+Abbildung~\ref{fig:konferenz_personal} zeigt als Balkendiagramm die
+absolute Verteilung der
+einzelnen Kategorien des Konferenzbeschlusses. \nKonferenz{} Patienten wurden
+von \ersterPatient{} bis \letzterPatient{} in der geriatrisch-onkologischen
+Konferenz besprochen. Bei \percentKonferenz{}\% der Patienten kam ein
+Konferenzbeschluss zustande. \percentKonferenzNogo{}\% der beurteilten
+Patienten wurden als
+nicht therapiefähig eingeschätzt, \percentKonferenzSlowgo{}\% der
+Patienten als eingeschränkt therapiefähig und \percentKonferenzGogo{}\%
+der Patienten als uneingeschränkt therapiefähig. Bei \nKonferenzNa{}
+Patienten kam kein Konferenzbeschluss zustande. Dafür gab es
+verschiedene Gründe. Zum Beispiel waren einige Patienten zum Zeitpunkt
+der Konferenz bereits verstorben. Einzelne Assessments waren so
+unvollständig, dass eine Einschätzung nicht möglich war. Einzelne
+Patienten wurden aufgrund des
+Alters unter 65 Jahre und fehlender spezifischer Probleme als nicht
+geriatrisch klassifiziert. Bei drei Patienten aus den Anfängen der
 Konferenz wurde als Beschluss
 eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
-Behandlungsfähigkeit gegeben;
-bei einem Patienten wurde eine geriatrische Komplexbehandlung
-empfohlen und bei einem Patienten ein Reassessment nach Abschluss
-einer Hirnschädelbestrahlung empfohlen.
-Innerhalb der einzelnen Balken ist farbkodiert die persönliche
-Einschätzung des Behandlers.
+Behandlungsfähigkeit gegeben.
 
-Abbildung 3
-Balkendiagramm zur Verteilung der jeweiligen Konferenzbeschlüsse
+\section{Vergleich der Einschätzungsmöglichkeiten}
+Tabelle~\ref{tab:personal_balducci} zeigt mit Hilfe einer
+Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
+Behandlers und der Einteilung nach dem Vorschlag von Balducci.
+Für \nBalducciPersonal{} Patienten standen
+beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
+\percentAgreementBP{}\% der Fälle.
 
-Abbildung 3 zeigt als Balkendiagramm die absolute Verteilung der
-einzelnen Kategorien des Konferenzbeschlusses. 307 Patienten wurden
-von Januar 2014 bis Juni 2015 in der geriatrisch-onkologischen
-Konferenz besprochen. Bei 290 Patienten (94\%) wurde eine Empfehlung
-ausgesprochen. 31 oder 11\% der beurteilten Patienten wurden als
-nicht therapiefähig eingeschätzt, 113
-Patienten (39\%) als eingeschränkt therapiefähig und 146 Patienten
-(50\%) als uneingeschränkt therapiefähig. Von den 17 Patienten (6\%),
-bei denen kein Konferenzbeschluss zustande kam, waren zum
-Zeitpunkt der Konferenz 2 Patienten verstorben. Bei 7 Patienten war
-das Assessment so unvollständig, dass eine Einschätzung nicht möglich
-war. Bei den restlichen 8 Patienten gab es verschiedene Gründe für
-eine fehlende Konferenzentscheidung. Ein Patient war aufgrund des
-Alters (62 Jahre) und fehlender spezifischer Probleme als nicht
-geriatrisch klassifiziert worden; ein Patient hatte
-keine Tumorerkrankung; bei einem Patienten gab es keine
-Behandlungsindikation; bei drei Patienten aus den Anfängen der
-Konferenz wurde als Beschluss
-eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
-Behandlungsfähigkeit gegeben;
-bei einem Patienten wurde eine geriatrische Komplexbehandlung
-empfohlen und bei einem Patienten ein Reassessment nach Abschluss
-einer Hirnschädelbestrahlung empfohlen.
-Innerhalb der einzelnen Balken ist farbkodiert die persönliche
-Einschätzung des Behandlers.
+\begin{table}[htbp]
+\caption{Balducci und Einschätzung des Behandlers}
+\label{tab:personal_balducci}
+\centering
+\begin{tabular}{crrr}
+  \toprule
+  n=293&\multicolumn{3}{c}{Einschätzung des Behandlers}\\
+  nach Balducci&no go&slow go&go go\\ 
+  \midrule
+  no go&0&5&39\\ 
+  slow go&0&28&63\\ 
+  go go&32&87&39\\ 
+  \bottomrule
+\end{tabular}
+\end{table}
 
-Abbildung 3
-Balkendiagramm zur Verteilung der jeweiligen Konferenzbeschlüsse
+Tabelle~\ref{tab:konferenz_personal} zeigt mit Hilfe einer
+Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
+Behandlers und des Konferenzbeschlusses.
+Für \nKonferenzPersonal{} Patienten standen
+beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
+\percentAgreementKP{}\% der Fälle. Abweichungen fanden sich größtenteils
+nur in die benachbarte Kategorie, also zum Beispiel zwischen
+eingeschränkt behandlungsfähig und uneingeschränkt
+behandlungsfähig. Nur in einem einzigen Fall bestand eine maximale
+Abweichung, in diesem Fall hatte der Behandler den Patienten
+uneingeschränkt behandlungsfähig gehalten, der Konferenzbeschluss
+lautete jedoch nicht behandlungsfähig.
 
-Todo: Tabelle erstellen mit allen Assessmentdaten, Mean, Range, p-Wert
-bezogen auf Unterschiede in den Kategorien
+\begin{table}[htbp]
+\caption{Konferenzbeschluss und Einschätzung des Behandlers}
+\label{tab:konferenz_personal}
+\centering
+\begin{tabular}{crrr}
+  \toprule
+  n=305              & \multicolumn{3}{c}{Einschätzung des Behandlers}\\
+  Konferenzbeschluss & no go & slow go & go go \\ 
+  \midrule
+  no go              &  35   &   8     &   1   \\ 
+  slow go            &   1   &  96     &  19   \\ 
+  go go              &   0   &  20     & 125   \\ 
+  \bottomrule
+\end{tabular}
+\end{table}
 
 \section{Statistisches Modell der Konferenzentscheidung}
 
