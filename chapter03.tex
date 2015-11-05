@@ -273,8 +273,12 @@ Sozial & 347 & 90 &  &  &  \\
 \section{Einschätzungsmöglichkeiten}
 
 \subsection{Alter}
-Tabelle~\ref{tab:cga_alter} zeigt die verschiedenen Parameter des
-Assessments für die verschiedenen Altersgruppen.
+Tabelle~\ref{tab:cga_alter} zeigt die Mediane der erhobenen Parameter des
+Assessments für die verschiedenen Altersgruppen. Zur Testung, ob die
+beobachteten Unterschiede signifikant sind, kam der
+Kruskal-Wallis-Test zur Anwendung. Die ist ein statistischer Test, der
+bei nicht normalverteilten Stichproben und mehr als zwei Gruppen
+eingesetzt werden kann.
 
 \begin{table}[htbp]
 \caption{Median nach verschiedenen Altersgruppen}
@@ -282,8 +286,8 @@ Assessments für die verschiedenen Altersgruppen.
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Altersgruppe}&Kruskal-Wallis-Test\\
-  & 65 bis 74 & 75 bis 84 & 85 bis 94&p\\
+  &\multicolumn{3}{c}{Altersgruppe}&\\
+  & 65 bis 74 & 75 bis 84 & 85 bis 94& p-Wert \\
   \midrule
   Patienten & 165 & 174 & 30&\\ 
   Barthel-Index & 100 & 95 & 85 & <0,001\\ 
@@ -307,8 +311,36 @@ Patienten (\percentPersonal{}\%) vor. Danach wurden
 \percentPersonalGogo{}\% der Patienten als uneingeschränkt
 behandlungsfähig eingeschätzt, \percentPersonalSlowgo{}\% als
 eingeschränkt behandlungsfähig und \percentPersonalNogo{}\% als nicht
-behandlungsfähig. Abbildung~\ref{fig_konferenz} zeigt die Verteilung
-der einzelnen Kategorien in Bezug auf den Konferenzbeschluss.
+behandlungsfähig.
+
+Tabelle~\ref{tab:cga_personal} zeigt die Mediane der erhobenen Parameter des
+Assessments für die verschiedenen Gruppen, nach Einteilung durch die
+Einschätzung des Behandlers.
+
+\begin{table}[htbp]
+\caption{Median nach Unterteilung durch die Einschätzung des Behandlers}
+\label{tab:cga_personal}
+\centering
+\begin{tabular}{lccccc}
+  \toprule
+  &\multicolumn{3}{c}{Einschätzung des Behandlers}&\\
+  & no go & slow go & go go & p-Wert \\
+  \midrule
+  Patienten & 37 & 132 & 151&\\ 
+  Barthel-Index & 45 & 92.5 & 100 & <0,001\\ 
+  IADL & 3 & 6 & 8 & <0,001\\
+  Tinetti-Test & 7.5 & 21.0 & 27.0 & <0,001\\ 
+  TUG-Test & 20 & 11 & 8 & <0,001\\ 
+  MMS-Test & 25 & 28 & 29 & <0,001\\ 
+  DemTect & 8& 13& 15.5& <0,001\\ 
+  GDS & NA & 4 & 2 & 0,02\\ 
+  DIA-Skala & 4 & 3   & 1   & <0,001\\ 
+  Charlson-Index & 3 & 2 & 0 & <0,001\\ 
+  MNA & 17   & 21   & 24   & <0,001\\ 
+  Alleinlebend & 30\% & 34\% & 25\% & 0,26\\ 
+  \bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Einteilung nach Balducci}
 Nach der vorgeschlagenen Einteilung von Balducci
@@ -325,10 +357,37 @@ nicht therapiefähig, \percentKonferenzSlowgo{}\% eingeschränkt
 therapiefähig und \percentKonferenzGogo{}\% uneingeschränkt
 therapiefähig.
 
+Tabelle~\ref{tab:cga_balducci} zeigt die Mediane der erhobenen Parameter des
+Assessments für die verschiedenen Gruppen, nach Einteilung durch den
+Vorschlag von Balducci.
+
+\begin{table}[htbp]
+\caption{Median nach Unterteilung durch Vorschlag von Balducci}
+\label{tab:cga_balducci}
+\centering
+\begin{tabular}{lccccc}
+  \toprule
+  &\multicolumn{3}{c}{Einteilung durch Balducci}&\\
+  & no go & slow go & go go & p-Wert \\
+  \midrule
+  Patienten & 188 & 103 & 51 &\\ 
+  Barthel-Index & 85 & 100  & 100 & <0,001\\ 
+  IADL & 6 & 6 & 8 & <0,001\\
+  Tinetti-Test & 18& 26 & 28 & <0,001\\ 
+  TUG-Test & 7  & 8.5& 12& <0,001\\ 
+  MMS-Test & 28 & 29 & 30 & <0,001\\ 
+  DemTect & 13 & 14  & 17  & <0,001\\ 
+  GDS & 3& 3 & 1.5 & 0,002\\ 
+  DIA-Skala & 3 & 2   & 2   & 0,058\\ 
+  Charlson-Index & 2 & 1 & 0 & <0,001\\ 
+  MNA & 20   & 23   & 24   & <0,001\\ 
+  Alleinlebend & 31\% & 22\% & 31\% & 0,27\\ 
+  \bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Konferenzbeschluss}
-Abbildung~\ref{fig:konferenz_personal} zeigt als Balkendiagramm die
-absolute Verteilung der
-einzelnen Kategorien des Konferenzbeschlusses. \nKonferenz{} Patienten wurden
+\nKonferenz{} Patienten wurden
 von \ersterPatient{} bis \letzterPatient{} in der geriatrisch-onkologischen
 Konferenz besprochen. Bei \percentKonferenz{}\% der Patienten kam ein
 Konferenzbeschluss zustande. \percentKonferenzNogo{}\% der beurteilten
@@ -347,7 +406,49 @@ Konferenz wurde als Beschluss
 eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
 Behandlungsfähigkeit gegeben.
 
+Tabelle~\ref{tab:cga_konferenz} zeigt die Mediane der erhobenen Parameter des
+Assessments für die verschiedenen Gruppen, nach Einteilung durch die
+geriatrisch-onkgologische Konferenz.
+
+\begin{table}[htbp]
+\caption{Median nach Unterteilung durch Vorschlag von Balducci}
+\label{tab:cga_konferenz}
+\centering
+\begin{tabular}{lccccc}
+  \toprule
+  &\multicolumn{3}{c}{Einteilung durch Balducci}&\\
+  & no go & slow go & go go & p-Wert \\
+  \midrule
+  Patienten & 49  & 140 & 170&\\ 
+  Barthel-Index & 55 & 90   & 100 & <0,001\\ 
+  IADL & 3 & 6 & 8 & <0,001\\
+  Tinetti-Test & 10.0& 21.0 & 27.0 & <0,001\\ 
+  TUG-Test & 20 & 11 & 8 & <0,001\\ 
+  MMS-Test & 25 & 28 & 30 & <0,001\\ 
+  DemTect & 8.5& 13  & 16  & <0,001\\ 
+  GDS & 3.0& 3.0 & 1.5 & <0,001\\ 
+  DIA-Skala & 4 & 2.5 & 1   & 0,008\\ 
+  Charlson-Index & 2 & 2 & 0 & <0,001\\ 
+  MNA & 17   & 21   & 24   & <0,001\\ 
+  Alleinlebend & 29\% & 34\% & 21\% & 0,04\\ 
+  \bottomrule
+\end{tabular}
+\end{table}
+
+Abbildung~\ref{fig:cga_konferenz} stellt die dargestellten Tabellen
+exemplarisch für die Aufteilung nach Konferenzbeschluss noch einmal
+grafisch dar.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{Grafiken/cga_konferenz.pdf}
+  \caption{Boxplot der einzelnen Tests im CGA aufgeteilt nach Konferenzbeschluss}
+  \label{fig:cga_konferenz}
+\end{figure}
+
 \section{Vergleich der Einschätzungsmöglichkeiten}
+
+\subsection{Behandler-Balducci}
 Tabelle~\ref{tab:personal_balducci} zeigt mit Hilfe einer
 Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
 Behandlers und der Einteilung nach dem Vorschlag von Balducci.
@@ -371,6 +472,7 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 \end{tabular}
 \end{table}
 
+\subsection{Behander-Konferenz}
 Tabelle~\ref{tab:konferenz_personal} zeigt mit Hilfe einer
 Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
 Behandlers und des Konferenzbeschlusses.
@@ -380,7 +482,7 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 nur in die benachbarte Kategorie, also zum Beispiel zwischen
 eingeschränkt behandlungsfähig und uneingeschränkt
 behandlungsfähig. Nur in einem einzigen Fall bestand eine maximale
-Abweichung, in diesem Fall hatte der Behandler den Patienten
+Abweichung, in diesem Fall hatte der Behandler den Patienten für
 uneingeschränkt behandlungsfähig gehalten, der Konferenzbeschluss
 lautete jedoch nicht behandlungsfähig.
 
@@ -400,90 +502,16 @@ lautete jedoch nicht behandlungsfähig.
 \end{tabular}
 \end{table}
 
+\subsection{Balducci-Konferenz}
+Eine Einschätzung nach dem Vorschlag von Balducci und ein
+Konferenzbeschluss lag in \nBalducciKonferenz{} Fällen vor. Dabei
+zeigte sich eine Übereinstimmung von \percentAgreementBK{}\% der
+Fälle. Die Kontingenztafel wurde weggelassen, da sie keine neuen
+Aspekte zeigt und in ihrer Struktur wie auch dem Anteil an
+Übereinstimmung dem Vergleich der Klassifikation
+durch Balducci und der Einschätzung des Behandlers gleicht.
+
 \section{Statistisches Modell der Konferenzentscheidung}
-
-\subsection{Persönliche Einschätzung des Behandlers und Konferenzentscheidung}
-
-Bei der Vorstellung des Patienten in der Konferenz wurde der
-behandelnde Assistenzarzt befragt, wie das Behandlungsteam bestehend
-aus einem Assistenzarzt in Weiterbildung und dem zuständigen
-onkologischen Oberarzt, wie der Patient eingeschätzt wird. Diese
-Einschätzung beruht auf dem klinischen Eindruck, bestehend aus
-Diagnose, Stadium, Anamnese und klinischer Untersuchung ohne
-Einbeziehung der erhobenen Assessmentdaten. Diese Einschätzung wurde
-unter der Bezeichnung persönliche Einschätzung protokolliert.
-
-Tabelle 1
-Konferenzbeschluss versus Persönliche Einschätzung
-
-Bei 229 Patienten gibt es sowohl eine persönliche Einschätzung der
-behandelnden Ärzte als auch einen Konferenzbeschluss. Insgesamt zeigt sich
-eine bemerkenswerte Übereinstimmung und Präzision der persönlichen
-Einschätzung. In 85\% der Fälle stimmen persönliche Einschätzung und
-Konferenzbeschluss überein. Bemerkenswert ist außerdem, dass die
-beobachteten Abweichungen lediglich benachbarte Einschätzungen
-betreffen. So gibt es keinen Fall, der als nicht
-therapiefähig eingeschätzt wird, der nach Konferenzbeschluss
-uneingeschränkt therapiefähig eingeschätzt wird. Umgekehrt gibt es
-ebenfalls keinen Fall, der von der Konferenz als nicht therapiefähig
-eingeschätzt wird, der in der persönlichen Einschätzung
-uneingeschränkt therapiefähig bezeichnet wird. Alle 22 vom Behandler als nicht
-therapiefähig eingeschätzten Patienten sind laut Konferenzbeschluss
-nicht therapiefähig. Und nur 4 Patienten, die in der persönlichen
-Einschätzung eingeschränkt therapiefähig eingeschätzt wurden, wurden
-von der Konferenz letztendlich als nicht therapiefähig
-klassifiziert. Abbildung 1 macht die einzelnen Abweichungen deutlich.
-
-Abbildung 1
-Grafische Darstellung des Konferenzbeschlusses versus Persönliche Einschätzung zur Fehlerklassifikation
-
-In der Abstufung zwischen eingeschränkt und uneingeschränkt
-therapiefähig kam es zu folgenden Abweichungen. 17 Patienten wurden im
-Konferenzbeschluss hochgestuft, waren also im persönlichen Assessment
-nur eingeschränkt therapiefähig eingeschätzt worden, von der Konferenz
-jedoch als uneingeschränkt therapiefähig. 14 Patienten wurden im
-Konferenzbeschluss heruntergestuft, wurden also persönlich als
-uneingeschränkt therapiefähig, von der Konferenz jedoch als
-eingeschränkt therapiefähig klassifiziert.
-Damit ist der positiv prädiktive Wert des persönlichen Assessments wie
-folgt für die einzelnen Kategorien: 88\% für uneingeschränkt
-therapiefähig, 77\% für eingeschränkt therapiefähig und 100\% für
-nicht therapiefähig.
-
-Wie gerade ausgeführt betraf eine
-Fehlklassifikation jedoch immer nur die benachbarte Kategorie.
-Abbildung 1 illustriert in der Gegenüberstellung von
-Konferenzentscheidung und perönlicher Einschätzung die dargelegte
-Situation. Dabei sind besonders gut die zwei möglichen Arten von
-Fehlern sichtbar.
-Es sind prinzipiell zwei Arten von Fehler im persönlichen Assessment
-möglich. Entweder werden Patienten durch das persönliche Assessment
-als zu gut oder zu schlecht eingestuft. Mit der jetzt beschriebenen
-Klassifkation kommen beide Arten von Fehlern vor, 17 Patienten wurden
-herab- (slow go, in der Konferenz go go) und 18
-Patienten heraufgestuft (4 slow go, in der Konferenz no go und 14 Patienten
-go go, in der Konferenz slow go). Wie bereits erwähnt kommt es bei
-einem Klassifikationsfehler also nur zu einer Fehlklassifikation in eine
-benachbarte Kategorie.
-
-An dieser bemerkenswerten Präzision der persönlichen Einschätzung ohne
-Vorliegen eines Assessments muss sich ein statistisches
-Vorhersagemodell messen lassen. 
-
-Bei der Ansicht der Verteilung des Konferenzbeschlusses über die
-jeweiligen Jahrgänge ist die ungefähre Gleichverteilung der laut
-Beschluss nicht therapiefähigen Patienten interessant. Bei der
-Verteilung der als eingeschränkt therapiefähig beurteilten Patienten
-ist wie erwartet jedoch ein Trend zum höheren Lebensalter
-erkennbar. Auch einzelne Patienten jenseits der 80
-Lebensjahre sind als uneingeschränkt therapiefähig eingeschätzt
-worden. Das bestätigt den oft zitierten klinischen Eindruck der
-höheren Bedeutung des biologischen Alters gegenüber dem
-chronologischem Alter. Dies zeigt auch in einer etwas anderen Darstellung
-ebenfalls die Abbildung 13.
-
-Abbildung 13
-Altersverteilung je nach Konferenzbeschluss
 
 \subsection{Logistische Regression}
 
