@@ -18,7 +18,7 @@
 \section{Beschreibung des Patientenkollektivs}
 
 Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
-geriatrisch-onkologischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
+geria\-trisch"=onkolo\-gischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
 und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht war bei
 \percentWeightHeight{}\% der Patienten verfügbar. Wie erwartet folgen
 beide Variablen einer Normalverteilung. Die durchschnittliche Größe
@@ -37,14 +37,12 @@ Das mediane Alter betrug \alterMedian{} Jahre, der jüngste Patient war
 \alterMin{}, der älteste \alterMax{} Jahre alt. Insgesamt wurde bei
 \nUnterAltersDef{} Patienten, die jünger waren als 65 Jahre, ein
 Assessment durchgeführt.
-
 \begin{figure}[htbp]
   \centering
-  \includegraphics{Grafiken/altersverteilung.pdf}
+  \includegraphics[width=\textwidth]{Grafiken/altersverteilung.pdf}
   \caption{Alter der untersuchten Patienten}
   \label{fig:altersverteilung}
 \end{figure}
-
 Zur Einordnung zeigt Abbildung~\ref{fig:altersverteilungAllgemein} die
 Altersverteilung aller in der onkologischen Klinik behandelten
 Patienten aus dem gleichen Zeitraum. \percentGeriatrischOnkologie{}\%
@@ -52,7 +50,7 @@ der Patienten waren 65 Jahre oder älter.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics{Grafiken/altersverteilungAllgemein.pdf}
+  \includegraphics[width=\textwidth]{Grafiken/altersverteilungAllgemein.pdf}
   \caption{Alter aller onkologischer Patienten}
   \label{fig:altersverteilungAllgemein}
 \end{figure}
@@ -62,18 +60,46 @@ Abbildung~\ref{fig:diagnosen} gezeigt.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics{Grafiken/diagnosen.pdf}
+  \includegraphics[width=\textwidth]{Grafiken/diagnosen.pdf}
   \caption{Diagnosen und Häufigkeit der untersuchten Patienten}
   \label{fig:diagnosen}
 \end{figure}
 
-Größe/Gewicht/BMI
-
 \section{Ergebnisse des Umfassenden Geriatrischen Assessments}
 
-Eine Zusammenfassung der nachfolgend beschriebenen Ergebnisse sind in
+Eine Zusammenfassung der nachfolgend beschriebenen Ergebnisse ist in
 Tabelle~\ref{tab:cga_summary} und in
 Abbildung~\ref{fig:cga_summary_boxplot} dargestellt.
+
+\begin{table}[htbp]
+\caption{Zusammenfassung, \nPatients{} Patienten insgesamt}
+\label{tab:cga_summary}
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+& n & in \% & Min & Max & Median & IQR \\ 
+\midrule
+Barthel-Index & 378 & 98 & 0 & 100 & 100 & 20 \\ 
+IADL & 361 & 94 & 0 & 8 & 6 & 3 \\ 
+Tinetti-Test & 366 & 95 & 0 & 28 & 24 & 11 \\ 
+TUG-Test & 335 & 87 & 5 & 120 & 10 & 7,0 \\ 
+MMS-Test & 347 & 90 & 11 & 30 & 29 & 3 \\ 
+DemTect & 130 & 80 & 3 & 18 & 13 & 7 \\ 
+GDS & 115 & 91 & 0 & 14 & 3 & 4 \\ 
+DIA-Skala & 235 & 91 & 0 & 10 & 2 & 3 \\ 
+Charlson-Index & 366 & 95 & 0 & 9 & 1 & 2 \\ 
+MNA & 322 & 84 & 8 & 28,5 & 22,0 & 6,5 \\ 
+Sozial & 347 & 90 &  &  &  \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{Grafiken/cga_summary_boxplot.pdf}
+  \caption{Boxplot der einzelnen Tests des CGA}
+  \label{fig:cga_summary_boxplot}
+\end{figure}
 
 \subsection{Barthel-Index}
 Der Barthel-Index war bei \nBarthel{} Patienten
@@ -240,36 +266,6 @@ größer. Einige Patienten in dieser Gruppe wären wahrscheinlich mit entsprechende
 Unterstützung und Überwachung durch den Partner als
 uneingeschränkt therapiefähig eingeschätzt worden.
 
-\begin{table}[htbp]
-\caption{Zusammenfassung, \nPatients{} Patienten insgesamt}
-\label{tab:cga_summary}
-\centering
-\begin{tabular}{lcccccc}
-\toprule
-& n & in \% & Min & Max & Median & IQR \\ 
-\midrule
-Barthel-Index & 378 & 98 & 0 & 100 & 100 & 20 \\ 
-IADL & 361 & 94 & 0 & 8 & 6 & 3 \\ 
-Tinetti-Test & 366 & 95 & 0 & 28 & 24 & 11 \\ 
-TUG-Test & 335 & 87 & 5 & 120 & 10 & 7,0 \\ 
-MMS-Test & 347 & 90 & 11 & 30 & 29 & 3 \\ 
-DemTect & 130 & 80 & 3 & 18 & 13 & 7 \\ 
-GDS & 115 & 91 & 0 & 14 & 3 & 4 \\ 
-DIA-Skala & 235 & 91 & 0 & 10 & 2 & 3 \\ 
-Charlson-Index & 366 & 95 & 0 & 9 & 1 & 2 \\ 
-MNA & 322 & 84 & 8 & 28,5 & 22,0 & 6,5 \\ 
-Sozial & 347 & 90 &  &  &  \\ 
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{Grafiken/cga_summary_boxplot.pdf}
-  \caption{Boxplot der einzelnen Tests im CGA}
-  \label{fig:cga_summary_boxplot}
-\end{figure}
-
 \section{Einschätzungsmöglichkeiten}
 
 \subsection{Alter}
@@ -318,7 +314,7 @@ Assessments für die verschiedenen Gruppen, nach Einteilung durch die
 Einschätzung des Behandlers.
 
 \begin{table}[htbp]
-\caption{Median nach Unterteilung durch die Einschätzung des Behandlers}
+\caption{Median nach Einschätzung des Behandlers}
 \label{tab:cga_personal}
 \centering
 \begin{tabular}{lccccc}
@@ -362,7 +358,7 @@ Assessments für die verschiedenen Gruppen, nach Einteilung durch den
 Vorschlag von Balducci.
 
 \begin{table}[htbp]
-\caption{Median nach Unterteilung durch Vorschlag von Balducci}
+\caption{Median nach Unterteilung durch Balducci}
 \label{tab:cga_balducci}
 \centering
 \begin{tabular}{lccccc}
@@ -411,12 +407,12 @@ Assessments für die verschiedenen Gruppen, nach Einteilung durch die
 geriatrisch-onkgologische Konferenz.
 
 \begin{table}[htbp]
-\caption{Median nach Unterteilung durch Vorschlag von Balducci}
+\caption{Median nach Unterteilung durch Konferenz}
 \label{tab:cga_konferenz}
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Einteilung durch Balducci}&\\
+  &\multicolumn{3}{c}{Einteilung durch Konferenz}&\\
   & no go & slow go & go go & p-Wert \\
   \midrule
   Patienten & 49  & 140 & 170&\\ 
