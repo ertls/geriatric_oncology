@@ -15,6 +15,10 @@
 
 \chapter{Methoden}
 
+\epigraph{Nicht weil es schwer ist, wagen wir es nicht, sondern weil
+  wir es nicht wagen, ist es schwer.}{--- \textup{Lucius Annaeus
+    Seneca}}
+
 \section{Die geriatrisch-onkologische Konferenz}
 
 Die geriatrisch-onkologische Konferenz setzt sich aus einem Facharzt
@@ -460,29 +464,89 @@ Mediane, lineare Modelle innerhalb eines Assessments
 
 \subsection{Signifikanztests}
 
+\label{subsec:Signifikanztests}
+
+\subsubsection{Unterschiede zwischen Stichproben}
+
+Der Kruskal-Wallis-Test ist ein statistischer Test, der
+bei nicht normalverteilten Stichproben und mehr als zwei Gruppen
+eingesetzt werden kann. Es wird anhand von Rangplatzsummen geprüft, ob
+Unterschiede zwischen den Gruppen bestehen. Bei signifikantem
+Testergebnis wurde post hoc mittels Wilcoxon-Rangsummentest die
+einzelnen Stichproben paarweise verglichen. Zur Korrektur einer
+Alphafehler-Kumulation kam die Bonferroni-Methode zum Einsatz.
+
 \subsection{Logistische Regression}
 
-Lineare Regression nutzt bekannte Variablen, um eine abhängige
-Variable vorherzusagen. Logistische Regression bildet nicht auf eine
-kontinuierliche Variable ab, sondern auf eine qualitative oder genauer
-auf die Wahrscheinlichkeit, einer bestimmten Klasse anzugehören. Diese
-kann binär sein, oder auch mehr als zwei mögliche
-Ausprägungen annehmen.
-Logistische Regression bezeichnet die Erweiterung einer linearen
-Regression auf ein Klassifizierungsproblem, in dem die
-Wahrscheinlichkeit modelliert wird, in eine der zur Verfügung
-stehenden Klassen eingestuft zu werden. Sehr breite Verwendung findet
-das Modell für zwei zur Verfügung stehende Klassen, z.B. tod/lebend,
-krank/gesund. Im vorliegenden Fall wird die
+In einer Regressionsanalyse wird versucht eine abhängige Variable
+durch eine oder mehrere unabhängige Variablen darzustellen. Dadurch
+können die Zusammenhänge sowohl quantitativ beschrieben werden, als
+auch Werte der abhängigen Variable durch die unabhängigen Variablen
+prognostiziert werden.
+Handelt es sich bei der abhängigen Variable um eine kategorielle
+Variable wird die Wahrscheinlichkeit $p(X)$ in eine der zur Verfügung
+stehenden Kategorien zu fallen, durch die quantitative unabhängige Variable $X$
+beschrieben. Bei der logistischen
+Regression findet zur Beschreibung dieses Zusammenhangs die logistische
+Funktion Anwendung.
+
+\begin{equation}
+\label{eq:logistic_function}
+p(X) = \frac{e^{\beta_0 + \beta_1 X}}{1 + e^{\beta_0 + \beta_1 X}}
+\end{equation}
+
+Für zwei zur Verfügung stehende Klassen, z.B. tod/lebend,
+krank/gesund, behandlungsfähig/nicht behandlungsfähig  muss nur die
+Wahrscheinlichkeit bezüglich einer Klasse ermittelt werden, da sich
+daraus dann auch direkt die zweite Wahrscheinlichkeit durch
+$1 - p(X)$ ergibt. Durch Umformung von
+Gleichung~\ref{eq:logistic_function} ergibt sich
+Gleichung~\ref{eq:logit}.
+
+\begin{equation}
+\label{eq:logit}
+\ln\bigg(\frac{p(X)}{1 - p(X)}\bigg) = \beta_0 + \beta_1 X
+\end{equation}
+
+Im Glücksspiel ist die Chance (engl. odds) geläufiger als die
+Wahrscheinlichkeit. Eine Wahrscheinlichkeit von $0,5$ entsprich einer
+1 zu 1 ($1:1=1$) Chance. Allgemein gelten
+Gleichung~\ref{eq:odds1} und \ref{eq:odds2}. Im weiteren Text wird für Chance das
+in der Medizin geläufigere englische Wort Odds verwendet.
+
+\begin{equation}
+\label{eq:odds1}
+o(A) = \frac{p(A)}{1 - p(A)}
+\end{equation}
+
+\begin{equation}
+\label{eq:odds2}
+p(A) = \frac{o(A)}{1 + o(A)}
+\end{equation}
+
+Dabei ist $p(A)$ die Wahrscheinlichkeit und $o(A)$ die Odds, dass
+Ereignis $A$ eintritt. In Gleichung~\ref{eq:logit} zeigt sich, dass
+das Verhältnis der logarithmierten Odds bezüglich der unabhängigen
+Variablen linear ist.
+
+Im vorliegenden Fall wird die
 Erweiterung auf drei Klassen notwendig. Dabei wird die
 Wahrscheinlichkeit modelliert in eine der drei Klassen nicht
 therapiefähig/eingeschränkt therapiefähig/uneingeschränkt
 therapiefähig eingeteilt zu werden. In der Vorhersagefunktion dieses
 Modells findet die Ermittlung der Wahrscheinlichkeit statt, nach der
-dann die Klassifikation erfolgt. Im Falle von nur zwei zur Verfügung
-stehenden Klassen, lässt sich die logistische Regression in eine
-lineare Gleichung überführen. Bei drei Klassen ist ein
-Gleichungssystem mit zwei Gleichungen zu lösen.
+dann die Klassifikation erfolgt. Bei drei verschiedenen Klassen ergibt
+sich ein Gleichungssystem mit zwei Gleichungen. Die
+Wahrscheinlichkeit, in die dritte Klasse zu fallen ergibt sich aus der
+Tatsache, dass sich alle drei Wahrscheinlichkeiten zu $1$ summieren. 
+
+\begin{equation}
+\label{eq:logit2}
+\ln\bigg(\frac{p_i(X)}{1 - p_i(X)}\bigg) = \beta_0 + \beta_1
+X_{1,i} + \dots + \beta_m X_{m,i}
+\end{equation}
+
+\subsection{CART}
 
 \subsection{Diskriminanzanalyse}
 

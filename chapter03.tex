@@ -15,6 +15,10 @@
 
 \chapter{Ergebnisse}
 
+\epigraph{If it were not for the great variability among individuals
+  medicine might as well be a science and not an art.}{---
+  \textup{William Osler}}
+
 \section{Beschreibung des Patientenkollektivs}
 
 Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
@@ -40,7 +44,8 @@ Assessment durchgeführt.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/altersverteilung.pdf}
-  \caption{Alter der untersuchten Patienten}
+  \caption{Alter der untersuchten Patienten, Markierung bei 65 Jahren
+    (interne Definition eines geriatrisch-onkologischen Patienten)}
   \label{fig:altersverteilung}
 \end{figure}
 Zur Einordnung zeigt Abbildung~\ref{fig:altersverteilungAllgemein} die
@@ -51,7 +56,9 @@ der Patienten waren 65 Jahre oder älter.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/altersverteilungAllgemein.pdf}
-  \caption{Alter aller onkologischer Patienten}
+  \caption{Alter aller Patienten der Klinik für internistische
+    Onkologie, Markierung bei 65 Jahren (interne Definition eines
+    geriatrisch-onkologischen Patienten)}
   \label{fig:altersverteilungAllgemein}
 \end{figure}
 
@@ -72,15 +79,17 @@ Tabelle~\ref{tab:cga_summary} und in
 Abbildung~\ref{fig:cga_summary_boxplot} dargestellt.
 
 \begin{table}[htbp]
-\caption{Zusammenfassung, \nPatients{} Patienten insgesamt}
+\caption{Zusammenfassung der erhobenen Daten innerhalb des
+  Assessments}
 \label{tab:cga_summary}
 \centering
 \begin{tabular}{lcccccc}
 \toprule
-& n & in \% & Min & Max & Median & IQR \\ 
+& n & in \%*  &
+  Minimum & Maximum & Median & IQR** \\ 
 \midrule
 Barthel-Index & 378 & 98 & 0 & 100 & 100 & 20 \\ 
-IADL & 361 & 94 & 0 & 8 & 6 & 3 \\ 
+IADL-Skala & 361 & 94 & 0 & 8 & 6 & 3 \\ 
 Tinetti-Test & 366 & 95 & 0 & 28 & 24 & 11 \\ 
 TUG-Test & 335 & 87 & 5 & 120 & 10 & 7,0 \\ 
 MMS-Test & 347 & 90 & 11 & 30 & 29 & 3 \\ 
@@ -91,13 +100,19 @@ Charlson-Index & 366 & 95 & 0 & 9 & 1 & 2 \\
 MNA & 322 & 84 & 8 & 28,5 & 22,0 & 6,5 \\ 
 Sozial & 347 & 90 &  &  &  \\ 
 \bottomrule
+\multicolumn{7}{l}{*bezogen auf \nPatients{} Patienten,
+  **IQR:~Interquartilsabstand}\\
 \end{tabular}
 \end{table}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/cga_summary_boxplot.pdf}
-  \caption{Boxplot der einzelnen Tests des CGA}
+  \caption{Box-Whisker-Plot der einzelnen Tests des CGA, die Boxen
+    bezeichnen den Abstand zwischen unterem und oberen Quartil mit dem
+  innerhalb gelegenen Median, die durchgezogenen Linien umfassen
+  jeweils noch den Datenpunkt, der innerhalb des anderthalbfachen IQR
+  liegt, Ausreißer sind als Punkte dargestellt}
   \label{fig:cga_summary_boxplot}
 \end{figure}
 
@@ -107,8 +122,8 @@ Der Barthel-Index war bei \nBarthel{} Patienten
 \barthelMax{} erreichten \percentBarthelMax{}\% der Patienten. Der Median
 lag bei \medianBarthel{}.
 
-\subsection{IADL-Index}
-Der IADL-Index wurde bei \nIadl{} Patienten (\percentIadl{}\%)
+\subsection{IADL-Skala}
+Der IADL-Skala wurde bei \nIadl{} Patienten (\percentIadl{}\%)
 erhoben. Den höchsten Wert von \iadlMax{} erreichten
 \percentIadlMax{}\%. Der Median lag bei \medianIadl{}.
 
@@ -124,8 +139,9 @@ Sturzrisiko ($Tinetti \leq 18$)
 \subsection{Timed Up And Go}
 Der Timed Up And Go-Test wurde bei \nTug{} Patienten
 (\percentTug{}\%) durgeführt. Minimal wurden \tugMin{}~Sekunden
-erreicht, maximal \tugMax{}~ Sekunden, bei \tugNotPossible war der
-Test nicht möglich. Der Median der möglichen Tests lag bei
+erreicht, maximal \tugMax{}~ Sekunden, bei \tugNotPossible{} Patienten
+war der Test nicht möglich. Die mediane Zeit zur Bewältigung des Tests
+bei den Patienten, die teilnehmen konnten, lag bei
 \medianTug{}~Sekunden.
 
 \subsection{Mini-Mental-Status-Test}
@@ -140,22 +156,24 @@ jeweiligen Kategorie.
 \caption{Einteilung einer Demenz nach MMST\autocite{LeitlinieDemenz2009}}
 \label{tab:mmst}
 \centering
-\begin{tabular}{ccc}
+\begin{tabular}{cccc}
 \toprule
-Schweregrad & MMST-Punktzahl & Anteil in \%\\
+Schweregrad & MMST-Punktzahl & Patienten & Anteil in \%*\\
 \midrule
-& 27-30 & \percentMmstNormal{}\\
-Leicht & 20-26 & \percentMmstLight{}\\
-Mittel & 10-19 & \percentMmstModerate{}\\
-Schwer & 0-9 & \percentMmstSevere{}\\
+keine Demenz& 27-30 & \nMmstNormal{} & \percentMmstNormal{}\\
+Leicht & 20-26 & \nMmstLight{} & \percentMmstLight{}\\
+Mittel & 10-19 & \nMmstModerate & \percentMmstModerate{}\\
+Schwer & 0-9 & \nMmstSevere & \percentMmstSevere{}\\
 \bottomrule
+\multicolumn{4}{l}{*bezogen auf \nMmst{} Patienten}\\
 \end{tabular}
 \end{table}
 
 \subsection{Demenz-Detektions-Test}
 Seit Februar 2015 wurde zusätzlich zum MMST der
 Demenz-Detektions-Test, DemTect durchgeführt. Durchgeführt wurde der
-DemTect bei \nDemtect{} Patienten (\percentDemtect\%).
+DemTect bei \nDemtect{} Patienten (\percentDemtect\%, bezogen auf die
+seit Februar 2015 untersuchten Patienten).
 Ein normales Testergebnis ($Demtect \geq 13$) erreichten \percentDemtectNormal{}
 Patienten, eine laut DemTect milde kognitive Beeinträchtigung
 ($9 \leq Demtect \leq 12$) besteht bei \percentDemtectLight{} Patienten. Bei
@@ -167,14 +185,15 @@ zusammen.
 \caption{Demenz-Detektions-Test \autocite{Kalbe2004}}
 \label{tab:demtect}
 \centering
-\begin{tabular}{ccc}
+\begin{tabular}{cccc}
 \toprule
-Ergebnis & DemTect-Punktzahl & Anteil in \%\\
+Ergebnis & Punktzahl & Patienten & Anteil in \%*\\
 \midrule
-Normale kognitive Funktion & 13-18 & \percentDemtectNormal{}\\
-Milde kognitive Beeinträchtigung & 9-12 & \percentDemtectLight{}\\
-Demenz & 0-8 & \percentDemtectDemenz{}\\
+Normale kognitive Funktion & 13-18 & \nDemtectNormal{} & \percentDemtectNormal{}\\
+Milde kognitive Beeinträchtigung & 9-12 & \nDemtectLight{} & \percentDemtectLight{}\\
+Demenz & 0-8 & \nDemtectDemenz{} & \percentDemtectDemenz{}\\
 \bottomrule
+\multicolumn{4}{l}{*bezogen auf insgesamt \nDemtect{} Patienten}\\
 \end{tabular}
 \end{table}
 
@@ -192,7 +211,8 @@ wurde ab September 2014 der in der Anwendung und Befragung besser
 angenommene DIA-Score verwendet.
 
 \subsubsection{GDS}
-Der GDS wurde bei \nGds{} Patienten (\percentGds{}\%) bestimmt. Der
+Der GDS wurde bei \nGds{} Patienten (\percentGds{}\%, bezogen auf die
+bis August 2014 untersuchten Patienten) bestimmt. Der
 maximal bestimmt Wert betrug \gdsMax{}, der mininmal bestimmte
 \gdsMin{}. Nach Einteilung des GDS ist ein Wert bis 5 normale
 einzuschätzen, zwichen 6 und 9 besteht der Verdacht auf eine
@@ -200,11 +220,12 @@ Depression und weitere Diagnostik sollte angestrebt werden, ab einem
 Wert von 10 besteht fast immer auch eine Depression. Nach dieser
 Einteilung wurden \percentGdsNormal{}\% der Patienten als normal
 eingeschätzt, bei \percentGdsSuspect{}\% bestand der Verdacht auf eine
-Depression, und \percentGdsDepression{}\% hatten fast sicher eine Depression.
+Depression, und \percentGdsDepression{}\% hatten fast sicher eine
+Depression.
 
 \subsubsection{DIA-Skala}
-Dia DIA-Skala kam bei \nDia{} Patienten (\percentDia{}\%) zur
-Anwendung. Maximal wurde
+Dia DIA-Skala kam bei \nDia{} Patienten (\percentDia{}\%, bezogen auf die
+ab September 2014 untersuchten Patienten) zur Anwendung. Maximal wurde
 ein Wert von 10 bestimmt. In der Skala des Tests ist ein Wert bis zwei
 normal. Bei einem Wert von 3 besteht Depressionsverdacht und ab einem
 Wert von 4 ist ein Depression von Krankheitswert wahrscheinlich. Nach
@@ -217,7 +238,7 @@ ist eine Depression von Krankheitswert laut DIA-S wahrscheinlich.
 Der Charlson-Komorbiditätsindex stand bei \nCharlson{} Patienten
 (\percentCharlson{}\%) zur Verfügung. \percentCharlsonZero{}\% der
 Patienten wiesen keine relevante Komorbidität auf, hatten also ein
-Charlson-Index von 0. 3 oder mehr relevante Komorbitäten hatten
+Charlson-Index von 0. Drei oder mehr relevante Komorbitäten hatten
 \percentCharlsonThreeOrMore{}\% der Patienten.
 
 \subsection{Ernährungsstatus}
@@ -230,14 +251,15 @@ Kategorie sind in Tabelle~\ref{tab:mna} zusammengefasst.
 \caption{Mini Nutritional Assessment \autocite{Guigoz1997}}
 \label{tab:mna}
 \centering
-\begin{tabular}{ccc}
+\begin{tabular}{cccc}
 \toprule
-Ernährungsstatus & MNA-Punktzahl & Anteil in \%\\
+Ernährungsstatus & MNA-Punktzahl & Patienten & Anteil in \%*\\
 \midrule
-Unauffällig & $ \geq 24 $ & \mnaNormal{}\\
-Risiko für Unterernährung & 17 bis 23,5 & \mnaRisk{}\\
-Unterernährung & > 17 & \mnaMalnourished{}\\
+Unauffällig & $ \geq 24 $ & \nMnaNormal{} & \mnaNormal{}\\
+Risiko für Unterernährung & 17 bis 23,5 & nMnaRisk{} & \mnaRisk{}\\
+Unterernährung & > 17 & \nMnaMalnourished{} & \mnaMalnourished{}\\
 \bottomrule
+\multicolumn{4}{l}{*bezogen auf insgesamt \nMna{} Patienten}\\
 \end{tabular}
 \end{table}
 
@@ -266,44 +288,83 @@ größer. Einige Patienten in dieser Gruppe wären wahrscheinlich mit entsprechende
 Unterstützung und Überwachung durch den Partner als
 uneingeschränkt therapiefähig eingeschätzt worden.
 
-\section{Einschätzungsmöglichkeiten}
+\subsection{Anzahl der Defizite im Assessment}
+Die Ergebnisse des Barthel-Index, der IADL-Skala, des MNA, der MMSE
+und des DemTect-Tests,
+des Komorbiditätsindex und des Tinetti-Tests wurden zusammen benutzt,
+um die Anzahl der Defizite zu berechnen. Dabei wurde als Defizit
+definiert, Barthel-Index kleiner 100, IADL-Wert kleiner 7, MNA kleiner
+24, MMSE kleiner 27 oder DemTect kleiner 13, Charlson-Index größer 1
+und Tinetti-Test kleiner 25.
+Bei 273 Patienten liegen alle benötigten Werte vor (71\%), der Median
+liegt bei 2 Defiziten, die
+Häufigkeitsverteilung ist in Tabelle~\ref{tab:defizite} gezeigt.
+
+\begin{table}[htbp]
+\caption{Anazhl der Defizite im Assessment}
+\label{tab:defizite}
+\centering
+\begin{tabular}{cccc}
+\toprule
+Anzahl der Defizite & Patienten & Anteil in \%*\\
+\midrule
+0 & 32 & 12 \\
+1 & 56 & 21 \\
+2 & 55 & 20 \\
+3 & 42 & 15 \\
+4 & 37 & 14 \\
+5 & 34 & 12 \\
+6 & 17 & 6 \\
+\bottomrule
+\multicolumn{3}{l}{*bezogen auf insgesamt 273 Patienten}\\
+\end{tabular}
+\end{table}
+
+\section{Verschiedene Einschätzungsmöglichkeiten der
+  Behandlungsfähigkeit onkologischer Patienten}
 
 \subsection{Alter}
 Tabelle~\ref{tab:cga_alter} zeigt die Mediane der erhobenen Parameter des
-Assessments für die verschiedenen Altersgruppen. Zur Testung, ob die
-beobachteten Unterschiede signifikant sind, kam der
-Kruskal-Wallis-Test zur Anwendung. Die ist ein statistischer Test, der
-bei nicht normalverteilten Stichproben und mehr als zwei Gruppen
-eingesetzt werden kann.
+Assessments für die verschiedenen Altersgruppen. Zur Signifikanztestung der
+beobachteten Unterschiede kam der
+Kruskal-Wallis-Test zur Anwendung. Eine post-hoc-Analyse mittels
+Wilcoxon-Rangsummentest und p-Wert Korrektur mittels
+Bonferroni-Methode wurde bei signifikantem Kruskal-Wallis-Test
+durchgeführt (siehe~\ref{subsec:Signifikanztests}).
 
 \begin{table}[htbp]
-\caption{Median nach verschiedenen Altersgruppen}
+\caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
+  geriatrischen Assessments nach verschiedenen Altersgruppen}
 \label{tab:cga_alter}
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Altersgruppe}&\\
-  & 65 bis 74 & 75 bis 84 & 85 bis 94& p-Wert \\
+  &\multicolumn{3}{c}{Altersgruppe}\\
+  & A & B & C & & Signifikanz** \\
+  & 65 bis 74 & 75 bis 84 & 85 bis 94 & p-Wert* & Gruppenvergleich \\
   \midrule
   Patienten & 165 & 174 & 30&\\ 
-  Barthel-Index & 100 & 95 & 85 & <0,001\\ 
-  IADL & 7 & 6 & 5 & <0,001\\
-  Tinetti-Test & 26.0 & 22.0 & 18.0 & <0,001\\ 
-  TUG-Test & 8 & 10 & 12 & <0,001\\ 
-  MMS-Test & 29 & 28 & 27 & 0,012\\ 
-  DemTect & 14 & 13 & 8 & <0,001\\ 
-  GDS & 2.0 & 2.5 & 6.0 & 0,08\\ 
-  DIA-Skala & 3.0 & 2.0 & 2.5 & 0,6\\ 
+  Barthel-Index & 100 & 95 & 85 & <0,001 & AB, AC\\ 
+  IADL-Skala & 7 & 6 & 5 & <0,001 & AC, BC\\
+  Tinetti-Test & 26,0 & 22.0 & 18.0 & <0,001 & AB, AC, BC\\ 
+  TUG-Test & 8 & 10 & 12 & <0,001 & AB, AC\\ 
+  MMS-Test & 29 & 28 & 27 & 0,012 & AB, AC\\ 
+  DemTect & 14 & 13 & 8 & <0,001 & AC, BC\\ 
+  GDS & 2,0 & 2,5 & 6,0 & 0,08 \\ 
+  DIA-Skala & 3,0 & 2,0 & 2,5 & 0,6\\ 
   Charlson-Index & 1 & 1 & 1 & 0,1\\ 
-  MNA & 22.5 & 22.0 & 21.5 & 0,5\\ 
-  Alleinlebend & 24\% & 32\% & 20\% & 0,17\\ 
+  MNA & 22.5 & 22,0 & 21,5 & 0,5\\ 
+  Alleinlebend & 24\% & 32\% & 20\% & 0,17\\
+  Defizite & 2 & 3 & 4 & <0,001 & AB, AC\\
   \bottomrule
+\multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest}\\
 \end{tabular}
 \end{table}
 
 \subsection{Einschätzung des Behandlers}
 Eine Einschätzung des behandelnden Onkologen lag bei \nPersonal{}
-Patienten (\percentPersonal{}\%) vor. Danach wurden
+Patienten (\percentPersonal{}\% bezogen auf die seit der Einführung
+der Befragung im April 2014 besprochenen Patienten) vor. Danach wurden
 \percentPersonalGogo{}\% der Patienten als uneingeschränkt
 behandlungsfähig eingeschätzt, \percentPersonalSlowgo{}\% als
 eingeschränkt behandlungsfähig und \percentPersonalNogo{}\% als nicht
@@ -314,37 +375,43 @@ Assessments für die verschiedenen Gruppen, nach Einteilung durch die
 Einschätzung des Behandlers.
 
 \begin{table}[htbp]
-\caption{Median nach Einschätzung des Behandlers}
+\caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
+  geriatrischen Assessments nach Einschätzung des Behandlers}
 \label{tab:cga_personal}
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Einschätzung des Behandlers}&\\
-  & no go & slow go & go go & p-Wert \\
+  &\multicolumn{3}{c}{Einschätzung des Behandlers} && Signifikanz\\
+  & no go & slow go & go go & p-Wert* & Gruppenvergleich**\\
   \midrule
   Patienten & 37 & 132 & 151&\\ 
-  Barthel-Index & 45 & 92.5 & 100 & <0,001\\ 
-  IADL & 3 & 6 & 8 & <0,001\\
-  Tinetti-Test & 7.5 & 21.0 & 27.0 & <0,001\\ 
-  TUG-Test & 20 & 11 & 8 & <0,001\\ 
-  MMS-Test & 25 & 28 & 29 & <0,001\\ 
-  DemTect & 8& 13& 15.5& <0,001\\ 
-  GDS & NA & 4 & 2 & 0,02\\ 
-  DIA-Skala & 4 & 3   & 1   & <0,001\\ 
-  Charlson-Index & 3 & 2 & 0 & <0,001\\ 
-  MNA & 17   & 21   & 24   & <0,001\\ 
-  Alleinlebend & 30\% & 34\% & 25\% & 0,26\\ 
+  Barthel-Index & 45 & 92.5 & 100 & <0,001 & AB, AC, BC\\ 
+  IADL-Skala & 3 & 6 & 8 & <0,001 & AB, AC, BC\\
+  Tinetti-Test & 7,5 & 21.0 & 27.0 & <0,001 & AB, AC, BC\\ 
+  TUG-Test & 20 & 11 & 8 & <0,001 & AB, AC, BC\\ 
+  MMS-Test & 25 & 28 & 29 & <0,001 &AB, AC, BC\\ 
+  DemTect & 8& 13& 15,5& <0,001 & AB, AC, BC\\ 
+  GDS & NA*** & 4 & 2 & 0,02 & zu geringes n\\ 
+  DIA-Skala & 4 & 3  & 1  & <0,001 & AB, AC\\ 
+  Charlson-Index & 3 & 2 & 0 & <0,001 & AB, AC, BC\\ 
+  MNA & 17   & 21   & 24   & <0,001 & AB, AC, BC\\ 
+  Alleinlebend & 30\% & 34\% & 25\% & 0,26\\
+  Defizite & 5 & 3 & 1 & <0,001 & AB, AC, BC\\
   \bottomrule
+\multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest mit
+  Gruppe A: no go,}\\
+\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, ***nicht vorhanden}\\
 \end{tabular}
 \end{table}
 
 \subsection{Einteilung nach Balducci}
-Nach der vorgeschlagenen Einteilung von Balducci
-\autocite{Balducci2000} (siehe auch Tabelle \ref{tab:balducci}) können
-\nBalducci{} Patienten (\percentBalducci{}\%) beurteilt werden (Dazu
-muss der Barthel-Index, der IADL-Wert und der
-Charlson-Komorbiditätsindex vorhanden sein).
-Im Vorschlag von Balducci werden die Begriffe gebrechlich, gefährdet
+In der vorgeschlagenen Einteilung von Balducci
+\autocite{Balducci2000} (siehe auch Tabelle \ref{tab:balducci}) werden
+der Barthel-Index, der IADL-Wert und der
+Charlson-Komorbiditätsindex berücksichtigt. Danach können anhand der
+vorliegenden Daten
+\nBalducci{} Patienten (\percentBalducci{}\%) beurteilt werden.
+Von Balducci werden für die unterteilten Kategorien die Begriffe gebrechlich, gefährdet
 und fit verwendet. Die jeweiligen Definitionen decken sich mit
 den hier verwendeten Kategorien uneingeschränkt behandlungsfähig, eingeschränkt
 behandlungsfähig und nicht behandlungsfähig.
@@ -353,40 +420,46 @@ nicht therapiefähig, \percentKonferenzSlowgo{}\% eingeschränkt
 therapiefähig und \percentKonferenzGogo{}\% uneingeschränkt
 therapiefähig.
 
-Tabelle~\ref{tab:cga_balducci} zeigt die Mediane der erhobenen Parameter des
+Tabelle~\ref{tab:cga_balducci} zeigt die Medianwerte der erhobenen Parameter des
 Assessments für die verschiedenen Gruppen, nach Einteilung durch den
 Vorschlag von Balducci.
 
 \begin{table}[htbp]
-\caption{Median nach Unterteilung durch Balducci}
+\caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
+  geriatrischen Assessments nach Unterteilung durch Balducci}
 \label{tab:cga_balducci}
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Einteilung durch Balducci}&\\
-  & no go & slow go & go go & p-Wert \\
+  &\multicolumn{3}{c}{Einteilung durch Balducci}&&Signifikanz\\
+  & no go & slow go & go go & p-Wert* &Gruppenvergleich** \\
   \midrule
   Patienten & 188 & 103 & 51 &\\ 
-  Barthel-Index & 85 & 100  & 100 & <0,001\\ 
-  IADL & 6 & 6 & 8 & <0,001\\
-  Tinetti-Test & 18& 26 & 28 & <0,001\\ 
-  TUG-Test & 7  & 8.5& 12& <0,001\\ 
-  MMS-Test & 28 & 29 & 30 & <0,001\\ 
-  DemTect & 13 & 14  & 17  & <0,001\\ 
-  GDS & 3& 3 & 1.5 & 0,002\\ 
-  DIA-Skala & 3 & 2   & 2   & 0,058\\ 
-  Charlson-Index & 2 & 1 & 0 & <0,001\\ 
-  MNA & 20   & 23   & 24   & <0,001\\ 
-  Alleinlebend & 31\% & 22\% & 31\% & 0,27\\ 
+  Barthel-Index & 85 & 100  & 100 & <0,001 & AB, AC\\ 
+  IADL-Skala & 6 & 6 & 8 & <0,001 & AB, AC, BC\\
+  Tinetti-Test & 18& 26 & 28 & <0,001 & AB, AC\\ 
+  TUG-Test & 7  & 8,5& 12& <0,001 &AB, AC, BC\\ 
+  MMS-Test & 28 & 29 & 30 & <0,001 & AB, AC, BC\\ 
+  DemTect & 13 & 14  & 17  & <0,001 &AB, AC\\ 
+  GDS & 3& 3 & 1,5 & 0,002& AC, BC\\ 
+  DIA-Skala & 3 & 2   & 2   & 0,058 &\\ 
+  Charlson-Index & 2 & 1 & 0 & <0,001 &AB, AC, BC\\ 
+  MNA & 20   & 23   & 24   & <0,001&AB, AC\\ 
+  Alleinlebend & 31\% & 22\% & 31\% & 0,27\\
+  Defizite & 4 & 2 & 1 & <0,001 & AB, AC, BC\\
   \bottomrule
+\multicolumn{6}{l}{*Kruskal-Wallis-Test, ** Wilcoxon-Rangsummentest
+  mit Gruppe A: no go,}\\
+\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go}\\
 \end{tabular}
 \end{table}
 
 \subsection{Konferenzbeschluss}
-\nKonferenz{} Patienten wurden
+\nPatients{} Patienten wurden
 von \ersterPatient{} bis \letzterPatient{} in der
 geria\-trisch"=onkolo\-gischen
-Konferenz besprochen. Bei \percentKonferenz{}\% der Patienten kam ein
+Konferenz besprochen. Bei \nKonferenz{} Patienten
+(\percentKonferenz{}\%) kam ein
 Konferenzbeschluss zustande. \percentKonferenzNogo{}\% der beurteilten
 Patienten wurden als
 nicht therapiefähig eingeschätzt, \percentKonferenzSlowgo{}\% der
@@ -403,32 +476,38 @@ Konferenz wurde als Beschluss
 eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
 Behandlungsfähigkeit gegeben.
 
-Tabelle~\ref{tab:cga_konferenz} zeigt die Mediane der erhobenen Parameter des
+Tabelle~\ref{tab:cga_konferenz} zeigt die Medianwerte der erhobenen Parameter des
 Assessments für die verschiedenen Gruppen, nach Einteilung durch die
 geria\-trisch"=onkolo\-gische Konferenz.
 
 \begin{table}[htbp]
-\caption{Median nach Unterteilung durch Konferenz}
+\caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
+  geriatrischen Assessments nach Unterteilung durch die Konferenz}
 \label{tab:cga_konferenz}
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Einteilung durch Konferenz}&\\
-  & no go & slow go & go go & p-Wert \\
+  &\multicolumn{3}{c}{Einteilung durch Konferenz}&&Signifikanz\\
+  & no go & slow go & go go & p-Wert*&Gruppenvergleich** \\
   \midrule
   Patienten & 49  & 140 & 170&\\ 
-  Barthel-Index & 55 & 90   & 100 & <0,001\\ 
-  IADL & 3 & 6 & 8 & <0,001\\
-  Tinetti-Test & 10.0& 21.0 & 27.0 & <0,001\\ 
-  TUG-Test & 20 & 11 & 8 & <0,001\\ 
-  MMS-Test & 25 & 28 & 30 & <0,001\\ 
-  DemTect & 8.5& 13  & 16  & <0,001\\ 
-  GDS & 3.0& 3.0 & 1.5 & <0,001\\ 
-  DIA-Skala & 4 & 2.5 & 1   & 0,008\\ 
-  Charlson-Index & 2 & 2 & 0 & <0,001\\ 
-  MNA & 17   & 21   & 24   & <0,001\\ 
-  Alleinlebend & 29\% & 34\% & 21\% & 0,04\\ 
+  Barthel-Index & 55 & 90   & 100 & <0,001& AB, AC, BC\\ 
+  IADL-Skala & 3 & 6 & 8 & <0,001& AB, AC, BC\\
+  Tinetti-Test & 10& 21 & 27 & <0,001& AB, AC, BC\\ 
+  TUG-Test & 20 & 11 & 8 & <0,001& AB, AC, BC\\ 
+  MMS-Test & 25 & 28 & 30 & <0,001& AB, AC, BC\\ 
+  DemTect & 8.5& 13  & 16  & <0,001& AB, AC, BC\\ 
+  GDS & 8& 2 & 4 & <0,001& BC\\ 
+  DIA-Skala & 4 & 2,5 & 1   & 0,008&AC\\ 
+  Charlson-Index & 2 & 2 & 0 & <0,001&AB, AC\\ 
+  MNA & 17   & 21   & 24   & <0,001& AB, AC, BC\\ 
+  Alleinlebend & 29\% & 34\% & 21\% & 0,04&BC***\\
+  Defizite & 5 & 3 & 1 & <0,001 & AB, AC, BC\\
   \bottomrule
+\multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest mit
+  Gruppe A: no go,}\\
+\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go,
+  ***Chi-Quadrat($\chi^2$)-Test}\\
 \end{tabular}
 \end{table}
 
@@ -439,52 +518,30 @@ grafisch dar.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/cga_konferenz.pdf}
-  \caption{Boxplot der einzelnen Tests im CGA aufgeteilt nach Konferenzbeschluss}
+  \caption{Box-Whisker-Plot der einzelnen Tests des CGA aufgeteilt nach
+    Konferenzbeschluss, die Kasten bezeichnen den Abstand zwischen
+    unterem  und oberen Quartil mit dem innerhalb gelegenen Median,
+    die durchgezogenen Linien umfassen jeweils noch den Datenpunkt,
+    der innerhalb des anderthalbfachen IQR liegt, Ausreißer sind als
+    Punkte dargestellt}
   \label{fig:cga_konferenz}
 \end{figure}
 
-\section{Vergleich der Einschätzungsmöglichkeiten}
+\section{Vergleich der unterschiedlichen Verfahren zur Einschätzung
+  der Therapiefähigkeit}
 
-\subsection{Behandler-Balducci}
-Tabelle~\ref{tab:personal_balducci} zeigt mit Hilfe einer
-Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
-Behandlers und der Einteilung nach dem Vorschlag von Balducci.
-Für \nBalducciPersonal{} Patienten standen
-beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
-\percentAgreementBP{}\% der Fälle.
-
-\begin{table}[htbp]
-\caption{Balducci und Einschätzung des Behandlers}
-\label{tab:personal_balducci}
-\centering
-\begin{tabular}{crrr}
-  \toprule
-  n=293&\multicolumn{3}{c}{Einschätzung des Behandlers}\\
-  nach Balducci&no go&slow go&go go\\ 
-  \midrule
-  no go& 32 & 87 & 39 \\ 
-  slow go & 0 & 28 & 63\\ 
-  go go& 0 & 5 & 39 \\ 
-  \bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Behander-Konferenz}
-Tabelle~\ref{tab:konferenz_personal} zeigt mit Hilfe einer
-Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
+\subsection{Einschätzung des Behandlers und Einteilung nach
+  Konferenzbeschluss}
+Tabelle~\ref{tab:konferenz_personal} zeigt die
+Kontingenztafel der Einschätzung des
 Behandlers und des Konferenzbeschlusses.
 Für \nKonferenzPersonal{} Patienten standen
 beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
-\percentAgreementKP{}\% der Fälle. Abweichungen fanden sich größtenteils
-nur in die benachbarte Kategorie, also zum Beispiel zwischen
-eingeschränkt behandlungsfähig und uneingeschränkt
-behandlungsfähig. Nur in einem einzigen Fall bestand eine maximale
-Abweichung, in diesem Fall hatte der Behandler den Patienten für
-uneingeschränkt behandlungsfähig gehalten, der Konferenzbeschluss
-lautete jedoch nicht behandlungsfähig.
+\percentAgreementKP{}\% der Fälle.
 
 \begin{table}[htbp]
-\caption{Konferenzbeschluss und Einschätzung des Behandlers}
+\caption{Vergleich zwischen der primären Einschätzung des Behandlers und der Einteilung
+  nach Konferenzbeschluss}
 \label{tab:konferenz_personal}
 \centering
 \begin{tabular}{crrr}
@@ -499,19 +556,64 @@ lautete jedoch nicht behandlungsfähig.
 \end{tabular}
 \end{table}
 
-\subsection{Balducci-Konferenz}
-Eine Einschätzung nach dem Vorschlag von Balducci und ein
-Konferenzbeschluss lag in \nBalducciKonferenz{} Fällen vor. Dabei
+\subsection{Einschätzung des Behandlers und Einteilung nach Vorschlag
+  von Balducci}
+Tabelle~\ref{tab:personal_balducci} zeigt mit Hilfe einer
+Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
+Behandlers und der Einteilung nach dem Vorschlag von Balducci.
+Für \nBalducciPersonal{} Patienten standen
+beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
+\percentAgreementBP{}\% der Fälle.
+
+\begin{table}[htbp]
+\caption{Vergleich zwischen der primären Einschätzung des Behandlers
+  und der Einteilung nach dem Vorschlag von Balducci}
+\label{tab:personal_balducci}
+\centering
+\begin{tabular}{crrr}
+  \toprule
+  n=293&\multicolumn{3}{c}{Einschätzung des Behandlers}\\
+  nach Balducci&no go&slow go&go go\\ 
+  \midrule
+  no go& 32 & 87 & 39 \\ 
+  slow go & 0 & 28 & 63\\ 
+  go go& 0 & 5 & 39 \\ 
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Einteilung nach Vorschlag von Balducci und nach
+  Konferenzbeschluss}
+Tabelle~\ref{tab:konferenz_balducci} zeigt die Kontingenztafel der
+Einteilung nach dem Vorschlag von Balducci und dem Konferenzbeschluss.
+Beide Klassifikationen lagen in \nBalducciKonferenz{} Fällen vor. Dabei
 zeigte sich eine Übereinstimmung von \percentAgreementBK{}\% der
-Fälle. Die Kontingenztafel wurde weggelassen, da sie keine neuen
-Aspekte zeigt und in ihrer Struktur wie auch dem Anteil an
-Übereinstimmung dem Vergleich der Klassifikation
-durch Balducci und der Einschätzung des Behandlers gleicht.
+Fälle. 
+
+\begin{table}[htbp]
+\caption{Vergleich zwischen der Einteilung nach dem Vorschlag von
+  Balducci und der Einteilung nach Konferenzbeschluss}
+\label{tab:konferenz_balducci}
+\centering
+\begin{tabular}{crrr}
+  \toprule
+  n=331              & \multicolumn{3}{c}{nach Balducci}\\
+  Konferenzbeschluss & no go & slow go & go go \\ 
+  \midrule
+  no go              &  41   &   1     &   0   \\ 
+  slow go            &  97   &  29     &   3   \\ 
+  go go              &  42   &  71     &  47   \\ 
+  \bottomrule
+\end{tabular}
+\end{table}
 
 \section{Statistisches Modell der Konferenzentscheidung}
 
 \subsection{Logistische Regression}
 
-%\subsection{KNN}
 
-%\subsection{Neuronale Netze}
+\subsection{CART}
+
+\subsection{Klassifikation mit Hilfe eines Neuronalen Netzes}
+
+%\subsection{KNN}

@@ -33,8 +33,15 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{booktabs}
-\usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{graphicx}
+\usepackage{epigraph}
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
 %wegen Sweave
 %\usepackage{color}
 %\usepackage{framed}
