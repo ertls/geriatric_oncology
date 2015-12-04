@@ -304,7 +304,7 @@ Häufigkeitsverteilung ist in Tabelle~\ref{tab:defizite} gezeigt.
 \caption{Anazhl der Defizite im Assessment}
 \label{tab:defizite}
 \centering
-\begin{tabular}{cccc}
+\begin{tabular}{ccc}
 \toprule
 Anzahl der Defizite & Patienten & Anteil in \%*\\
 \midrule
@@ -317,6 +317,35 @@ Anzahl der Defizite & Patienten & Anteil in \%*\\
 6 & 17 & 6 \\
 \bottomrule
 \multicolumn{3}{l}{*bezogen auf insgesamt 273 Patienten}\\
+\end{tabular}
+\end{table}
+
+\subsection{Korrelationen}
+
+In Tabelle~\ref{tab:correlation} sind die Korrelationskoeffizienten
+nach Spearman mit ihrem Standardfehler aufgeführt. Berücksichtigt
+wurden Korrelationen größer als 0,4.
+
+\begin{table}[htbp]
+\caption{Rangkorrelationskoeffizienten}
+\label{tab:correlation}
+\centering
+\begin{tabular}{lclcc}
+\toprule
+\multicolumn{3}{c}{Kategorien} & Koeffizient $\rho$ & Standardfehler $\sigma$\\
+\midrule
+Tinetti& -& TUG & -0,84 & 0,04 \\
+Tinetti& -& Barthel & 0,72 & 0,03 \\
+DemTect& -& MMST & 0,66 & 0,06 \\
+TUG& -& Barthel & -0,60  & 0,04 \\
+GDS& -& IADL & -0,51 & 0,06 \\
+Tinetti& -& IADL & 0,50 & 0,03 \\
+BMI& -& MNA & 0,49 & 0,04 \\
+IADL& -& Barthel & 0,48 & 0,03 \\
+MNA& -& Barthel & 0,46 & 0,04 \\
+DemTect& -& IADL & 0,44 & 0,06 \\
+DemTect& -& Barthel & 0,41 & 0,06 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -527,11 +556,12 @@ grafisch dar.
   \label{fig:cga_konferenz}
 \end{figure}
 
-\section{Vergleich der unterschiedlichen Verfahren zur Einschätzung
+\subsection{Vergleich der unterschiedlichen Verfahren zur Einschätzung
   der Therapiefähigkeit}
 
-\subsection{Einschätzung des Behandlers und Einteilung nach
+\subsubsection{Einschätzung des Behandlers und Einteilung nach
   Konferenzbeschluss}
+
 Tabelle~\ref{tab:konferenz_personal} zeigt die
 Kontingenztafel der Einschätzung des
 Behandlers und des Konferenzbeschlusses.
@@ -556,7 +586,7 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 \end{tabular}
 \end{table}
 
-\subsection{Einschätzung des Behandlers und Einteilung nach Vorschlag
+\subsubsection{Einschätzung des Behandlers und Einteilung nach Vorschlag
   von Balducci}
 Tabelle~\ref{tab:personal_balducci} zeigt mit Hilfe einer
 Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
@@ -582,7 +612,7 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 \end{tabular}
 \end{table}
 
-\subsection{Einteilung nach Vorschlag von Balducci und nach
+\subsubsection{Einteilung nach Vorschlag von Balducci und nach
   Konferenzbeschluss}
 Tabelle~\ref{tab:konferenz_balducci} zeigt die Kontingenztafel der
 Einteilung nach dem Vorschlag von Balducci und dem Konferenzbeschluss.
@@ -606,6 +636,7 @@ Fälle.
   \bottomrule
 \end{tabular}
 \end{table}
+
 
 \section{Statistisches Modell der Konferenzentscheidung}
 

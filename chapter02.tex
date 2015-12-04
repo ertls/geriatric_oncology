@@ -462,6 +462,19 @@ natürlich auch keine Daten.
 
 Mediane, lineare Modelle innerhalb eines Assessments
 
+\subsection{Korrelation}
+
+Zur Bestimmung der Korrelation zweier Merkmale wurde der
+Rangkorrelationskoeffizient nach Spearman verwendet. Berücksichtigt
+wurden Korrelationen größer 0,4. Der Standardfehler $\sigma$ wurde nach der von
+Spearman ermittelten Gleichung~\ref{eq:spearman} berechnet. Dabei
+bezeichnet n die Größe der Stichprobe.
+
+\begin{equation}
+\label{eq:spearman}
+\sigma = \frac{0,6325}{\sqrt{n-1}}
+\end{equation}
+
 \subsection{Signifikanztests}
 
 \label{subsec:Signifikanztests}
@@ -510,8 +523,8 @@ Gleichung~\ref{eq:logit}.
 
 Im Glücksspiel ist die Chance (engl. odds) geläufiger als die
 Wahrscheinlichkeit. Eine Wahrscheinlichkeit von $0,5$ entsprich einer
-1 zu 1 ($1:1=1$) Chance. Allgemein gelten
-Gleichung~\ref{eq:odds1} und \ref{eq:odds2}. Im weiteren Text wird für Chance das
+1 zu 1 ($1:1=1$) Chance. Allgemein gelten die
+Gleichungen~\ref{eq:odds1} und \ref{eq:odds2}. Im weiteren Text wird für Chance das
 in der Medizin geläufigere englische Wort Odds verwendet.
 
 \begin{equation}
@@ -525,9 +538,10 @@ p(A) = \frac{o(A)}{1 + o(A)}
 \end{equation}
 
 Dabei ist $p(A)$ die Wahrscheinlichkeit und $o(A)$ die Odds, dass
-Ereignis $A$ eintritt. In Gleichung~\ref{eq:logit} zeigt sich, dass
-das Verhältnis der logarithmierten Odds bezüglich der unabhängigen
-Variablen linear ist.
+Ereignis $A$ eintritt. Berücksichtigt man die Definition der Odds
+zeigt Gleichung~\ref{eq:logit}, dass die Beziehung zwischen den
+logarithmierten Odds und der unabhängigen Variablen linear ist. Die
+logarithmierten Odds werden auch als logit bezeichnet.
 
 Im vorliegenden Fall wird die
 Erweiterung auf drei Klassen notwendig. Dabei wird die
@@ -539,12 +553,6 @@ dann die Klassifikation erfolgt. Bei drei verschiedenen Klassen ergibt
 sich ein Gleichungssystem mit zwei Gleichungen. Die
 Wahrscheinlichkeit, in die dritte Klasse zu fallen ergibt sich aus der
 Tatsache, dass sich alle drei Wahrscheinlichkeiten zu $1$ summieren. 
-
-\begin{equation}
-\label{eq:logit2}
-\ln\bigg(\frac{p_i(X)}{1 - p_i(X)}\bigg) = \beta_0 + \beta_1
-X_{1,i} + \dots + \beta_m X_{m,i}
-\end{equation}
 
 \subsection{CART}
 
