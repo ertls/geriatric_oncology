@@ -493,12 +493,13 @@ Alphafehler-Kumulation kam die Bonferroni-Methode zum Einsatz.
 
 In einer Regressionsanalyse wird versucht eine abhängige Variable
 durch eine oder mehrere unabhängige Variablen darzustellen. Dadurch
-können die Zusammenhänge sowohl quantitativ beschrieben werden, als
+können Zusammenhänge sowohl quantitativ beschrieben werden, als
 auch Werte der abhängigen Variable durch die unabhängigen Variablen
 prognostiziert werden.
 Handelt es sich bei der abhängigen Variable um eine kategorielle
 Variable wird die Wahrscheinlichkeit $p(X)$ in eine der zur Verfügung
-stehenden Kategorien zu fallen, durch die quantitative unabhängige Variable $X$
+stehenden Kategorien zu fallen, durch eine oder mehrere quantitative
+unabhängige Variablen, z.B. $X$
 beschrieben. Bei der logistischen
 Regression findet zur Beschreibung dieses Zusammenhangs die logistische
 Funktion Anwendung.
@@ -509,9 +510,9 @@ p(X) = \frac{e^{\beta_0 + \beta_1 X}}{1 + e^{\beta_0 + \beta_1 X}}
 \end{equation}
 
 Für zwei zur Verfügung stehende Klassen, z.B. tod/lebend,
-krank/gesund, behandlungsfähig/nicht behandlungsfähig  muss nur die
-Wahrscheinlichkeit bezüglich einer Klasse ermittelt werden, da sich
-daraus dann auch direkt die zweite Wahrscheinlichkeit durch
+krank/gesund, behandlungsfähig/nicht behandlungsfähig  muss die
+Wahrscheinlichkeit lediglich bezüglich einer Klasse ermittelt werden, da sich
+daraus dann direkt die zweite Wahrscheinlichkeit durch
 $1 - p(X)$ ergibt. Durch Umformung von
 Gleichung~\ref{eq:logistic_function} ergibt sich
 Gleichung~\ref{eq:logit}.
@@ -521,8 +522,8 @@ Gleichung~\ref{eq:logit}.
 \ln\bigg(\frac{p(X)}{1 - p(X)}\bigg) = \beta_0 + \beta_1 X
 \end{equation}
 
-Im Glücksspiel ist die Chance (engl. odds) geläufiger als die
-Wahrscheinlichkeit. Eine Wahrscheinlichkeit von $0,5$ entsprich einer
+Im Glücksspiel ist die Chance (engl. odds) auf eine Ereigniss geläufiger als dessen
+Wahrscheinlichkeit. Eine Wahrscheinlichkeit von $0,5$ entspricht einer
 1 zu 1 ($1:1=1$) Chance. Allgemein gelten die
 Gleichungen~\ref{eq:odds1} und \ref{eq:odds2}. Im weiteren Text wird für Chance das
 in der Medizin geläufigere englische Wort Odds verwendet.

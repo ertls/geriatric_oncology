@@ -34,7 +34,6 @@ beträgt \meanWeight{}~kg mit einer Standardabweichung von
 angegeben) beträgt \meanBmi{} mit einer Standardabweichung von
 \sdBmi{}.
 
-
 Abbildung~\ref{fig:altersverteilung} zeigt ein Histogramm der 
 Altersverteilung der Patienten.
 Das mediane Alter betrug \alterMedian{} Jahre, der jüngste Patient war
@@ -48,9 +47,9 @@ Assessment durchgeführt.
     (interne Definition eines geriatrisch-onkologischen Patienten)}
   \label{fig:altersverteilung}
 \end{figure}
-Zur Einordnung zeigt Abbildung~\ref{fig:altersverteilungAllgemein} die
+Als Bezug zeigt Abbildung~\ref{fig:altersverteilungAllgemein} die
 Altersverteilung aller in der onkologischen Klinik behandelten
-Patienten aus dem gleichen Zeitraum. \percentGeriatrischOnkologie{}\%
+Patienten aus dem Jahr 2015. \percentGeriatrischOnkologie{}\%
 der Patienten waren 65 Jahre oder älter.
 
 \begin{figure}[htbp]
@@ -390,50 +389,7 @@ durchgeführt (siehe~\ref{subsec:Signifikanztests}).
 \end{tabular}
 \end{table}
 
-\subsection{Einschätzung des Behandlers}
-Eine Einschätzung des behandelnden Onkologen lag bei \nPersonal{}
-Patienten (\percentPersonal{}\% bezogen auf die seit der Einführung
-der Befragung im April 2014 besprochenen Patienten) vor. Danach wurden
-\percentPersonalGogo{}\% der Patienten als uneingeschränkt
-behandlungsfähig eingeschätzt, \percentPersonalSlowgo{}\% als
-eingeschränkt behandlungsfähig und \percentPersonalNogo{}\% als nicht
-behandlungsfähig.
-
-Tabelle~\ref{tab:cga_personal} zeigt die Mediane der erhobenen Parameter des
-Assessments für die verschiedenen Gruppen, nach Einteilung durch die
-Einschätzung des Behandlers.
-
-\begin{table}[htbp]
-\caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
-  geriatrischen Assessments nach Einschätzung des Behandlers}
-\label{tab:cga_personal}
-\centering
-\begin{tabular}{lccccc}
-  \toprule
-  &\multicolumn{3}{c}{Einschätzung des Behandlers} && Signifikanz\\
-  & no go & slow go & go go & p-Wert* & Gruppenvergleich**\\
-  \midrule
-  Patienten & 37 & 132 & 151&\\ 
-  Barthel-Index & 45 & 92.5 & 100 & <0,001 & AB, AC, BC\\ 
-  IADL-Skala & 3 & 6 & 8 & <0,001 & AB, AC, BC\\
-  Tinetti-Test & 7,5 & 21.0 & 27.0 & <0,001 & AB, AC, BC\\ 
-  TUG-Test & 20 & 11 & 8 & <0,001 & AB, AC, BC\\ 
-  MMS-Test & 25 & 28 & 29 & <0,001 &AB, AC, BC\\ 
-  DemTect & 8& 13& 15,5& <0,001 & AB, AC, BC\\ 
-  GDS & NA*** & 4 & 2 & 0,02 & zu geringes n\\ 
-  DIA-Skala & 4 & 3  & 1  & <0,001 & AB, AC\\ 
-  Charlson-Index & 3 & 2 & 0 & <0,001 & AB, AC, BC\\ 
-  MNA & 17   & 21   & 24   & <0,001 & AB, AC, BC\\ 
-  Alleinlebend & 30\% & 34\% & 25\% & 0,26\\
-  Defizite & 5 & 3 & 1 & <0,001 & AB, AC, BC\\
-  \bottomrule
-\multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest mit
-  Gruppe A: no go,}\\
-\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, ***nicht vorhanden}\\
-\end{tabular}
-\end{table}
-
-\subsection{Einteilung nach Balducci}
+\subsection{Einteilung durch Assessment nach Vorschlag von Balducci}
 In der vorgeschlagenen Einteilung von Balducci
 \autocite{Balducci2000} (siehe auch Tabelle \ref{tab:balducci}) werden
 der Barthel-Index, der IADL-Wert und der
@@ -480,6 +436,49 @@ Vorschlag von Balducci.
 \multicolumn{6}{l}{*Kruskal-Wallis-Test, ** Wilcoxon-Rangsummentest
   mit Gruppe A: no go,}\\
 \multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go}\\
+\end{tabular}
+\end{table}
+
+\subsection{Einschätzung des Behandlers}
+Eine Einschätzung des behandelnden Onkologen lag bei \nPersonal{}
+Patienten (\percentPersonal{}\% bezogen auf die seit der Einführung
+der Befragung im April 2014 besprochenen Patienten) vor. Danach wurden
+\percentPersonalGogo{}\% der Patienten als uneingeschränkt
+behandlungsfähig eingeschätzt, \percentPersonalSlowgo{}\% als
+eingeschränkt behandlungsfähig und \percentPersonalNogo{}\% als nicht
+behandlungsfähig.
+
+Tabelle~\ref{tab:cga_personal} zeigt die Mediane der erhobenen Parameter des
+Assessments für die verschiedenen Gruppen, nach Einteilung durch die
+Einschätzung des Behandlers.
+
+\begin{table}[htbp]
+\caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
+  geriatrischen Assessments nach Einschätzung des Behandlers}
+\label{tab:cga_personal}
+\centering
+\begin{tabular}{lccccc}
+  \toprule
+  &\multicolumn{3}{c}{Einschätzung des Behandlers} && Signifikanz\\
+  & no go & slow go & go go & p-Wert* & Gruppenvergleich**\\
+  \midrule
+  Patienten & 37 & 132 & 151&\\ 
+  Barthel-Index & 45 & 92.5 & 100 & <0,001 & AB, AC, BC\\ 
+  IADL-Skala & 3 & 6 & 8 & <0,001 & AB, AC, BC\\
+  Tinetti-Test & 7,5 & 21.0 & 27.0 & <0,001 & AB, AC, BC\\ 
+  TUG-Test & 20 & 11 & 8 & <0,001 & AB, AC, BC\\ 
+  MMS-Test & 25 & 28 & 29 & <0,001 &AB, AC, BC\\ 
+  DemTect & 8& 13& 15,5& <0,001 & AB, AC, BC\\ 
+  GDS & NA*** & 4 & 2 & 0,02 & zu geringes n\\ 
+  DIA-Skala & 4 & 3  & 1  & <0,001 & AB, AC\\ 
+  Charlson-Index & 3 & 2 & 0 & <0,001 & AB, AC, BC\\ 
+  MNA & 17   & 21   & 24   & <0,001 & AB, AC, BC\\ 
+  Alleinlebend & 30\% & 34\% & 25\% & 0,26\\
+  Defizite & 5 & 3 & 1 & <0,001 & AB, AC, BC\\
+  \bottomrule
+\multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest mit
+  Gruppe A: no go,}\\
+\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, ***nicht vorhanden}\\
 \end{tabular}
 \end{table}
 
@@ -614,6 +613,7 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 
 \subsubsection{Einteilung nach Vorschlag von Balducci und nach
   Konferenzbeschluss}
+
 Tabelle~\ref{tab:konferenz_balducci} zeigt die Kontingenztafel der
 Einteilung nach dem Vorschlag von Balducci und dem Konferenzbeschluss.
 Beide Klassifikationen lagen in \nBalducciKonferenz{} Fällen vor. Dabei
@@ -637,13 +637,21 @@ Fälle.
 \end{tabular}
 \end{table}
 
-
 \section{Statistisches Modell der Konferenzentscheidung}
 
-\subsection{Logistische Regression}
+\subsection{Erklärendes Modell}
+
+\subsubsection{Logistische Regression}
 
 
-\subsection{CART}
+
+\subsubsection{CART}
+
+\subsection{Vorhersagendes Modell}
+
+\subsubsection{Logistische Regression}
+
+\subsubsection{CART}
 
 \subsection{Klassifikation mit Hilfe eines Neuronalen Netzes}
 
