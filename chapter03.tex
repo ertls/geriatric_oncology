@@ -569,7 +569,7 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 \percentAgreementKP{}\% der Fälle.
 
 \begin{table}[htbp]
-\caption{Vergleich zwischen der primären Einschätzung des Behandlers und der Einteilung
+\caption{Vergleich der primären Einschätzung des Behandlers und der Einteilung
   nach Konferenzbeschluss}
 \label{tab:konferenz_personal}
 \centering
@@ -595,7 +595,7 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 \percentAgreementBP{}\% der Fälle.
 
 \begin{table}[htbp]
-\caption{Vergleich zwischen der primären Einschätzung des Behandlers
+\caption{Vergleich der primären Einschätzung des Behandlers
   und der Einteilung nach dem Vorschlag von Balducci}
 \label{tab:personal_balducci}
 \centering
@@ -621,7 +621,7 @@ zeigte sich eine Übereinstimmung von \percentAgreementBK{}\% der
 Fälle. 
 
 \begin{table}[htbp]
-\caption{Vergleich zwischen der Einteilung nach dem Vorschlag von
+\caption{Vergleich der Einteilung nach dem Vorschlag von
   Balducci und der Einteilung nach Konferenzbeschluss}
 \label{tab:konferenz_balducci}
 \centering
@@ -643,16 +643,181 @@ Fälle.
 
 \subsubsection{Logistische Regression}
 
+Um den Effekt verschiedener Prädiktoren vergleichen zu können, wurden die
+Prädiktoren nach Gleichung~\ref{eq:scale} auf die standardisierte
+Zufallsvariable $Z$ normiert. Dabei sei $X$ die
+Zufallsvariable eines Prädiktors mit Erwartungswert $E(X) = \mu$ und Varianz $Var(X) =
+\sigma^2$ also dementsprechend Standardabweichung $\sigma$.
 
+\begin{equation}
+\label{eq:scale}
+Z = \frac{X-\mu}{\sigma}
+\end{equation}
+
+Genau genommen muss dabei von einer Studentisierung (nach dem
+Pseudonym "`Student"' des Statistikers William Gosset) gesprochen
+werden, da die genaue Verteilungsfunktion der Prädiktoren nicht
+bekannt ist. Daher wird statt des Erwartungswertes das arithmetische
+Mittel und statt der Varianz die Stichprobenvarianz verwendet
+wird.
+
+Bei der Erstellung des statistischen Modells wurde ein zweischrittiger
+Ansatz gewählt. Dabei wird in einer ersten logistischen Regression
+ermittelt, ob Therapiefähigkeit besteht oder nicht. Sollte
+Therapiefähigkeit bestehen wird in einer zweiten logistischen
+Regression die Unterteilung zwischen eingeschränkt therapiefähig und
+uneingeschränkt therapiefähig vorgenommen. Alternativ wäre eine
+einfache oder geordnete multinomiale logistische Regression möglich
+gewesen. Der gewählte Ansatz wurde aus
+theoretischen und praktischen Überlegungen bevorzugt. Aus
+theoretischen Überlegungen ist ableitbar, dass bei einem vollständig
+pflegebedürftigen und dementen Patienten zum Beispiel die Komorbidität
+und der Ernährungszustand nicht mehr entscheidungsrelevant sind, also
+für die Einteilung in die Kategorien jeweils andere Prädiktoren von
+Wichtigkeit sind. Diese Unterscheidung hat den Vorteil diese
+Unterschiede in den verschiedenen Modellen herauszuarbeiten. Von
+praktischem Vorteil ist die Erhöhung des Stichprobenumfangs durch
+dieses Vorgehen. Komplexere Modelle mit zahlreicheren Prädiktoren, die
+aber vielleicht erst zur Entscheidung des Grades der
+Behandlungsfähigkeit relevant sind, vermindern durch unvermeidbare
+fehlende Werte den Stichprobenumfang.
+
+Als erstes stellt sich also die Frage, welche Prädiktoren die
+Einteilung in nicht therapiefähig und therapiefähige Patienten am
+besten erklärt. Gleichung~\ref{eq:logistic1} zeigt die logistische
+Regression der dargestellten Situation. Dabei entspricht $P(Y=1|X_1 \land
+X_2 \land X_3)$ der Wahrscheinlichkeit der Kategorie nicht behandlungsfähig
+und $X_1, X_2, X_3$ den Koeffizienten der Prädiktoren Barthel-Index und
+Ergebnis des MMST.
+
+\begin{equation}
+\label{eq:logistic1}
+\text{logit}(P(no\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2
+\end{equation}
+
+Die Prädiktoren wurden von Hand ausgewählt. Dabei wurde eine
+logistische Regression für jeden erhobenen Parameter durchgeführt und
+anhand des p-Wertes den Einfluss des Parameters und anhand des AIC die
+Güte der Regression beurteilt. Da es sich in diesem Schritt um eine
+beschreibendes Modell handelt wurden alle vorhandenen vollständigen
+Datensätze zur Regression benutzt. Auch Polynome der Parameter höherer
+Ordnungen wurden untersucht. In einem zweiten Schritt wurden dann
+Kombinationen von Parametern inklusive deren Polynome und auch
+Interaktionen getestet. Dabei schnitten der Barthel-Index, der Wert des
+MMST und der IADL-Wert am besten ab. In dieser Dreierkombination ohne
+höhergradige Polynome und Interaktionen resultierte das beste
+Modell. Wegen der hohen Kolinearität des IADL-Wertes und des
+Barthel-Index wurde der IADL-Wert letztendlich im endgültigen Modell
+weggelassen (siehe Tabelle~\ref{tab:correlation},
+Korrelationskoeffizient von 0.48). Eine hohe Kolinearität macht die
+Interpretation des Modells schwieriger, da die Effekte dann nicht
+voneinander zu differenzieren sind. Die Regressionskoeffizienten
+inklusive Standardfehler und p-Wert sind in
+Tabelle~\ref{tab:logistic1} zusammengefasst.
+
+\begin{table}[htbp]
+\caption{Logistische Regression der Therapiefähigkeit}
+\label{tab:logistic1}
+\centering
+\begin{tabular}{lccr}
+\toprule
+Koeffizient (Prädiktor)& Schätzwert & Standardfehler & p-Wert\\
+\midrule
+$\beta_0$ (Achsenabschnitt) & -2,97 & 0,31\\
+$\beta_1$ (Barthel) & -1,65 & 0,24 & <0,001\\
+$\beta_2$ (MMST) & -0,99 & 0,21 & <0,001\\
+\bottomrule
+\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 134, n=358}
+\end{tabular}
+\end{table}
+
+Da die Parameter normiert sind, spiegelt die Höhe des Koeffizienten
+den Einfluss des Parameters wieder. Es zeigt sich also, dass der
+Barthel-Index den höchsten Einfluss besitzt und dass beide Parameter
+mit abnehmenden Werten die Wahrscheinlichkeit einer nicht
+Behandlungsfähigkeit erhöhen. Dieses Ergebnis ist naheliegend, da
+niedrigere Barthel-Indices mit einer höheren Pflegebedrüftigkeit und
+niedrigere Werte des MMST mit einer schlechteren kognitiven Funktion
+einhergehen, die beide die Behandlungsfähigkeit eines Patienten
+negativ beeinflussen. Eine weitere Diskussion des Modells findet im
+folgenden Abschnitt statt.
+
+Bei therapiefähigen Patienten stellt sich dann die Frage der weiteren
+Klassifikation im Rahmen des vorgestellten Systems. Die folgende
+Regression (Gleichung~\ref{eq:logistic2}) beschreibt also die Einteilung
+der Patienten in eingeschränkt therapiefähig und uneingeschränkt therapiefähig.
+
+\begin{equation}
+\label{eq:logistic2}
+\text{logit}(P(slow\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 \dots \beta_6 X_6
+\end{equation}
+
+Tabelle~\ref{tab:logistic2} fasst die dazugehörigen
+Regressionskoeffizienten zusammen, geordnet nach ihrem Betrag, also dem Ausmaß
+ihres Einflusses. Auch diese Parameter wurden von
+Hand ausgewählt, mögliche Kombinationen inklusiver ihrere Polynome
+höherer Ordnungen und Interaktionen fanden Beachtung. Als endgültiges
+Modell wurde das verwendet, in dem alle Parameter signifikanten
+Einfluss hatten und gleichzeitig die bester Regression gemessen an
+Hand des AIC resultierte. 
+
+\begin{table}[htbp]
+\caption{Logistische Regression des Ausmaßes der Therapiefähigkeit}
+\label{tab:logistic2}
+\centering
+\begin{tabular}{lccr}
+\toprule
+Koeffizient (Prädiktor)& Schätzwert & Standardfehler & p-Wert\\
+\midrule
+$\beta_0$ (Achsenabschnitt) & 0,42 & 0,24\\
+$\beta_1$ (Tinetti) & -1,55 & 0,30 & <0,001\\
+$\beta_2$ (Alter) & 1,02 & 0,21 & <0,001\\
+$\beta_3$ (alleinlebend) & 0,95 & 0,39 & 0,015\\
+$\beta_4$ (Charlson) & 0,84 & 0,21 & <0,001\\
+$\beta_5$ (MMST) & -0,83 & 0,28 & 0,003\\
+$\beta_6$ (MNA) & -0,58 & 0,20 & 0,003\\
+\bottomrule
+\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 225, n=291}
+\end{tabular}
+\end{table}
+
+In der Unterscheidung zwischen eingeschränkt behandelbar und
+uneingeschränkt behandelbar haben also der Tinetti-Test, das Alter,
+der Umstand, ob ein Patient alleinlebend ist, oder nicht, der
+Charlson-Score, der MMST-Wert und der MNA-Wert einen signifikante Einfluss. 
+
+Wie bereits beschrieben wurden die Prädiktoren mit Hilfe des
+arithmetischen Mittels und der Stichprobenvarianz normiert. Eine
+zusätzliche Transformation wird durch die Modellierung des Logits und
+nicht direkt der Wahrscheinlichkeit vorgenommen. Dadurch müssen die
+Koeffizienten bezüglich beider Transformationen umgerechnet werden,
+um eine Aussage über deren konkrete Bedeutung zu tätigen. Inklusive
+Beispielrechnungen wird dies im folgenden Abschnitt beschrieben.
 
 \subsubsection{CART}
 
+ggf. noch einfügen
+
 \subsection{Vorhersagendes Modell}
+
+Will man eine verlässliche Aussage über die Vorhersagequalität
+treffen, ist es wichtig, streng zwischen einem Trainings-Datensatz und
+einem Test-Datenatz zu unterscheiden. Nur anhand des Trainings-Datensatzes
+sind die Prädiktoren auszuwählen und das Modell zu erstellen. Mit
+diesem Modell werden dann im Test-Datensatz die Vorhersagen bestimmt
+und mit der wahren abhängigen Variable, also dem Konferenzergebnis
+verglichen.
 
 \subsubsection{Logistische Regression}
 
 \subsubsection{CART}
 
-\subsection{Klassifikation mit Hilfe eines Neuronalen Netzes}
+ggf. noch einfügen
 
-%\subsection{KNN}
+\subsubsection{Klassifikation mit Hilfe eines Neuronalen Netzes}
+
+ggf. noch einfügen
+
+\subsubsection{KNN}
+
+ggf. noch einfügen
