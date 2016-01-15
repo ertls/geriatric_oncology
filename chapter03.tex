@@ -323,7 +323,8 @@ Anzahl der Defizite & Patienten & Anteil in \%*\\
 
 In Tabelle~\ref{tab:correlation} sind die Korrelationskoeffizienten
 zwischen den einzelnen Assessmenttests
-nach Spearman mit ihrem Standardfehler aufgeführt. Berücksichtigt
+nach Spearman mit ihrem Standardfehler (siehe
+Gleichung~\ref{eq:spearman} aufgeführt. Berücksichtigt
 wurden Korrelationen größer als 0,4.
 
 \begin{table}[htbp]
@@ -417,26 +418,29 @@ Vorschlag von Balducci.
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Einteilung durch Balducci}&&Signifikanz\\
+  &\multicolumn{3}{c}{Einteilung durch Balducci}\\
+  & A & B & C & & Signifikanz** \\
   & no go & slow go & go go & p-Wert* &Gruppenvergleich** \\
   \midrule
   Patienten & 205 & 111 & 55 &\\ 
-  Barthel-Index & 85 & 100  & 100 & <0,001 & AB, AC\\ 
-  IADL-Skala & 5 & 6 & 8 & <0,001 & AB, AC, BC\\
+  Barthel-Index & 85 & 100  & 100 & <0,001*** & AB, AC\\ 
+  IADL-Skala & 5 & 6 & 8 & <0,001*** & AB, AC, BC\\
   Tinetti-Test & 18& 26 & 28 & <0,001 & AB, AC\\ 
   TUG-Test & 12 & 8  & 7 & <0,001 &AB, AC, BC\\ 
   MMS-Test & 28 & 29 & 30 & <0,001 & AB, AC\\ 
   DemTect & 13 & 14  & 16  & <0,001 &AB, AC\\ 
   GDS & 3,0 & 3,0 & 1,5 & 0,002& AC, BC\\ 
   DIA-Skala & 3 & 2   & 1   & 0,026 & AC\\ 
-  Charlson-Index & 2 & 1 & 0 & <0,001 &AB, AC, BC\\ 
+  Charlson-Index & 2 & 1 & 0 & <0,001*** &AB, AC, BC\\ 
   MNA & 20   & 23   & 24   & <0,001&AB, AC\\ 
   Alleinlebend & 30\% & 23\% & 31\% & 0,9\\
   Defizite & 4 & 2 & 1 & <0,001 & AB, AC, BC\\
   \bottomrule
 \multicolumn{6}{l}{*Kruskal-Wallis-Test, ** Wilcoxon-Rangsummentest
   mit Gruppe A: no go,}\\
-\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go}\\
+\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, *** nicht
+  aussagekräftig, da}\\
+\multicolumn{6}{l}{Kriterium zur Einteilung}\\
 \end{tabular}
 \end{table}
 
@@ -460,8 +464,9 @@ Einschätzung des Behandlers.
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Einschätzung des Behandlers} && Signifikanz\\
-  & no go & slow go & go go & p-Wert* & Gruppenvergleich**\\
+  &\multicolumn{3}{c}{Einschätzung des Behandlers}\\
+  & A & B & C & & Signifikanz** \\
+  & no go & slow go & go go & p-Wert* &Gruppenvergleich** \\
   \midrule
   Patienten & 44 & 147 & 165&\\ 
   Barthel-Index & 45 & 95 & 100 & <0,001 & AB, AC, BC\\ 
@@ -516,8 +521,9 @@ geria\-trisch"=onkolo\-gische Konferenz.
 \centering
 \begin{tabular}{lccccc}
   \toprule
-  &\multicolumn{3}{c}{Einteilung durch Konferenz}&&Signifikanz\\
-  & no go & slow go & go go & p-Wert*&Gruppenvergleich** \\
+  &\multicolumn{3}{c}{Einteilung durch Konferenz}\\
+  & A & B & C & & Signifikanz** \\
+  & no go & slow go & go go & p-Wert* &Gruppenvergleich** \\
   \midrule
   Patienten & 59  & 150 & 183&\\ 
   Barthel-Index & 50 & 90   & 100 & <0,001& AB, AC, BC\\ 
@@ -923,7 +929,7 @@ eine Spezifität von 89\%.
 \centering
 \begin{tabular}{crrr}
   \toprule
-  n=120&\multicolumn{2}{c}{Modellvorhersage}\\
+  n=65 & \multicolumn{2}{c}{Modellvorhersage}\\
   Konferenzbeschluss&slow go&go go\\ 
   \midrule
   slow go & 21 &  4 \\ 
