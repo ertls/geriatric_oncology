@@ -697,7 +697,7 @@ Ergebnis des MMST.
 
 \begin{equation}
 \label{eq:logistic1}
-\text{logit}(P(no\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2
+\text{logit}(P(no\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 \end{equation}
 
 Die Prädiktoren wurden von Hand ausgewählt. Dabei wurde eine
@@ -754,7 +754,7 @@ der Patienten in eingeschränkt therapiefähig und uneingeschränkt therapiefähig.
 
 \begin{equation}
 \label{eq:logistic2}
-\text{logit}(P(slow\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 \dots \beta_6 X_6
+\text{logit}(P(slow\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 \dots \beta_6 X_6 + \epsilon
 \end{equation}
 
 Tabelle~\ref{tab:logistic2} fasst die dazugehörigen
@@ -774,15 +774,15 @@ Hand des AIC resultierte.
 \toprule
 Koeffizient (Prädiktor)& Schätzwert & Standardfehler & p-Wert\\
 \midrule
-$\beta_0$ (Achsenabschnitt) & 0,53 & 0,26\\
-$\beta_1$ (Tinetti) & -1,72 & 0,32 & <0,001\\
-$\beta_2$ (Alter) & 1,17 & 0,24 & <0,001\\
-$\beta_3$ (Charlson) & 1,00 & 0,24 & <0,001\\
-$\beta_4$ (alleinlebend) & 0,97 & 0,41 & 0,019\\
-$\beta_5$ (MMST) & -0,85 & 0,30 & <0,001\\
-$\beta_6$ (MNA) & -0,56 & 0,21 & 0,007\\
+$\beta_0$ (Achsenabschnitt) & 0,53 & 0,25 \\
+$\beta_1$ (Tinetti) & -1,70 & 0,32 & <0,001\\
+$\beta_2$ (Alter) & 1,19 & 0,24 & <0,001\\
+$\beta_3$ (Charlson) & 1,02 & 0,24 & <0,001\\
+$\beta_4$ (alleinlebend) & 0,87 & 0,41 & 0,03\\
+$\beta_5$ (MMST) & -0,78 & 0,30 & 0,007\\
+$\beta_6$ (MNA) & -0,59 & 0,21 & 0,004\\
 \bottomrule
-\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 198, n=240}
+\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 202, n=244}
 \end{tabular}
 \end{table}
 
@@ -804,6 +804,7 @@ Beispielrechnungen wird dies im folgenden Abschnitt beschrieben.
 ggf. noch einfügen
 
 \subsection{Vorhersagendes Modell}
+\label{sec:vorhersagendes_modell}
 
 Will man eine verlässliche Aussage über die Vorhersagequalität
 treffen, ist es wichtig, streng zwischen einem Trainings-Datensatz und
@@ -845,17 +846,19 @@ $\beta_1$ (MMST) & -1,17 & 0,29 & <0,001\\
 $\beta_2$ (Barthel) & -1,13 & 0,30 & <0,001\\
 $\beta_3$ (IADL) & -1,04 & 0,37 & 0,004\\
 \bottomrule
-\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 83, n=236}
+\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 83, n=234}
 \end{tabular}
 \end{table}
 
 Mit Hilfe dieses Modells wurde anhand des Test-Sets eine
 Vorhersageklassifikation getroffen und mit dem Konferenzbeschluss
 verglichen. Bei einem Cut-off von 0,5 ergab sich eine Übereinstimmung von
-93\%. Tabelle~\ref{tab:prediction_no} zeigt die vollständige
+94\%. Tabelle~\ref{tab:prediction_no} zeigt die vollständige
 Kontingenztafel. Daraus ergibt sich eine Sensititivität des Modells,
-nicht therapiefähig vorherzusagen (positives Outcome) von 65\% und
-eine Spezifität von 98\%.
+nicht therapiefähig vorherzusagen (positives Outcome) von 54\% und
+eine Spezifität von 99,6\%. Die Festlegung des Cut-off Wertes
+ergibt sich aus der klinischen Beurteilung der Relevanz
+eines Fehlers 1. Art ($\alpha$-Fehler) oder 2. Art ($\beta$-Fehler).
 
 \begin{table}[htbp]
 \caption{Vergleich der Vorhersage der logistischen Regression
@@ -867,11 +870,30 @@ eine Spezifität von 98\%.
   n=120&\multicolumn{2}{c}{Modellvorhersage}\\
   Konferenzbeschluss&no go&go\\ 
   \midrule
-  no go & 11 &   2 \\ 
-  go    &  6 & 101\\  
+  no go &  7 &   6 \\ 
+  go    &  1 & 106 \\  
   \bottomrule
 \end{tabular}
 \end{table}
+
+In dem vorliegenden Fall entspricht ein Fehler 1. Art einem Patienten,
+der vom Modell als nicht therapiefähig klassifiziert wird, von der
+Konferenz jedoch als therapiefähig. Bei dieser Art von Fehler würde
+dem Patienten eine wirksame und verträgliche Therapie vorenthalten
+werden. Ein Fehler 2. Art entspräche dem umgekehrten
+Fall, also einen Patienten, den das Modell als therapiefähig
+klassifiziert, die Konferenz jedoch als nicht therapiefähig
+einschätzt. Bei dieser Art von Fehler würde
+eine Therapie begonnen werden, obwohl die geriatrisch-onkologische
+Konferenz die Gefahr von zum Teil lebensgefährlichen Toxizitäten höher
+bewertet als den Nutzen. Beide Arten von Fehlern klinisch etwas gleich
+zu bewerten, ein Patient sollte nicht unnötig Toxizitäten erleiden,
+jedoch auch keine verträgliche und wirksame Therapie vorenthalten
+werden. Aus diesem Grund erfolgt die Auswahl des Cut-off-Wertes so,
+dass sich beide Fehler etwa die Waage halten, sich also Sensitivität
+und Spezifität annähern. Bei einem Cut-off von 0,22 ergibt sich eine
+Übereinstimmung von 95\%, eine Sensitivität von 85\% und eine
+Spezifität von 96\%.
 
 ROC-Curve? AUC? Bootstrap?
 
@@ -892,7 +914,7 @@ in Tabelle~\ref{tab:logistic4} aufgeführt.
 
 \begin{equation}
 \label{eq:logistic4}
-\text{logit}(P(no\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_4 + \beta_5 X_5
+\text{logit}(P(slow\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_4 + \beta_5 X_5
 \end{equation}
 
 \begin{table}[htbp]
@@ -903,14 +925,14 @@ in Tabelle~\ref{tab:logistic4} aufgeführt.
 \toprule
 Koeffizient (Prädiktor)& Schätzwert & Standardfehler & p-Wert\\
 \midrule
-$\beta_0$ (Achsenabschnitt) & 0,79 & 0,24\\
-$\beta_1$ (Tinetti) & -1,32 & 0,34 & <0,001\\
-$\beta_2$ (Alter) & 1,12 & 0,24 & <0,001\\
-$\beta_3$ (MMST) & -0,91 & 0,32 & 0,005\\
-$\beta_4$ (MNA) & -0,86 & 0,25 & <0,001\\
-$\beta_5$ (Charlson) & 0,82 & 0,24 & <0,001\\
+$\beta_0$ (Achsenabschnitt) & 0,64 & 0,24\\
+$\beta_1$ (Tinetti) & -1,54 & 0,34 & <0,001\\
+$\beta_2$ (Alter) & 0,97 & 0,24 & <0,001\\
+$\beta_3$ (MNA) & -0,81 & 0,24 & <0,001\\
+$\beta_4$ (Charlson) & 0,64 & 0,24 & 0,007\\
+$\beta_5$ (MMST) & -0,56 & 0,28 & 0,047\\
 \bottomrule
-\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 174, n=195}
+\multicolumn{4}{l}{AIC (Akaikes Informationskriterium) 180, n=198}
 \end{tabular}
 \end{table}
 
@@ -919,8 +941,10 @@ Vorhersageklassifikation getroffen und mit dem Konferenzbeschluss
 verglichen. Bei einem Cut-off von 0,5 ergab sich eine Übereinstimmung von
 83\%. Tabelle~\ref{tab:prediction_slow} zeigt die vollständige
 Kontingenztafel. Daraus ergibt sich eine Sensititivität des Modells,
-eingeschränkt therapiefähig vorherzusagen (positives Outcome) von 75\% und
-eine Spezifität von 89\%.
+eingeschränkt therapiefähig vorherzusagen (positives Outcome) von 0,82 und
+eine Spezifität von 0,85. Bei diesem Modell sind Fehler 1. und 2. Art
+schon bei einem Cut-off von 0,5 fast perfekt balanciert, sodass der
+Cut-off von 0,5 nicht geändert wird.
 
 \begin{table}[htbp]
 \caption{Vergleich der Vorhersage der logistischen Regression
@@ -932,8 +956,8 @@ eine Spezifität von 89\%.
   n=65 & \multicolumn{2}{c}{Modellvorhersage}\\
   Konferenzbeschluss&slow go&go go\\ 
   \midrule
-  slow go & 21 &  4 \\ 
-  go go   &  7 & 33\\  
+  slow go & 27 &  6 \\ 
+  go go   &  5 & 28 \\  
   \bottomrule
 \end{tabular}
 \end{table}

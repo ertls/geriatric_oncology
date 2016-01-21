@@ -76,7 +76,7 @@ geria\-trisch"=onkolo\-gischen Patienten, also 65 Jahre oder älter, erfüllt.
 Abbildung~\ref{fig:altersverteilung} zeigt die Altersverteilung der
 dem Assessment zugeführten Patienten. Vergleicht man diese mit der
 Altersverteilung der Patienten der gesamten Klinik
-(Abbildund~\ref{fig:AltersverteilungAllgemein}) fällt auf, dass im
+(Abbildund~\ref{fig:altersverteilungAllgemein}) fällt auf, dass im
 Bereich der 65 bis 70 jährigen Patienten, diese im Assessment
 unterrepräsentiert sind. Das zeigt, dass auch an einer Klinik
 mit seit einigen Jahren etablierter geriatrischer Onkologie mit
@@ -437,7 +437,7 @@ Gleichung~\ref{eq:logistic1-prediction}.
 
 \begin{equation}
 \label{eq:logistic1-prediction}
-\hat{P}(no\_go) = \frac{e^{\beta_0 + \beta_1 X_1 + \beta_2 X_2}}{1 + e^{\beta_0 + \beta_1 X_1 + \beta_2 X_2}}
+\hat{P}(no\_go) = \frac{e^{\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon}}{1 + e^{\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon}}
 \end{equation}
 
 Daraus ergibt sich durch Einsetzen der Koeffizienten und der nach
@@ -484,8 +484,8 @@ Gleichung~\ref{eq:logistic2-prediction} berechnet.
 
 \begin{equation}
 \label{eq:logistic2-prediction}
-\hat{P}(slow\_go) = \frac{e^{\beta_0 + \beta_1 X_1 + \beta_2 X_2 \dots \beta_6 X_6}}{1 + e^{\beta_0 +
-    \beta_1 X_1 + \beta_2 X_2 \dots \beta_6 X_6}}
+\hat{P}(slow\_go) = \frac{e^{\beta_0 + \beta_1 X_1 + \beta_2 X_2 \dots \beta_6 X_6 + \epsilon}}{1 + e^{\beta_0 +
+    \beta_1 X_1 + \beta_2 X_2 \dots \beta_6 X_6 + \epsilon}}
 \end{equation}
 
 Daraus ergibt sich durch Einsetzen der Koeffizienten und der nach
@@ -643,7 +643,7 @@ Zahl der Alleinlebenden auf, wie Tabelle~\ref{tab:cga_konferenz} zeigt.
 Im Vergleich mit der Trennung durch die
 persönliche Einschätzung des Behandlers fällt auf, dass die Werte des
 Depressionsassessment und der Komorbidität nicht so deutlich
-unterschiedlich sind, wie bei Trennung durch den Behandler. Dies
+unterschiedlich sind, wie bei Trennung der Gruppen durch den Behandler. Dies
 könnte ein Hinweis darauf sein, dass bei der klinischen Einschätzung
 die Komorbidität und eine Depression den klinischen Eindruck stärker
 beeinflusst, als dies in der Abwägung der einzelnen Punkte, wie sie in
@@ -653,11 +653,104 @@ der Konferenz stattfindet, der Fall ist.
 
 \subsubsection{Behandlungsfähigkeit}
 
+Tabelle~\ref{tab:prediction_no} beschreibt die Vorhersagequalität des Modells
+zwischen nicht behandlungsfähig und behandlungsfähig zu unterscheiden. Wie
+beschrieben ergibt sich eine Übereinstimmung von 94\%. Bei einem Cut-off
+der Wahrscheinlichkeit bei 0,5 ergibt sich eine Sensitivität von 88\%
+und eine Spezifität von 95\%. Der Cut-off ist willkührlich gewählt, von ihm
+hängen jedoch Sensitivität und Spezifität zusammen, variiert man diesen
+verändern sich auch Sensitivität und Spezifität. Um diesen Zusammenhang
+zu veranschaulichen ist die ROC-Grafik sinnvoll, da sie den Zusammenhang
+zwischen Sensitivität und Spezifität abhängig vom Cut-off-Wert grafisch
+darstellt. Die Fläche unter der Kurve (AUC, area under the curve) kann
+als Güte eines diagnostischen Test herangezogen werden. Ein optimaler
+Test mit perfekter Vorhersagequalität besitzt eine maximale AUC von 1.
+
+Die linke Seite der Grafik~\ref{fig:roc_both} zeigt die ROC-Kurve
+\autocite{Robin2011} der Vorhersagequalität des Modells. Der AUC-Wert
+beträgt 0,97 (95\% Konfidenzintervall: 0,94-0,98).
+
 \subsubsection{Ausmaß der Behandlungsfähigkeit}
+
+Tabelle~\ref{tab:prediction_slow} beschreibt die Vorhersagequalität des Modells
+zwischen nicht behandlungsfähig und behandlungsfähig zu unterscheiden. Wie
+beschrieben ergibt sich eine Übereinstimmung von 83\%. Bei einem Cut-off
+der Wahrscheinlichkeit bei 0,5 ergibt sich eine Sensitivität von 0,84
+und eine Spezifität von 0,82.
+
+Die rechte Seite der Grafik~\ref{fig:roc_both} zeigt die ROC-Kurve der
+Vorhersagequalität des Modells. Der AUC-Wert beträgt 0,88 (95\%
+Konfidenzintervall: 0,84-0,92).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{Grafiken/roc_both.pdf}
+  \caption{ROC-Kurven des Vorhersagemodells der Behandlungsfähigkeit
+    (links, AUC 0,97) und des Ausmaßes der Behandlungsfähigkeit
+    (rechts, AUC 0,82)}
+  \label{fig:roc_both}
+\end{figure}
 
 \section{Simulation der Konferenz als Web-basierte Abfrage}
 
+Wie gezeigt wurde beinhaltet die Einschätzung eines geriatrisch-onkologischen
+Patienten durch den Behandler eine gute Einschätzung einer
+onkologischen Behandlungsfähigkeit, wie sie oftmals vergleichbar auch
+eine geriatrisch-onkologische Konferenz trifft. Trotzdem gibt es
+subklinische oder auch persönlich anders gewertete Einschränkungen von
+Patienten, die dadurch allein durch die persönliche Einschätzung
+anders eingeschätzt werden. Dies folgt in möglicherweis erhöhter
+Toxizität und damit Gefahr für die Patienten bei besserer Einschätzung
+durch den Behandler (9\% der Patienten). Bei
+schlechterer Einschätzung durch den Behandler (7\% der Patienten) wird
+zwar Toxizität vermieden, jedoch den Patienten auch wirksame Therapien
+vorenthalten. Bei insgesamt 17\% der Patienten kommt die hier
+durchgeführte geriatrisch-onkologische Konferenz also zu
+Therapie-verändernden Anderseinschätzungen. Es bleibt in prospektiven
+Studien zu prüfen, ob sich dieser Unterschied in nachweisbaren
+Parametern, wie zum Beispiel messbarer Toxizität oder messbarer
+Wirksamkeit der Therapie übersetzt.
+
+Vielerorts ist ein erster Schritt die Einführung eines umfassenden
+geriatrisch-onkologischen Assessments, ohne jedoch die Möglichkeit
+einer geriatrisch-onkologischen Konferenz. Wie in
+Abschnitt~\ref{sec:vorhersagendes_modell} gezeigt wurde ist die
+Vorhersagequalität des statistischen Modells der
+geriatrisch-onkologischen Konferenz vergleichbar mit der
+Vorhersagequalität der persönlichen Einschätzung. Trotzdem kann das
+statistische Modell Zusaztinformationen liefern, da es die Ergebnisse
+des umfassenden geriatrischen Assessments miteinbezieht, und sich
+daher auf andere Daten bezieht, als der Behandler. Im Diskrepanzfall
+kann also der Behandler sich die Testergebnisse genauer anschauen und
+im Bedarfsfall sogar mit einem Geriater konferieren um diesen
+speziellen Fall zu besprechen. Aus diesem Grund werden die hier
+vorgestellten vorhersagenden Modelle auf der Internetseite der
+Geriatrischen Onkologie der Kliniken
+Essen-Mitte veröffentlicht. Dort können die Parameter aus dem
+Assessment eingetragen werden, woraufhin eine Klassifikation durch die
+Modelle in nicht behandlungsfähig, eingeschränkt behandlungsfähig und
+uneingeschränkt behandlungsfähig vorgenommen wird. Als Vergleich wird
+ebenfalls eine Klassifikation aufgrund des im Jahr 2000 von Balducci
+und Kollegen gemachten Vorschlags vorgenommen.
+
 \section{Ausblick}
+
+Genau wie der Vorschlag der Einteilung, den Balducci vor jetzt schon
+16 Jahren gemacht hat, sind die hier vorgestellten Ergebnisse
+ebenfalls als Vorschlag zu verstehen. Es bleibt anhand von
+prospektiven Studien zu prüfen, welcher Ansatz die beste Einschätzung
+bietet. Reicht die persönliche Einschätzung durch den behandelnden
+Arzt aus? Ist eine persönliche Einschätzung durch einen
+geriatrisch-onkologisch geschulten Experten nötig? Ist eine
+Klassifikation allein aufgrund von Parametern des umfassenden
+geriatrischen Assessments möglich. Welche Parameter sollten dies sein?
+Welche Grenzwerte sind für die jeweiligen Tests anzusetzen? Oder ist
+doch eine Kombination aus beiden Ansätzen notwendig, bei dem ein
+umfassendes geriatrisches Assessment durchgeführt wird, auf dessen
+Grundlage dann in der Diskussion zwischen Behandler, Geriater,
+Physiotherapeuten, Erotherapeuten, Pflegekräften unter Einbeziehung
+einer Vielzahl zusätzlicher, nicht so einfach zu erhebender
+Informationen, eine Klassifikation vorgenommen wird?
 
 \section{Empfehlungen für die tägliche Praxis}
 
@@ -675,7 +768,7 @@ der Konferenz stattfindet, der Fall ist.
 
 \item Die Ergebnisse dieses Assessments sollen in einer Konferenz von
   einem multiprofessionellen Team bestehend aus Ergotherapie, Pflege,
-  Geriatrie, Onkologie besprochen werden.
+  Geriatrie und Onkologie besprochen werden.
 
 \item Basierend auf der Konferenz sollen Maßnahmen eingeleitet werden,
   um funktionelle, psychische, soziale oder medizinische Probleme zu bessern.
@@ -684,12 +777,7 @@ der Konferenz stattfindet, der Fall ist.
   angepasst an die individuelle Leistungsfähigkeit und Lebenssituation
   geplant werden.
 
-\item Das geriatrische Assessment kann zur Verlaufsbeobachtung während
-  und nach der Therapie regelmäßig wiederholt werden, um neue Probleme
-  zu entdecken und auch ggf. eine Besserung bestehender Probleme zu
-  dokumentieren.
-
-\item Die Ergebnisse der Assessments und der Konferenzen sollen dem
-  Patienten, den Angehörigem und dem Hausarzt mitgeteilt werden.
+\item Die Ergebnisse der Assessments und der Konferenz sollen dem
+  Patienten, den Angehörigen und dem Hausarzt mitgeteilt werden.
 
 \end{itemize}

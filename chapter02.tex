@@ -259,8 +259,16 @@ Punkten besteht der Verdacht auf das Vorliegen einer Demenz.
 
 Der Dem\-Tect-Test, Demenz-Detektions-Test, wird an den Kliniken
 Essen-Mitte seit Februar 2015 zusätzlich regelhaft durchgeführt, um die
-zusätzliche Sensitivität in der Erkennung einer klinisch sehr
-relevanten, frühen Demenz hat, zu nutzen.
+zusätzliche Sensitivität in der Erkennung einer klinisch bei der
+Durchführung einer Chemotherapie sehr relevanten, frühen Demenz hat,
+zu nutzen. Vor dem routinemäßigen Einsatz des DemTect kam es in
+schwierigen Entscheidungssituationen oft vor, dass beschlossen wurde,
+den DemTect zusätzlich nachträglich durchzuführen, um ihn in die
+Beurteilung einfließen zu lassen. Aus der Erfahrung der gleichzeitigen
+Durchführung des MMST und des DemTect ergab sich kein Fall, in der die
+Beurteilung des MMST dem Ergebnis des DemTect zusätzliche
+Informationen erbracht hatte. Daher wurde im Januar 2016 beschlossen,
+den DemTect-Test allein durchzuführen.
 
 \subsection{Depression}
 \label{sec:depression}
@@ -370,18 +378,38 @@ Einbeziehung der erhobenen Assessmentdaten.
 
 \subsection{R}
 
-R ist eine Programmiersprache, die besonders gut für den Einsatz in
+R ist eine Programmiersprache \autocite{R2015}, die besonders gut für
+den Einsatz in 
 der Statistik geeignet ist. Es ist eine open source Entwicklung, die
 sich aus der kommerziellen Sprache S ableitet. R besitzt eine hoch
 aktive Entwicklergemeinde, die für alle denkbaren Anwendungsgebiete
 entsprechende Erweiterung in Form von Bibliotheken erstellt. In der
 vorliegenden Arbeit wurden alle statistischen Berechnungen in R
-durchgeführt. 
-multiplot code \autocite{Chang2013}
+durchgeführt. Die Grafiken wurden mit der Grafikbibliothek ggplot2
+\autocite{Wickham2009} erstellt. Die Berechnung der ROC-Kurven der
+Modelle wurde mit der Bibliothek pROC \autocite{Robin2011}
+vorgenommen. Um mehrere Grafiken in einer Seite zu setzen wurde ein
+Codefragment aus dem R Graphics Cookbook \autocite{Chang2013}
+verwendet.
 
-\subsection{knitr}
+\subsection{Latex}
 
-knitr ist ein Tool, welches R code sowie deren erzeugten Output und
+\LaTeX{} ist eine Erweiterung des von Donald Knuth entwickelten
+Satz-Systems \TeX{}. Mit Hilfe von \LaTeX{} ist es möglich alle nur
+denkbaren Arten von Dokumenten inklusive dieser Dissertation
+plattformübergreifend zu erstellen. Von besonderem Vorteil ist dabei,
+dass die Konzentration des Autors beim Text, also dem Inhalt der
+Arbeit liegen kann und \LaTeX{} das komplette professionell
+gestatltete Layout gestaltet.
+
+\subsection{Reproducible Code (Peng R et al.)}
+
+\subsubsection{Data tidying (Leek J)}
+
+\subsubsection{knitr}
+
+knitr \autocite{Xie2014} ist ein Werkzeug, das R code sowie deren
+erzeugten Output und 
 die Dokumentation dazu verbindet. Es ist ein wichtiges Hilfsmittel um
 nachvollziehbar Datenmanipulationen zu dokumentieren. Zusätzlich ist
 es ein unschätzbares Hilfsmittel in der Erstellung von statistischen
@@ -393,17 +421,6 @@ jederzeit neu die interessierenden Ergebnisse erzeugt werden. Es wird
 hierbei der entpsrechenden Code in R geschrieben, der dann jedoch
 dynamisch aus den vorliegenden und aktualisierten Daten jederzeit neu
 und aktuell die entsprechenden Kennzahlen neu berechnet.
-Schnittstelle zu LATEX?
-
-\subsection{Latex}
-
-\LaTeX{} ist eine Erweiterung des von Donald Knuth entwickelten
-Satz-Systems \TeX{}. Mit Hilfe von \LaTeX{} ist es möglich alle nur
-denkbaren Arten von Dokumenten plattformübergreifend zu erstellen.
-
-\subsection{Reproducible Code (Peng R et al.)}
-
-\subsection{Data tidying (Leek J)}
 
 \section{Statistische Methoden}
 
@@ -430,7 +447,7 @@ Werten von der Analyse ausgeschlossen werden.
 Dieser einfachste Fall der Behandlung fehlender
 Werte, die so genannte complete case analysis, also die Analyse nur
 vollständiger Fälle hat jedoch wie schon bei der Mittelwertberechnung
-beschrieben eine Reihe schwerwiegende Probleme. So fällt die zu
+beschrieben eine Reihe schwerwiegender Probleme. So fällt die zu
 analysierende Fallzahl meist erheblich geringer aus, und auch alle zu ermittelnden
 Parameter verändern ihre Eigenschaften zum Teil deutlich. Den
 entstehenden Fehler nennt man Verzerrung oder Bias.
@@ -450,27 +467,39 @@ Verfahren und der gefolgerten Aussagen. Es werden drei grundsätzliche
 Mechanismen unterschieden, warum einzelne Daten fehlen können.
 
 \begin{enumerate}
-\item Missingness completely at random (MCAR)
-\item Missingness at random (MAR)
+\item Unabhängiges und zufälliges Fehlen, Missingness completely at random (MCAR)
+\item Zufälliges Fehlen, Missingness at random (MAR)
   \begin{itemize}
-  \item depends on observed predictors
-  \item depends on unobserved predictors
+  \item Fehlen abhängig von beobachteten Prädiktoren
+  \item Fehlen abhängig von unbeoabachteten Prädiktoren
   \end{itemize}
-\item Missingness that depends on the missing value itself (NMAR)
+\item Fehlende Variablen, deren Fehlen von der fehlenden Variablen
+  abhängen, Missingness that depends on the missing value itself (NMAR)
 \end{enumerate}
 
-Bezogen auf den hier analysierten Datensatz kommen verschieden
+Bezogen auf den hier analysierten Datensatz kommen verschiedene
 grundsätzliche Möglichkeiten fehlender Daten vor. Systematisch fehlen
-Daten in Bereichen, die nicht erfasst wurden. So wurde bis ... der GDS
+Daten in Bereichen, die nicht erfasst wurden. So wurde bis August 2014 der GDS
 zum Depressionsscreening benutzt, aufgrund einer besseren
-Durchführbarkeit jedoch seit dem ... der DIA-S durchgeführt. Außerdem
+Durchführbarkeit jedoch ab September 2014 der DIA-S durchgeführt. Außerdem
 wurde anfangs zur Einschätzung der kognitiven Fähigkeiten lediglich
-der MMST durchgeführt, seit dem ... zusätzlich der DEMTECT um
+der MMST durchgeführt, seit Februar 2015 zusätzlich der DEMTECT um
 Frühformen der Demenz besser zu erfassen. In den Zeiträumen in denen
 die entsprechenden Tests nicht durchgeführt wurden, gibt es dazu
 natürlich auch keine Daten.
 
-Mediane, lineare Modelle innerhalb eines Assessments
+Diese systematisch fehlenden Daten machen
+den größten Teil der fehlenden Daten im vorliegenden Datensatz
+aus. Beeinflusst ist die Analyse davon dahingegend, dass sich zum
+Beispiel herausgestellt hat, das auch in der vorliegenden Anwendung
+der DemTect der bessere Test zur Beurteilung des kognitiven Status
+ist. Die besonderen Gründe dafür sind in Abschnitt~\ref{sec:kognition}
+aufgeführt. Auch für die Erstellung der Modelle wäre der DemTect als
+Prädiktor wertvoll gewesen. Dadurch wären jedoch wegen nur einem
+Prädiktor gut die Hälfte aller Fälle weggefallen. Daher wurde in den
+Modellen durchgängig der MMST verwendet.
+
+MEMO nächst häufigeres Fehlen durch MCAR, daher keine Probleme mit BIAS!!!
 
 \subsection{Korrelation}
 
@@ -516,7 +545,7 @@ Funktion Anwendung.
 
 \begin{equation}
 \label{eq:logistic_function}
-p(X) = \frac{e^{\beta_0 + \beta_1 X}}{1 + e^{\beta_0 + \beta_1 X}}
+p(X) = \frac{e^{\beta_0 + \beta_1 X + \epsilon}}{1 + e^{\beta_0 + \beta_1 X + \epsilon}}
 \end{equation}
 
 Für zwei zur Verfügung stehende Klassen, z.B. tod/lebend,

@@ -20,7 +20,8 @@
 
 % Dokumentenklasse
 \RequirePackage[patch]{kvoptions} 
-\documentclass{DissOnlineLatex} % in DissOnlineLatex geometry
+\documentclass{DissOnlineLatex}
+ % in DissOnlineLatex geometry
                                 % Einstellungen geändert, da
                                 % Optionsübergabe nicht klappt
 \usepackage{setspace}
@@ -80,11 +81,8 @@
 % Inhalts-, Abbildungs*-, Tabellen*-Verzeichnis
 \setcounter{page}{1}
 \tableofcontents
+
 \newpage
-%\listoffigures
-%\newpage
-%\listoftables
-%\newpage
 
 % Seitennummerierung im Hauptteil
 \pagenumbering{arabic}
@@ -109,6 +107,17 @@
 \include{appendixA}
 %\include{appendixB}
 % usw
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{part}{Abbildungsverzeichnis}
+\newpage
+\listoftables
+\addcontentsline{toc}{part}{Tabellenverzeichnis}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{part}{Literaturverzeichnis}
 
 % Literaturverzeichnis
 \defbibenvironment{bibliography}
