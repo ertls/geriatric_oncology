@@ -49,15 +49,15 @@ Assessment durchgeführt.
 \end{figure}
 Als Bezug zeigt Abbildung~\ref{fig:altersverteilungAllgemein} die
 Altersverteilung aller in der onkologischen Klinik behandelten
-Patienten aus dem Jahr 2015. \percentGeriatrischOnkologie{}\%
+Patienten aus den Jahren 2014 und 2015. \percentGeriatrischOnkologie{}\%
 der Patienten waren 65 Jahre oder älter.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/altersverteilungAllgemein.pdf}
   \caption{Alter aller Patienten der Klinik für internistische
-    Onkologie, Markierung bei 65 Jahren (interne Definition eines
-    geriatrisch-onkologischen Patienten)}
+    Onkologie der Jahre 2014 und 2015, Markierung bei 65 Jahren
+    (interne Definition eines geriatrisch-onkologischen Patienten)}
   \label{fig:altersverteilungAllgemein}
 \end{figure}
 
@@ -294,7 +294,7 @@ angegebenen Publikation jedes aufällige Testergebniss als Defizit
 definiert, also Barthel-Index kleiner 100, IADL-Wert kleiner 7, MNA kleiner
 24, MMSE kleiner 27 oder DemTect kleiner 13, Charlson-Index größer 0
 und Tinetti-Test kleiner 25. Zur Diskussion und Erklärung der
-Abweichung siehe Abschnitt~\ref{sec:defizite:discussion}
+Abweichung siehe Abschnitt~\ref{sec:defizite_discussion}.
 Bei 297 Patienten liegen alle benötigten Werte vor (71\%), der Median
 liegt bei 2 Defiziten, die
 Häufigkeitsverteilung ist in Tabelle~\ref{tab:defizite} gezeigt.
@@ -322,10 +322,10 @@ Anzahl der Defizite & Patienten & Anteil in \%*\\
 \subsection{Korrelationen}
 
 In Tabelle~\ref{tab:correlation} sind die Korrelationskoeffizienten
-zwischen den einzelnen Assessmenttests
-nach Spearman mit ihrem Standardfehler (siehe
-Gleichung~\ref{eq:spearman} aufgeführt. Berücksichtigt
-wurden Korrelationen größer als 0,4.
+nach Spearman zwischen den einzelnen Assessmenttests mit ihrem
+Standardfehler (siehe Gleichung~\ref{eq:spearman})
+aufgeführt. Berücksichtigt wurden Korrelationen größer als 0,4;
+sortiert wurde nach abnehmender Korrelation.
 
 \begin{table}[htbp]
 \caption{Rangkorrelationskoeffizienten}
@@ -647,13 +647,11 @@ Fälle.
 
 \subsection{Erklärendes Modell}
 
-\subsubsection{Logistische Regression}
-
 Um den Effekt verschiedener Prädiktoren vergleichen zu können, wurden die
 Prädiktoren nach Gleichung~\ref{eq:scale} auf die standardisierte
 Zufallsvariable $Z$ normiert. Dabei sei $X$ die
-Zufallsvariable eines Prädiktors mit Erwartungswert $E(X) = \mu$ und Varianz $Var(X) =
-\sigma^2$ also dementsprechend Standardabweichung $\sigma$.
+Zufallsvariable eines Prädiktors mit Erwartungswert $E(X) = \mu$ und
+Varianz $Var(X) = \sigma^2$ also dementsprechend Standardabweichung $\sigma$.
 
 \begin{equation}
 \label{eq:scale}
@@ -666,56 +664,40 @@ werden, da die genaue Verteilungsfunktion der Prädiktoren nicht
 bekannt ist. Daher wird statt des Erwartungswertes das arithmetische
 Mittel und statt der Varianz die Stichprobenvarianz verwendet.
 
-Bei der Erstellung des statistischen Modells wurde ein zweischrittiger
-Ansatz gewählt. Dabei wird in einer ersten logistischen Regression
-ermittelt, ob Therapiefähigkeit besteht oder nicht. Sollte
-Therapiefähigkeit bestehen wird in einer zweiten logistischen
-Regression die Unterteilung zwischen eingeschränkt therapiefähig und
-uneingeschränkt therapiefähig vorgenommen. Alternativ wäre eine
-einfache oder geordnete multinomiale logistische Regression möglich
-gewesen. Der gewählte Ansatz wurde aus
-theoretischen und praktischen Überlegungen bevorzugt. Aus
-theoretischen Überlegungen ist ableitbar, dass bei einem vollständig
-pflegebedürftigen und dementen Patienten zum Beispiel die Komorbidität
-und der Ernährungszustand nicht mehr entscheidungsrelevant sind, also
-für die Einteilung in die Kategorien jeweils andere Prädiktoren von
-Wichtigkeit sind. Diese Unterscheidung hat den Vorteil diese
-Unterschiede in den verschiedenen Modellen herauszuarbeiten. Von
-praktischem Vorteil ist die Erhöhung des Stichprobenumfangs durch
-dieses Vorgehen. Komplexere Modelle mit zahlreicheren Prädiktoren, die
-aber vielleicht erst zur Entscheidung des Grades der
-Behandlungsfähigkeit relevant sind, vermindern durch unvermeidbare
-fehlende Werte den Stichprobenumfang.
+\subsubsection{Therapiefähigkeit}
 
-Als erstes stellt sich also die Frage, welche Prädiktoren die
+Als erstes stellt sich die Frage, welche Prädiktoren die
 Einteilung in nicht therapiefähig und therapiefähige Patienten am
 besten erklärt. Gleichung~\ref{eq:logistic1} zeigt die logistische
 Regression der dargestellten Situation. Dabei entspricht $P(Y=1|X_1 \land
-X_2 \land X_3)$ der Wahrscheinlichkeit der Kategorie nicht behandlungsfähig
-und $X_1, X_2, X_3$ den Koeffizienten der Prädiktoren Barthel-Index und
-Ergebnis des MMST.
+X_2)$ der Wahrscheinlichkeit der Kategorie nicht behandlungsfähig
+und $X_1, X_2$ den Koeffizienten der Prädiktoren Barthel-Index und
+Ergebnis des MMST. $\epsilon$ bezeichnet den Fehler.
 
 \begin{equation}
 \label{eq:logistic1}
 \text{logit}(P(no\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 \end{equation}
 
-Die Prädiktoren wurden von Hand ausgewählt. Dabei wurde eine
-logistische Regression für jeden erhobenen Parameter durchgeführt und
-anhand des p-Wertes den Einfluss des Parameters und anhand des AIC die
+Die Prädiktoren wurden von Hand ausgewählt. Dabei wurde zuerst eine
+univariate logistische Regression für jeden erhobenen Parameter
+durchgeführt und
+anhand des p-Wertes der Einfluss des Parameters und anhand des AIC
+(Akaike information criterion) die
 Güte der Regression beurteilt. Da es sich in diesem Schritt um eine
 beschreibendes Modell handelt wurden alle vorhandenen vollständigen
 Datensätze zur Regression benutzt. Auch Polynome der Parameter höherer
-Ordnungen wurden untersucht. In einem zweiten Schritt wurden dann
+Ordnungen wurden untersucht. In einem zweiten Schritt wurden dann in
+einer multivariaten Analyse
 Kombinationen von Parametern inklusive deren Polynome und auch
 Interaktionen getestet. Dabei schnitten der Barthel-Index, der Wert des
 MMST und der IADL-Wert am besten ab. In dieser Dreierkombination ohne
 höhergradige Polynome und Interaktionen resultierte das beste
-Modell. Wegen der hohen Kolinearität des IADL-Wertes und des
+Modell, gemessen am AIC. Wegen der hohen Kolinearität des IADL-Wertes und des
 Barthel-Index wurde der IADL-Wert letztendlich im endgültigen Modell
 weggelassen (siehe Tabelle~\ref{tab:correlation},
 Korrelationskoeffizient von 0.48). Eine hohe Kolinearität macht die
-Interpretation des Modells schwieriger, da die Effekte dann nicht
+Interpretation des Modells schwieriger, da die einzelnen Effekte dann nicht
 voneinander zu differenzieren sind. Die Regressionskoeffizienten
 inklusive Standardfehler und p-Wert sind in
 Tabelle~\ref{tab:logistic1} zusammengefasst.
@@ -746,6 +728,8 @@ niedrigere Werte des MMST mit einer schlechteren kognitiven Funktion
 einhergehen, die beide die Behandlungsfähigkeit eines Patienten
 negativ beeinflussen. Eine weitere Diskussion des Modells findet im
 Diskussionsteil statt.
+
+\subsubsection{Ausmaß der Therapiefähigkeit}
 
 Bei therapiefähigen Patienten stellt sich dann die Frage der weiteren
 Klassifikation im Rahmen des vorgestellten Systems. Die folgende
@@ -799,12 +783,10 @@ Koeffizienten bezüglich beider Transformationen umgerechnet werden,
 um eine Aussage über deren konkrete Bedeutung zu tätigen. Inklusive
 Beispielrechnungen wird dies im folgenden Abschnitt beschrieben.
 
-\subsubsection{CART}
-
-ggf. noch einfügen
-
 \subsection{Vorhersagendes Modell}
 \label{sec:vorhersagendes_modell}
+
+\subsubsection{Therapiefähigkeit}
 
 Will man eine verlässliche Aussage über die Vorhersagequalität
 treffen, ist es wichtig, streng zwischen einem Trainings-Datensatz und
@@ -813,8 +795,6 @@ sind die Prädiktoren auszuwählen und das Modell zu erstellen. Mit
 diesem Modell werden dann im Test-Datensatz die Vorhersagen bestimmt
 und mit der wahren abhängigen Variable, also dem Konferenzergebnis
 verglichen.
-
-\subsubsection{Logistische Regression}
 
 Wegen der relativ geringen Häufigkeit einer
 nicht-behandlungsfähig-Klassifikation wurde eine Aufteilung zwischen
@@ -886,16 +866,16 @@ klassifiziert, die Konferenz jedoch als nicht therapiefähig
 einschätzt. Bei dieser Art von Fehler würde
 eine Therapie begonnen werden, obwohl die geriatrisch-onkologische
 Konferenz die Gefahr von zum Teil lebensgefährlichen Toxizitäten höher
-bewertet als den Nutzen. Beide Arten von Fehlern klinisch etwas gleich
-zu bewerten, ein Patient sollte nicht unnötig Toxizitäten erleiden,
-jedoch auch keine verträgliche und wirksame Therapie vorenthalten
-werden. Aus diesem Grund erfolgt die Auswahl des Cut-off-Wertes so,
-dass sich beide Fehler etwa die Waage halten, sich also Sensitivität
-und Spezifität annähern. Bei einem Cut-off von 0,22 ergibt sich eine
-Übereinstimmung von 95\%, eine Sensitivität von 85\% und eine
-Spezifität von 96\%.
+bewertet als den Nutzen. Beide Arten von Fehlern sind klinisch gleich
+zu bewerten, einem Patienten sollte nicht unnötig Toxizitäten
+zugemutete werden, jedoch auch keine verträgliche und wirksame
+Therapie vorenthalten bekommen. Aus diesem Grund erfolgt die Auswahl
+des Cut-off-Wertes so, dass sich beide Fehler etwa die Waage halten,
+sich also Sensitivität und Spezifität annähern. Bei einem Cut-off von
+0,22 ergibt sich eine Übereinstimmung von 95\%, eine Sensitivität von
+85\% und eine Spezifität von 96\%.
 
-ROC-Curve? AUC? Bootstrap?
+\subsubsection{Ausmaß der Therapiefähigkeit}
 
 Bei der Entscheidung des Ausmaßes der Therapiefähigkeit sind beide
 Möglichkeiten ähnlich wahrscheinlich. Wegen der zusätzlich höheren
@@ -961,15 +941,3 @@ Cut-off von 0,5 nicht geändert wird.
   \bottomrule
 \end{tabular}
 \end{table}
-
-\subsubsection{CART}
-
-ggf. noch einfügen
-
-\subsubsection{Klassifikation mit Hilfe eines Neuronalen Netzes}
-
-ggf. noch einfügen
-
-\subsubsection{KNN}
-
-ggf. noch einfügen
