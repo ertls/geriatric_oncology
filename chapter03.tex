@@ -23,7 +23,7 @@
 
 Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
 geria\-trisch"=onkolo\-gischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
-und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht war bei
+und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht waren bei
 \percentWeightHeight{}\% der Patienten verfügbar. Wie erwartet folgen
 beide Variablen einer Normalverteilung. Die durchschnittliche Größe
 beträgt \meanHeight{}~cm mit einer Standardabweichung von
@@ -39,26 +39,15 @@ Altersverteilung der Patienten.
 Das mediane Alter betrug \alterMedian{} Jahre, der jüngste Patient war
 \alterMin{}, der älteste \alterMax{} Jahre alt. Insgesamt wurde bei
 \nUnterAltersDef{} Patienten, die jünger waren als 65 Jahre, ein
-Assessment durchgeführt.
+Assessment durchgeführt. In Abschnitt~\ref{sec:patientenkollektiv}
+werden die Gründe für das formal fälschlich durchgeführte Assessment
+diskutiert.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/altersverteilung.pdf}
   \caption{Alter der untersuchten Patienten, Markierung bei 65 Jahren
     (interne Definition eines geriatrisch-onkologischen Patienten)}
   \label{fig:altersverteilung}
-\end{figure}
-Als Bezug zeigt Abbildung~\ref{fig:altersverteilungAllgemein} die
-Altersverteilung aller in der onkologischen Klinik behandelten
-Patienten aus den Jahren 2014 und 2015. \percentGeriatrischOnkologie{}\%
-der Patienten waren 65 Jahre oder älter.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{Grafiken/altersverteilungAllgemein.pdf}
-  \caption{Alter aller Patienten der Klinik für internistische
-    Onkologie der Jahre 2014 und 2015, Markierung bei 65 Jahren
-    (interne Definition eines geriatrisch-onkologischen Patienten)}
-  \label{fig:altersverteilungAllgemein}
 \end{figure}
 
 Die unterschiedlichen Diagnosen der untersuchten Patienten sind in
@@ -71,7 +60,7 @@ Abbildung~\ref{fig:diagnosen} gezeigt.
   \label{fig:diagnosen}
 \end{figure}
 
-\section{Ergebnisse des Umfassenden Geriatrischen Assessments}
+\section{Umfassendes Geriatrisches Assessment}
 
 Eine Zusammenfassung der nachfolgend beschriebenen Ergebnisse ist in
 Tabelle~\ref{tab:cga_summary} und in
@@ -268,18 +257,11 @@ Unterernährung & > 17 & \nMnaMalnourished{} & \mnaMalnourished{}\\
 
 \subsection{Soziale Situation}
 Ein Sozialassessment wurde bei \nSocialStatus{} Patienten
-(\percentSocialStatus{}\%) durchgeführt. Das Assessment lag in Form
-eines beschreibenden Textes vor und ist daher für die weitere
-statistische Auswertung in dieser Form unbrauchbar. In den Konferenzen
-fiel jedoch auf, dass bei Grenzsituationen die Tatsache, dass ein
-Patient allein lebt, durchaus von Bedeutung ist. Man denke zum
-Beispiel an ein neutropenisches Fieber bei Patienten, die zusätzlich
-eine milde kognitive Beenträchtigung haben und daher die vorab
-gemachten Handlungsanweisungen nicht Folge leisten. Wenn in dieser
-Situation der Lebenspartner integriert werden kann, kann das für die
-Durchführung einer Therapie entscheidend sein. Daher wurden nach dem
-freien Text eine Nominale Variable Alleinlebend eingeführt. Nach dem
-Assessment waren \percentSocialAlone{}\% der Patienten alleinlebend.
+(\percentSocialStatus{}\%) durchgeführt. Wie in
+Abschnitt~\ref{sec:sozial} beschrieben wurde aus dem rein
+beschreibenden Text eine kategorielle Variable Alleinlebend erstellt,
+die die Werte wahr oder falsch annehmen kann. Laut Assessment waren
+\percentSocialAlone{}\% der untersuchten Patienten alleinlebend.
 
 \subsection{Anzahl der Defizite im Assessment}
 \label{sec:defizite}
@@ -319,7 +301,7 @@ Anzahl der Defizite & Patienten & Anteil in \%*\\
 \end{tabular}
 \end{table}
 
-\subsection{Korrelationen}
+\subsection{Korrelation}
 
 In Tabelle~\ref{tab:correlation} sind die Korrelationskoeffizienten
 nach Spearman zwischen den einzelnen Assessmenttests mit ihrem
@@ -350,8 +332,7 @@ MNA& - & Tinetti & 0,41 & 0,03\\
 \end{tabular}
 \end{table}
 
-\section{Verschiedene Einschätzungsmöglichkeiten der
-  Behandlungsfähigkeit onkologischer Patienten}
+\section{Einschätzungsmöglichkeiten der Behandlungsfähigkeit}
 
 \subsection{Alter}
 Tabelle~\ref{tab:cga_alter} zeigt die Mediane der erhobenen Parameter des
@@ -384,14 +365,14 @@ durchgeführt (siehe~\ref{subsec:Signifikanztests}).
   DIA-Skala & 3,0 & 2,0 & 2,5 & 0,6\\ 
   Charlson-Index & 1 & 1 & 1 & 0,1\\ 
   MNA & 22,0 & 22,0 & 21,3 & 0,6\\ 
-  Alleinlebend & 24\% & 31\% & 19\% & 0,8\\
+  Alleinlebend & 26\% & 35\% & 21\% & 0,2***\\
   Defizite & 2 & 3 & 4 & <0,001 & AB, AC\\
   \bottomrule
-\multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest}\\
+\multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest, ***$\chi^2$-Test}\\
 \end{tabular}
 \end{table}
 
-\subsection{Einteilung durch Assessment nach Vorschlag von Balducci}
+\subsection{Einteilung nach Vorschlag von Balducci}
 In der vorgeschlagenen Einteilung von Balducci
 \autocite{Balducci2000} (siehe auch Tabelle \ref{tab:balducci}) werden
 der Barthel-Index, der IADL-Wert und der
@@ -420,7 +401,7 @@ Vorschlag von Balducci.
   \toprule
   &\multicolumn{3}{c}{Einteilung durch Balducci}\\
   & A & B & C & & Signifikanz** \\
-  & no go & slow go & go go & p-Wert* &Gruppenvergleich** \\
+  & no go & slow go & go go & p-Wert* &Gruppenvergleich \\
   \midrule
   Patienten & 205 & 111 & 55 &\\ 
   Barthel-Index & 85 & 100  & 100 & <0,001*** & AB, AC\\ 
@@ -433,14 +414,14 @@ Vorschlag von Balducci.
   DIA-Skala & 3 & 2   & 1   & 0,026 & AC\\ 
   Charlson-Index & 2 & 1 & 0 & <0,001*** &AB, AC, BC\\ 
   MNA & 20   & 23   & 24   & <0,001&AB, AC\\ 
-  Alleinlebend & 30\% & 23\% & 31\% & 0,9\\
+  Alleinlebend & 30\% & 23\% & 31\% & 0,3****\\
   Defizite & 4 & 2 & 1 & <0,001 & AB, AC, BC\\
   \bottomrule
 \multicolumn{6}{l}{*Kruskal-Wallis-Test, ** Wilcoxon-Rangsummentest
   mit Gruppe A: no go,}\\
 \multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, *** nicht
-  aussagekräftig, da}\\
-\multicolumn{6}{l}{Kriterium zur Einteilung}\\
+  aussagekräftig, da Kriterium}\\
+\multicolumn{6}{l}{zur Einteilung, ****$\chi^2$-Test}\\
 \end{tabular}
 \end{table}
 
@@ -466,7 +447,7 @@ Einschätzung des Behandlers.
   \toprule
   &\multicolumn{3}{c}{Einschätzung des Behandlers}\\
   & A & B & C & & Signifikanz** \\
-  & no go & slow go & go go & p-Wert* &Gruppenvergleich** \\
+  & no go & slow go & go go & p-Wert* &Gruppenvergleich \\
   \midrule
   Patienten & 44 & 147 & 165&\\ 
   Barthel-Index & 45 & 95 & 100 & <0,001 & AB, AC, BC\\ 
@@ -479,16 +460,17 @@ Einschätzung des Behandlers.
   DIA-Skala & 4 & 3  & 1  & <0,001 & AC, BC\\ 
   Charlson-Index & 2,5& 2,0 & 0 & <0,001 & AB, AC, BC\\ 
   MNA & 16,0  & 20,5  & 24,0   & <0,001 & AB, AC, BC\\ 
-  Alleinlebend & 32\% & 32\% & 24\% & 0,08\\
+  Alleinlebend & 32\% & 32\% & 24\% & 0,2****\\
   Defizite & 5 & 3 & 1 & <0,001 & AB, AC, BC\\
   \bottomrule
 \multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest mit
   Gruppe A: no go,}\\
-\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, ***nicht vorhanden}\\
+\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, ***nicht
+  vorhanden, ****$\chi^2$-Test}\\
 \end{tabular}
 \end{table}
 
-\subsection{Konferenzbeschluss}
+\subsection{Einteilung nach Konferenzbeschluss}
 \nPatients{} Patienten wurden
 von \ersterPatient{} bis \letzterPatient{} in der
 geria\-trisch"=onkolo\-gischen
@@ -523,7 +505,7 @@ geria\-trisch"=onkolo\-gische Konferenz.
   \toprule
   &\multicolumn{3}{c}{Einteilung durch Konferenz}\\
   & A & B & C & & Signifikanz** \\
-  & no go & slow go & go go & p-Wert* &Gruppenvergleich** \\
+  & no go & slow go & go go & p-Wert* &Gruppenvergleich \\
   \midrule
   Patienten & 59  & 150 & 183&\\ 
   Barthel-Index & 50 & 90   & 100 & <0,001& AB, AC, BC\\ 
@@ -536,12 +518,12 @@ geria\-trisch"=onkolo\-gische Konferenz.
   DIA-Skala & 4 & 2   & 2   & 0,002&AC\\ 
   Charlson-Index & 2 & 2 & 1 & <0,001 & AC, BC\\ 
   MNA & 17   & 21   & 24   & <0,001& AB, AC, BC\\ 
-  Alleinlebend & 29\% & 33\% & 22\% & 0,2 \\
+  Alleinlebend & 29\% & 33\% & 22\% & 0,05*** & BC*** \\
   Defizite & 5 & 3 & 1 & <0,001 & AB, AC, BC\\
   \bottomrule
 \multicolumn{6}{l}{*Kruskal-Wallis-Test, **Wilcoxon-Rangsummentest mit
   Gruppe A: no go,}\\
-\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go}\\
+\multicolumn{6}{l}{Gruppe B: slow go, Gruppe C: go go, ***$\chi^2$-Test}\\
 \end{tabular}
 \end{table}
 
@@ -567,12 +549,10 @@ grafisch dar.
 \subsubsection{Einschätzung des Behandlers und Einteilung nach
   Konferenzbeschluss}
 
-Tabelle~\ref{tab:konferenz_personal} zeigt die
-Kontingenztafel der Einschätzung des
-Behandlers und des Konferenzbeschlusses.
-Für \nKonferenzPersonal{} Patienten standen
-beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
-\percentAgreementKP{}\% der Fälle.
+Tabelle~\ref{tab:konferenz_personal} zeigt die Kontingenztafel der
+Einschätzung des Behandlers und des Konferenzbeschlusses. Für
+\nKonferenzPersonal{} Patienten standen beide Beurteilungen zur
+Verfügung.
 
 \begin{table}[htbp]
 \caption{Vergleich der primären Einschätzung des Behandlers und der Einteilung
@@ -591,14 +571,23 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 \end{tabular}
 \end{table}
 
+Ein Blick auf die Tabelle genügt, um eine Unabhängigkeit
+der Einschätzung des Behandlers und des Konferenzbeschlusses
+auszuschließen. Die formale statistische Behandlung
+(Abschnitt~\ref{subsec:Signifikanztests}) erfordert die
+Durchführung eines $\chi^2$-Tests. Dieser ergibt ein $\chi^2$ von 400 und
+damit ein signifikantes Ergebnis (p<0,001). Zur Beurteilung der Güte
+der Übereinstimmung kommt Cohens gewichtetes Kappa ($\kappa = 0,83$) zum
+Einsatz. Anschaulicher ist der Anteil an Übereinstimmung mit
+\percentAgreementKP{}\% der Fälle.
+
 \subsubsection{Einschätzung des Behandlers und Einteilung nach Vorschlag
   von Balducci}
 Tabelle~\ref{tab:personal_balducci} zeigt mit Hilfe einer
 Kontingenztafel Gemeinsamkeiten und Unterschiede der Einschätzung des
 Behandlers und der Einteilung nach dem Vorschlag von Balducci.
 Für \nBalducciPersonal{} Patienten standen
-beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
-\percentAgreementBP{}\% der Fälle.
+beide Beurteilungen zur Verfügung.
 
 \begin{table}[htbp]
 \caption{Vergleich der primären Einschätzung des Behandlers
@@ -617,14 +606,18 @@ beide Beurteilungen zur Verfügung. Es bestand Übereinstimmung in
 \end{tabular}
 \end{table}
 
+Auch hier kann eine Unabhängigkeit der Einschätzung des Behandlers und
+der Einteilung nach dem Vorschlag von Balducci ausgeschlossen
+werden. Das $\chi^2$ beträgt 100 und ist somit ebenfalls signifikant
+(p<0,001). Cohens gewichtetes Kappa beträgt $\kappa = 0,33$.
+Es bestand Übereinstimmung in \percentAgreementBP{}\% der Fälle.
+
 \subsubsection{Einteilung nach Vorschlag von Balducci und nach
   Konferenzbeschluss}
 
 Tabelle~\ref{tab:konferenz_balducci} zeigt die Kontingenztafel der
 Einteilung nach dem Vorschlag von Balducci und dem Konferenzbeschluss.
-Beide Klassifikationen lagen in \nBalducciKonferenz{} Fällen vor. Dabei
-zeigte sich eine Übereinstimmung von \percentAgreementBK{}\% der
-Fälle. 
+Beide Klassifikationen lagen in \nBalducciKonferenz{} Fällen vor.
 
 \begin{table}[htbp]
 \caption{Vergleich der Einteilung nach dem Vorschlag von
@@ -641,7 +634,14 @@ Fälle.
   go go              &   0   &   3     &  47   \\ 
   \bottomrule
 \end{tabular}
-\end{table}
+\end{table} 
+
+Auch hier kann eine Unabhängigkeit der Einschätzung des Behandlers und
+der Einteilung nach dem Vorschlag von Balducci ausgeschlossen
+werden. Das $\chi^2$ beträgt 100 und ist somit ebenfalls signifikant
+(p<0,001). Cohens gewichtetes Kappa beträgt $\kappa = 0,36$.
+Es zeigte sich eine Übereinstimmung von \percentAgreementBK{}\% der
+Fälle. 
 
 \section{Statistisches Modell der Konferenzentscheidung}
 
