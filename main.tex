@@ -40,8 +40,9 @@
 \setlength\epigraphwidth{8cm}
 \setlength\epigraphrule{0pt}
 \usepackage{etoolbox}
-\usepackage[toc]{glossaries}
-\makeglossary
+\usepackage{longtable}
+%\usepackage[toc]{glossaries}
+%\makeglossary
 \makeatletter
 \patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
 \makeatother
@@ -77,10 +78,10 @@
 \maketitle
 
 % Widmung*
-\include{dedication}
+%\include{dedication}
 
 % Danksagung*
-\include{acknowledgement}
+%\include{acknowledgement}
 
 % Zusammenfassung/Abstract
 \include{abstract}
@@ -122,8 +123,8 @@
 \listoftables
 \addcontentsline{toc}{part}{Tabellenverzeichnis}
 \newpage
-\printglossary
-\addcontentsline{toc}{part}{Abkürzungsverzeichnis}
+%\printglossary
+%\addcontentsline{toc}{part}{Abkürzungsverzeichnis}
 
 \cleardoublepage
 \phantomsection
