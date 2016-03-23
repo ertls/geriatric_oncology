@@ -25,23 +25,34 @@ Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
 geria\-trisch"=onkolo\-gischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
 und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht waren bei
 \percentWeightHeight{}\% der Patienten verfügbar. Wie erwartet folgen
-beide Variablen einer Normalverteilung. Die durchschnittliche Größe
-beträgt \meanHeight{}~cm mit einer Standardabweichung von
-\sdHeight{}~cm. Das durchschnittliche Gewicht
-beträgt \meanWeight{}~kg mit einer Standardabweichung von
-\sdWeight{}~kg. Daraus ergibt sich der Body Mass Index nach der Formel
-\ref{eq:bmi}, der durchschnittliche BMI (wie üblich ohne Einheit
-angegeben) beträgt \meanBmi{} mit einer Standardabweichung von
-\sdBmi{}.
+beide Variablen einer Normalverteilung. 
+Tabelle~\ref{tab:patienten} fasst Alter, Größe, Gewicht und den
+berechneten BMI der untersuchten Patienten zusammen.
+
+\begin{table}[htbp]
+\caption{Beschreibung des Patientenkollektivs; minimales, medianes und
+  maximales Alter, Durchschnitt und Standardabweichung von Größe, Gewicht und
+  BMI}
+\label{tab:patienten}
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Geschlecht & Alter in $Jahren$ & Größe in $cm$ & Gewicht in $kg$ & BMI in $kg/m^2$\\ 
+\midrule
+alle & $60 \dots 76 \dots 94$  & \meanHeight{} $\pm$ \sdHeight & \meanWeight{} $\pm$ \sdWeight{} & \meanBmi{} $\pm$ \sdBmi{} \\
+weiblich & $63 \dots 76 \dots 94$  & $164 \pm 6$  & $68 \pm 16$ & $25,3 \pm 5,5$ \\
+männlich & $60 \dots 75 \dots 94$  & $174 \pm 7$  & $78 \pm 15$ & $25,9 \pm 4,6$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Abbildung~\ref{fig:altersverteilung} zeigt ein Histogramm der 
 Altersverteilung der Patienten.
-Das mediane Alter betrug \alterMedian{} Jahre, der jüngste Patient war
-\alterMin{}, der älteste \alterMax{} Jahre alt. Insgesamt wurde bei
-\nUnterAltersDef{} Patienten, die jünger waren als 65 Jahre, ein
-Assessment durchgeführt. In Abschnitt~\ref{sec:patientenkollektiv}
-werden die Gründe für das formal fälschlich durchgeführte Assessment
-diskutiert.
+Insgesamt wurde bei \nUnterAltersDef{} Patienten, die jünger waren als
+65 Jahre, ein Assessment durchgeführt. In
+Abschnitt~\ref{sec:patientenkollektiv} werden die Gründe für das
+formal fälschlich durchgeführte Assessment diskutiert.
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/altersverteilung.pdf}
@@ -125,30 +136,34 @@ Sozial & 379 & 90 &  &  &  \\
 \subsection{Barthel-Index}
 Der Barthel-Index war bei \nBarthel{} Patienten
 (\percentBarthel{}\%) verfügbar. Den Maximalwert von
-\barthelMax{} erreichten \percentBarthelMax{}\% der Patienten. Der Median
-lag bei \medianBarthel{}.
+\barthelMax{}~Punkten erreichten \percentBarthelMax{}\% der
+Patienten. Der Median lag bei \medianBarthel{}~Punkten.
 
 \subsection{IADL-Skala}
-Der IADL-Skala wurde bei \nIadl{} Patienten (\percentIadl{}\%)
-erhoben. Den höchsten Wert von \iadlMax{} erreichten
-\percentIadlMax{}\%. Der Median lag bei \medianIadl{}.
+Die IADL-Skala wurde bei \nIadl{} Patienten (\percentIadl{}\%)
+angewandt. Den höchsten Wert von \iadlMax{}~Punkten erreichten
+\percentIadlMax{}\%. Der Median lag bei \medianIadl{}~Punkten.
 
 \subsection{Tinetti-Test}
 Der Tinetti-Test wurde bei \nTinetti{} Patienten (\percentTinetti{}\%)
-durchgeführt. Den maximalen Wert von \tinettiMax{} erreichten
-\percentTinettiMax{}\% der Patienten. Der Median lag bei \medianTinetti{}. Nach der
-Einschätzung des Tinetti-Tests besteht bei
-\percentTinettiModerateRisk{}\% der untersuchten Patienten ein moderates Sturzrisiko
-($19 \leq Tinetti \leq 24$), bei \percentTinettiHighRisk{}\% ein hohes
-Sturzrisiko ($Tinetti \leq 18$)
+durchgeführt. Den maximalen Wert von \tinettiMax{}~Punkten erreichten
+\percentTinettiMax{}\% der Patienten. Der Median lag bei
+\medianTinetti{}~Punkten. Nach der Einschätzung des Tinetti-Tests
+besteht bei \percentTinettiModerateRisk{}\% der untersuchten Patienten
+ein moderates Sturzrisiko ($19 \leq Tinetti \leq 24$), bei
+\percentTinettiHighRisk{}\% ein hohes Sturzrisiko ($Tinetti \leq 18$).
 
 \subsection{Timed Up And Go}
-Der Timed Up And Go-Test wurde bei \nTug{} Patienten
+Der Timed-Up-And-Go-Test wurde bei \nTug{} Patienten
 (\percentTug{}\%) durgeführt. Minimal wurden \tugMin{}~Sekunden
 erreicht, maximal \tugMax{}~ Sekunden, bei \tugNotPossible{} Patienten
-war der Test nicht möglich. Die mediane Zeit zur Bewältigung des Tests
-bei den Patienten, die teilnehmen konnten, lag bei
-\medianTug{}~Sekunden.
+war die Durchführung des Tests nicht möglich. Die mediane Zeit zur
+Bewältigung des Tests bei den Patienten, die teilnehmen konnten, lag
+bei \medianTug{}~Sekunden. Nach Beurteilung des TUG besteht bei ...
+Patienten eine eingeschränkte Mobilität, die jedoch noch zu keiner
+Einschränkung im Alter führt ($10 \leq TUG \leq 19$). Bei ... Patienten muss
+von einer Beeinträchtigung in den Aktivitäten des täglichen Lebens
+ausgegangen werden ($ TUG \geq 20$).
 
 \subsection{Mini-Mental-Status-Test}
 Der MMST wurde bei \nMmst{} Patienten (\percentMmst{}\%)
@@ -420,26 +435,6 @@ durchgeführt (siehe~\ref{subsec:Signifikanztests}).
 \end{tabular}
 \end{table}
 
-\subsection{Einteilung nach Vorschlag von Balducci}
-In der vorgeschlagenen Einteilung von Balducci
-\autocite{Balducci2000} (siehe auch Tabelle \ref{tab:balducci}) werden
-der Barthel-Index, der IADL-Wert und der
-Charlson-Komorbiditätsindex berücksichtigt. Danach können anhand der
-vorliegenden Daten
-\nBalducci{} Patienten (\percentBalducci{}\%) beurteilt werden.
-Von Balducci werden für die unterteilten Kategorien die Begriffe gebrechlich, gefährdet
-und fit verwendet. Die jeweiligen Definitionen decken sich mit
-den hier verwendeten Kategorien uneingeschränkt behandlungsfähig, eingeschränkt
-behandlungsfähig und nicht behandlungsfähig.
-\percentBalducciNogo{}\% der Patienten sind nach der Einteilung von Balducci 
-nicht therapiefähig, \percentKonferenzSlowgo{}\% eingeschränkt
-therapiefähig und \percentKonferenzGogo{}\% uneingeschränkt
-therapiefähig.
-
-Tabelle~\ref{tab:cga_balducci} zeigt die Medianwerte der erhobenen Parameter des
-Assessments für die verschiedenen Gruppen, nach Einteilung durch den
-Vorschlag von Balducci.
-
 \begin{table}[htbp]
 \caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
   geriatrischen Assessments nach Unterteilung durch Balducci}
@@ -473,19 +468,6 @@ Vorschlag von Balducci.
 \end{tabular}
 \end{table}
 
-\subsection{Einschätzung des Behandlers}
-Eine Einschätzung des behandelnden Onkologen lag bei \nPersonal{}
-Patienten (\percentPersonal{}\% bezogen auf die seit der Einführung
-der Befragung im April 2014 besprochenen Patienten) vor. Danach wurden
-\percentPersonalGogo{}\% der Patienten als uneingeschränkt
-behandlungsfähig eingeschätzt, \percentPersonalSlowgo{}\% als
-eingeschränkt behandlungsfähig und \percentPersonalNogo{}\% als nicht
-behandlungsfähig.
-
-Tabelle~\ref{tab:cga_personal} zeigt die Mediane der erhobenen Parameter des
-Assessments für die verschiedenen Gruppen, nach Einteilung durch die
-Einschätzung des Behandlers.
-
 \begin{table}[htbp]
 \caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
   geriatrischen Assessments nach Einschätzung des Behandlers}
@@ -518,32 +500,6 @@ Einschätzung des Behandlers.
 \end{tabular}
 \end{table}
 
-\subsection{Einteilung nach Konferenzbeschluss}
-\nPatients{} Patienten wurden
-von \ersterPatient{} bis \letzterPatient{} in der
-geria\-trisch"=onkolo\-gischen
-Konferenz besprochen. Bei \nKonferenz{} Patienten
-(\percentKonferenz{}\%) kam ein
-Konferenzbeschluss zustande. \percentKonferenzNogo{}\% der beurteilten
-Patienten wurden als
-nicht therapiefähig eingeschätzt, \percentKonferenzSlowgo{}\% der
-Patienten als eingeschränkt therapiefähig und \percentKonferenzGogo{}\%
-der Patienten als uneingeschränkt therapiefähig. Bei \nKonferenzNa{}
-Patienten kam kein Konferenzbeschluss zustande. Dafür gab es
-verschiedene Gründe. Zum Beispiel waren einige Patienten zum Zeitpunkt
-der Konferenz bereits verstorben. Einzelne Assessments waren so
-unvollständig, dass eine Einschätzung nicht möglich war. Einzelne
-Patienten wurden aufgrund des
-Alters unter 65 Jahre und fehlender spezifischer Probleme als nicht
-geriatrisch klassifiziert. Bei drei Patienten aus den Anfängen der
-Konferenz wurde als Beschluss
-eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
-Behandlungsfähigkeit gegeben.
-
-Tabelle~\ref{tab:cga_konferenz} zeigt die Medianwerte der erhobenen Parameter des
-Assessments für die verschiedenen Gruppen, nach Einteilung durch die
-geria\-trisch"=onkolo\-gische Konferenz.
-
 \begin{table}[htbp]
 \caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
   geriatrischen Assessments nach Unterteilung durch die Konferenz}
@@ -575,8 +531,60 @@ geria\-trisch"=onkolo\-gische Konferenz.
 \end{tabular}
 \end{table}
 
-Abbildung~\ref{fig:beschlussverteilung} zeigt die Altersverteilung der
-Patienten jeder einzelnen Kategorie des Konferenzbeschlusses.
+\subsection{Einteilung nach Vorschlag von Balducci}
+In der von Balducci vorgeschlagenen Einteilung
+\autocite{Balducci2000} werden der Barthel-Index, der IADL-Wert und der
+Charlson-Komorbiditätsindex berücksichtigt (Tabelle
+\ref{tab:balducci}). Danach können anhand der vorliegenden Daten
+\nBalducci{} Patienten (\percentBalducci{}\%) beurteilt werden.
+Von Balducci werden für die unterteilten Kategorien die Begriffe
+gebrechlich (frail), gefährdet (vulnerable) und fit (fit)
+verwendet. Die jeweiligen Definitionen decken sich mit
+den hier verwendeten Kategorien uneingeschränkt behandlungsfähig, eingeschränkt
+behandlungsfähig und nicht behandlungsfähig.
+\percentBalducciNogo{}\% der Patienten sind nach der Einteilung von Balducci 
+nicht therapiefähig, \percentBalducciSlowgo{}\% eingeschränkt
+therapiefähig und \percentBalducciGogo{}\% uneingeschränkt
+therapiefähig.
+
+Tabelle~\ref{tab:cga_balducci} zeigt die Medianwerte der erhobenen Parameter des
+Assessments für die verschiedenen Gruppen, nach Einteilung durch den
+Vorschlag von Balducci.
+
+\subsection{Einteilung nach Einschätzung des Behandlers}
+Eine Einschätzung des behandelnden Onkologen lag bei \nPersonal{}
+Patienten (\percentPersonal{}\% bezogen auf die seit der Einführung
+der Befragung im April 2014 besprochenen Patienten) vor. Danach wurden
+\percentPersonalGogo{}\% der Patienten als uneingeschränkt
+behandlungsfähig eingeschätzt, \percentPersonalSlowgo{}\% als
+eingeschränkt behandlungsfähig und \percentPersonalNogo{}\% als nicht
+behandlungsfähig.
+
+Tabelle~\ref{tab:cga_personal} zeigt die Mediane der erhobenen Parameter des
+Assessments für die verschiedenen Gruppen, nach Einteilung durch die
+Einschätzung des Behandlers.
+
+\subsection{Einteilung nach Konferenzbeschluss}
+\nPatients{} Patienten wurden
+von \ersterPatient{} bis \letzterPatient{} in der
+geria\-trisch"=onkolo\-gischen
+Konferenz besprochen. Bei \nKonferenz{} Patienten
+(\percentKonferenz{}\%) kam ein
+Konferenzbeschluss zustande. \percentKonferenzNogo{}\% der beurteilten
+Patienten wurden als
+nicht therapiefähig eingeschätzt, \percentKonferenzSlowgo{}\% der
+Patienten als eingeschränkt therapiefähig und \percentKonferenzGogo{}\%
+der Patienten als uneingeschränkt therapiefähig. Bei \nKonferenzNa{}
+Patienten kam kein Konferenzbeschluss zustande. Dafür gab es
+verschiedene Gründe. Zum Beispiel waren einige Patienten zum Zeitpunkt
+der Konferenz bereits verstorben. Einzelne Assessments waren so
+unvollständig, dass eine Einschätzung nicht möglich war. Einzelne
+Patienten wurden aufgrund des
+Alters unter 65 Jahre und fehlender spezifischer Probleme als nicht
+geriatrisch klassifiziert. Bei drei Patienten aus den Anfängen der
+Konferenz wurde als Beschluss
+eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
+Behandlungsfähigkeit gegeben.
 
 \begin{figure}[htbp]
   \centering
@@ -587,6 +595,13 @@ Patienten jeder einzelnen Kategorie des Konferenzbeschlusses.
     kein Konferenzbeschluss vorliegt}
   \label{fig:beschlussverteilung}
 \end{figure}
+
+Tabelle~\ref{tab:cga_konferenz} zeigt die Medianwerte der erhobenen Parameter des
+Assessments für die verschiedenen Gruppen, nach Einteilung durch die
+geria\-trisch"=onkolo\-gische Konferenz.
+
+Abbildung~\ref{fig:beschlussverteilung} zeigt die Altersverteilung der
+Patienten jeder einzelnen Kategorie des Konferenzbeschlusses.
 
 Abbildung~\ref{fig:cga_konferenz} stellt die Ergebnisse der einzelnen
 Assessmenttests für die Aufteilung nach Konferenzbeschluss grafisch dar.
@@ -614,6 +629,16 @@ Einschätzung des Behandlers und des Konferenzbeschlusses. Für
 \nKonferenzPersonal{} Patienten standen beide Beurteilungen zur
 Verfügung.
 
+Ein Blick auf die Tabelle genügt, um eine Unabhängigkeit
+der Einschätzung des Behandlers und des Konferenzbeschlusses
+auszuschließen. Die formale statistische Behandlung
+(Abschnitt~\ref{subsec:Signifikanztests}) erfordert die
+Durchführung eines $\chi^2$-Tests. Dieser ergibt ein $\chi^2$ von 400 und
+damit ein signifikantes Ergebnis (p<0,001). Zur Beurteilung der Güte
+der Übereinstimmung kommt Cohens gewichtetes Kappa ($\kappa = 0,83$) zum
+Einsatz. Anschaulicher ist der Anteil an Übereinstimmung mit
+\percentAgreementKP{}\% der Fälle.
+
 \begin{table}[htbp]
 \caption{Vergleich der primären Einschätzung des Behandlers und der Einteilung
   nach Konferenzbeschluss}
@@ -630,16 +655,6 @@ Verfügung.
   \bottomrule
 \end{tabular}
 \end{table}
-
-Ein Blick auf die Tabelle genügt, um eine Unabhängigkeit
-der Einschätzung des Behandlers und des Konferenzbeschlusses
-auszuschließen. Die formale statistische Behandlung
-(Abschnitt~\ref{subsec:Signifikanztests}) erfordert die
-Durchführung eines $\chi^2$-Tests. Dieser ergibt ein $\chi^2$ von 400 und
-damit ein signifikantes Ergebnis (p<0,001). Zur Beurteilung der Güte
-der Übereinstimmung kommt Cohens gewichtetes Kappa ($\kappa = 0,83$) zum
-Einsatz. Anschaulicher ist der Anteil an Übereinstimmung mit
-\percentAgreementKP{}\% der Fälle.
 
 Abbildung~\ref{fig:konferenz_personal} stellt die einzelnen
 Abweichungen grafisch dar, jeder Punkt entspricht einem Patienten.
@@ -1014,7 +1029,21 @@ Cut-off von 0,5 nicht geändert wird.
 \end{tabular}
 \end{table}
 
+\newpage{}
+
 \subsubsection{ROC-Charackteristik des Modells}
+
+Die AUC der ROC-Kurven eines vorhersagenden Modells sind ein vom
+gewählten Cut-off-Wert unabhängiges Maß für die Vorhersagequalität der
+erstellten Modelle.
+
+Die linke Seite der Abbildung~\ref{fig:roc_both} zeigt die ROC-Kurve
+\autocite{Robin2011} der Vorhersagequalität des Modells der
+Behandlungsfähigkeit. Der AUC-Wert beträgt 0,97 (95\%
+Konfidenzintervall: 0,94-0,98). Die rechte Seite der
+Grafik~\ref{fig:roc_both} zeigt die ROC-Kurve der Vorhersagequalität
+des Modells des Ausmaßes der Behandlungsfähigkeit. Der AUC-Wert
+beträgt 0,88 (95\% Konfidenzintervall: 0,84-0,92).
 
 \begin{figure}[htbp]
   \centering
@@ -1024,15 +1053,3 @@ Cut-off von 0,5 nicht geändert wird.
     (rechts, AUC 0,82)}
   \label{fig:roc_both}
 \end{figure}
-
-Die AUC der ROC-Kurven eines vorhersagenden Modells sind ein vom
-gewählten Cut-off-Wert unabhängiges Maß für die Vorhersagequalität der
-erstellten Modelle.
-
-Die linke Seite der Grafik~\ref{fig:roc_both} zeigt die ROC-Kurve
-\autocite{Robin2011} der Vorhersagequalität des Modells der
-Behandlungsfähigkeit. Der AUC-Wert beträgt 0,97 (95\%
-Konfidenzintervall: 0,94-0,98). Die rechte Seite der
-Grafik~\ref{fig:roc_both} zeigt die ROC-Kurve der Vorhersagequalität
-des Modells des Ausmaßes der Behandlungsfähigkeit. Der AUC-Wert
-beträgt 0,88 (95\% Konfidenzintervall: 0,84-0,92).
