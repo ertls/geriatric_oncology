@@ -53,14 +53,14 @@ Assessment etabliert:
 \begin{itemize}
 \item Funktioneller Status
   \begin{itemize}
-  \item Aktivitäten des täglichen Lebens, Barthel Index, ADL
-  \item Instrumentelle Aktivitäten des täglichen Lebens, IADL
-  \item Mobilität, Timed up an go Test, TUG
+  \item \ac{ADL}
+  \item \ac{IADL}
+  \item Mobilität, \ac{TUG}
   \item Sturzrisiko, Tinetti-Test
   \end{itemize}
 \item Kognitive Funktion
   \begin{itemize}
-  \item Mini Mental Status Test, MMST
+  \item \ac{MMST}
   \item Demenz-Detektion, DemTect, zusätzlich seit Februar 2015
   \end{itemize}
 \item Komorbidität
@@ -69,8 +69,8 @@ Assessment etabliert:
   \end{itemize}
 \item Psychologischer Status
   \begin{itemize}
-  \item Geriatrische Depressions Skala, GDS, bis August 2014
-  \item Depression im Alter-Skala, DIA, seit September 2014
+  \item \ac{GDS}, bis August 2014
+  \item \ac{DIA}, seit September 2014
   \end{itemize}
 \item Soziale Unterstützung
   \begin{itemize}
@@ -78,7 +78,7 @@ Assessment etabliert:
   \end{itemize}
 \item Ernährungsstatus
   \begin{itemize}
-  \item Mini Nutritional Assessment, MNA, inklusive Größe, Gewicht, BMI
+  \item \ac{MNA}, inklusive Größe, Gewicht, \ac{BMI}
   \end{itemize}
 \end{itemize}
 
@@ -315,7 +315,7 @@ besteht ein Risiko für Unterernährung.
 
 \section{Die geriatrisch-onkologische Konferenz}
 
-In Abschnitt~\ref{sec:konferenz} wurde die Zusammensetzung und
+In Abschnitt~\ref{subsec:konferenz} wurde die Zusammensetzung und
 Arbeitsweise der geriatrisch-onkologischen Konferenz erläutert.
 
 Die geriatrisch-onkologische Konferenz der Kliniken Essen-Mitte findet
@@ -516,7 +516,13 @@ wurde anhand des Vornamens durch das Paket gender, Version 0.5.1
 \autocite{Mullen2015} ermittelt und von Hand überprüft und wenn nötig
 ergänzt.
 Die Grafiken wurden mit der Grafikbibliothek ggplot2, Version 1.0.1
-\autocite{Wickham2009} erstellt. Die Berechnung der ROC-Kurven der
+\autocite{Wickham2009} erstellt. Die beschreibende Statistik wurden
+neben der in R enthaltenen Funktionen mit
+Hilfe der Bibiliotheken Hmisc, Version 3.17-0 \autocite{Hmisc2015} und
+dplyr, Version 0.4.3 \autocite{dplyr2015} erstellt. Cohens gewichtetes
+Kappa ($\kappa$) wurde mit der Funktion wkappa der Bibliothek psych, Version
+1.5.8 \autocite{psych2015} berechnet.
+Die Berechnung der ROC-Kurven der
 erstellten statistischen Vorhersage-Modelle wurde mit der Bibliothek
 pROC, Version 1.8 \autocite{Robin2011} vorgenommen.
 Um mehrere Grafiken auf einer Seite zu setzen wurde ein
