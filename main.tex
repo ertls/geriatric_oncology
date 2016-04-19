@@ -21,9 +21,10 @@
 % Dokumentenklasse
 \RequirePackage[patch]{kvoptions} 
 \documentclass{DissOnlineLatex}
- % in DissOnlineLatex geometry
-                                % Einstellungen geändert, da
-                                % Optionsübergabe nicht klappt
+% in DissOnlineLatex geometry
+% Einstellungen geändert, da
+% Optionsübergabe nicht klappt
+
 \usepackage{setspace}
 \usepackage[babel,german=guillemets]{csquotes}
 \usepackage[citestyle=authoryear,bibstyle=nejm,sorting=nyt,mincitenames=1,maxcitenames=2,maxbibnames=99]{biblatex}
@@ -40,7 +41,6 @@
 \setlength\epigraphwidth{8cm}
 \setlength\epigraphrule{0pt}
 \usepackage{etoolbox}
-\usepackage{longtable}
 \usepackage{acronym}
 %\usepackage[toc]{glossaries}
 %\makeglossary
@@ -88,10 +88,10 @@
 \include{abstract}
   
 % Inhalts-, Abbildungs*-, Tabellen*-Verzeichnis
-\setcounter{page}{1}
 \tableofcontents
 
 \newpage
+\setcounter{page}{1}
 
 % Seitennummerierung im Hauptteil
 \pagenumbering{arabic}
@@ -101,6 +101,7 @@
 \onehalfspacing % eigener Befehl aus dem empfohlenen Paket setspace,
                 % Deckblätter auch mit anderthalbfachem Zeilenabstand?
                 % Dann Befehl an den Anfang stellen
+
 \include{ergebnisse} % eigene ergebnisse.tex Datei mit den
                      % numerischen Ergebnissen, benötigt für
                      % chapter03.tex
@@ -114,7 +115,6 @@
 % Anhang*
 \appendix
 \include{appendixA}
-%\include{appendixB}
 % usw
 
 \newpage
