@@ -23,7 +23,7 @@
 
 Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
 geria\-trisch"=onkolo\-gischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
-und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht waren bei
+und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht sind bei
 \percentWeightHeight{}\% der Patienten verfügbar. Wie erwartet folgen
 beide Variablen einer Normalverteilung. 
 Tabelle~\ref{tab:patienten} fasst Alter, Größe, Gewicht und den
@@ -244,11 +244,11 @@ Der \ac{GDS} wurde bei \nGds{} Patienten (\percentGds{}\%, bezogen auf die
 bis August 2014 untersuchten Patienten) bestimmt. Der
 maximal bestimmte Wert betrug \gdsMax{}, der mininmal bestimmte
 \gdsMin{}. Der Median lag bei 3. Nach Einteilung des \ac{GDS} ist ein
-Wert bis 5 normal einzuschätzen, zwichen 6 und 9 besteht der Verdacht
+Wert bis 5 als normal einzuschätzen, zwichen 6 und 9 besteht der Verdacht
 auf eine Depression und eine weitere Diagnostik sollte angestrebt
 werden, ab einem Wert von 10 besteht fast immer auch eine
 Depression. Nach dieser Einteilung wurden \percentGdsNormal{}\% der
-Patienten als normal eingeschätzt, bei \percentGdsSuspect{}\% bestand
+Patienten ein unauffälliges Testergebnis, bei \percentGdsSuspect{}\% bestand
 der Verdacht auf eine Depression, und \percentGdsDepression{}\% hatten
 laut \ac{GDS}-Einteilung fast sicher eine Depression.
 
@@ -257,9 +257,9 @@ Die \ac{DIA}-Skala kam bei \nDia{} Patienten (\percentDia{}\%, bezogen auf die
 ab September 2014 untersuchten Patienten) zur Anwendung. Maximal wurde
 ein Wert von 10 bestimmt, minimal 0, der Median lag bei 2. In der
 Beurteilung des Tests ist ein Wert bis 2 normal. Bei einem Wert von 3
-besteht Depressionsverdacht und ab einem Wert von 4 ist ein Depression
+besteht Depressionsverdacht und ab einem Wert von 4 ist eine Depression
 von Krankheitswert wahrscheinlich. Nach dieser Einteilung hatten
-\percentDiaNormal{}\% der Patienten einen 
+\percentDiaNormal{}\% der Patienten ein 
 unauffälliges Testergebnis. Bei \percentDiaSuspect{}\% besteht
 Depressionsverdacht und bei \percentDiaDepression{}\% der Patienten
 ist eine Depression von Krankheitswert laut der \ac{DIA}-Skala
@@ -268,7 +268,7 @@ wahrscheinlich.
 \subsection{Komorbidität}
 Der Charlson-Komorbiditätsindex stand bei \nCharlson{} Patienten
 (\percentCharlson{}\%) zur Verfügung. \percentCharlsonZero{}\% der
-Patienten wiesen keine relevante Komorbidität auf, hatten also ein
+Patienten wiesen keine relevante Komorbidität auf, hatten also einen
 Charlson-Index vom Minimum, 0 Punkte. Das Maximum lag bei 9 Punkten,
 der Median bei 1 Punkt. Drei oder mehr relevante Komorbitäten hatten
 \percentCharlsonThreeOrMore{}\% der Patienten. Detailliert zeigt
@@ -433,7 +433,7 @@ für die folgenden Darstellung der Ergebnisse des Assessments in
 Abhängigkeit von der Einteilung durch die verschiedenen
 Einschätzungsmöglichkeiten (Einteilung nach Balducci, Einteilung durch
 persönliche Einschätzung des Behandlers und Einteilung durch
-Konferenzbeschluss), auch eine Unterteilung durch die verschiedenen
+Konferenzbeschluss), auch eine Unterteilung in verschiedene
 Altersgruppen mit aufgenommen. Dabei wurde die Altersklasse der 65 bis
 74 jährigen als uneingeschränkt therapiefähig, der 75 bis 84 jährigen
 als eingeschränkt therapiefähig und der ab 85 jährigen als nicht
@@ -465,6 +465,7 @@ Alter*                   & 9  & 50 & 41 & 97 \\
 \end{table}
 
 \subsection{Einteilung allein nach Alter}
+
 Tabelle~\ref{tab:cga_alter} zeigt die Mediane der erhobenen Parameter des
 Assessments für die verschiedenen Altersgruppen. Zur Signifikanztestung der
 beobachteten Unterschiede kam der
@@ -500,7 +501,7 @@ sind altersunabhängig.
   MMS-Test & 29 & 28 & 27 & 0,002 & AB, AC\\ 
   DemTect & 14,0 & 13,0 & 8,5 & <0,001 & AC, BC\\ 
   GDS & 2 & 2 & 6 & 0,08 \\ 
-  DIA-Skala & 20 & 2 & 2 & 0,6\\ 
+  DIA-Skala & 2 & 2 & 2 & 0,6\\ 
   Charlson-Index & 1 & 1 & 1 & 0,1\\ 
   MNA & 22 & 22 & 22 & 0,6\\ 
   Alleinlebend & 24\% & 35\% & 24\% & 0,2***\\
@@ -945,11 +946,11 @@ der Patienten in \emph{eingeschränkt therapiefähig} und
 Tabelle~\ref{tab:logistic2} fasst die dazugehörigen
 Regressionskoeffizienten zusammen, geordnet nach ihrem Betrag, also dem Ausmaß
 des Einflusses der zugehörigen Prädiktoren. Auch diese Parameter wurden von
-Hand ausgewählt, mögliche Kombinationen inklusiver ihrere Polynome
+Hand ausgewählt, mögliche Kombinationen inklusive ihrerer Polynome
 höherer Ordnungen und Interaktionen fanden Beachtung. Als endgültiges
-Modell wurde das festgelegt, in dem alle Parameter signifikanten
-Einfluss hatten und gleichzeitig die beste Regression gemessen an
-Hand des \ac{AIC} resultierte. 
+Modell wurde das festgelegt, in dem alle verwendeten Parameter
+signifikanten Einfluss hatten und gleichzeitig die beste Regression
+gemessen durch das \ac{AIC} resultierte.
 
 \begin{table}[htbp]
 \caption{Logistische Regression des Ausmaßes der Therapiefähigkeit}
@@ -979,11 +980,11 @@ signifikante Einfluss.
 
 Wie bereits beschrieben wurden die Prädiktoren mit Hilfe des
 arithmetischen Mittels und der Stichprobenvarianz normiert. Eine
-zusätzliche Transformation wird durch die Modellierung des Logits und
-nicht, direkt der Wahrscheinlichkeit in eine der Klassen eingeteilt zu
+zusätzliche Transformation wird durch die Abbildung auf den Logit der
+Wahrscheinlichkeit, in eine der Klassen eingeteilt zu
 werden, vorgenommen. Dadurch müssen die Koeffizienten bezüglich beider
 Transformationen umgerechnet werden, um eine Aussage über deren
-konkrete Bedeutung zu tätigen. Inklusive Beispielrechnungen wird dies
+konkrete Bedeutung zu tätigen. Anhand von Beispielrechnungen wird dies
 in Abschnitt\ref{subsec:model_expl} beschrieben.
 
 \subsection{Vorhersagendes Modell}
@@ -1036,8 +1037,12 @@ $\beta_3$ (IADL) & -1,04 & 0,37 & 0,004\\
 
 Mit Hilfe dieses Modells wurde anhand des Test-Datensatzes eine
 Vorhersageklassifikation getroffen und mit dem Konferenzbeschluss
-verglichen. Bei einem Cut-off von 0,5 ergab sich eine Übereinstimmung von
-94\%. Tabelle~\ref{tab:prediction_no} zeigt die vollständige
+verglichen. Bei einem Cut-off von 0,5, also einer entsprechenden
+Einteilung über beziehungsweise unter einer Wahrscheinlichkeit von
+50\% ergab sich eine Übereinstimmung von durch das Modell
+vorhergesagter Einteilung und tatsächlicher Einteilung durch die
+Konferenz von 94\%.
+Tabelle~\ref{tab:prediction_no5} zeigt die vollständige
 Kontingenztafel. Daraus ergibt sich eine Sensititivität des Modells,
 \emph{nicht therapiefähig} vorherzusagen (positives Outcome) von 54\% und
 eine Spezifität von 99,6\%. Die Festlegung des Cut-off Wertes ist an
@@ -1046,8 +1051,8 @@ eines Fehlers 1. Art ($\alpha$-Fehler) oder 2. Art ($\beta$-Fehler) ergeben.
 
 \begin{table}[htbp]
 \caption{Vergleich der Vorhersage der logistischen Regression
-  und des Konferenzbeschlusses}
-\label{tab:prediction_no}
+  und des Konferenzbeschlusses, cut-off 0,5}
+\label{tab:prediction_no5}
 \centering
 \begin{tabular}{crrr}
   \toprule
@@ -1072,13 +1077,30 @@ eine Therapie begonnen werden, obwohl die geriatrisch-onkologische
 Konferenz die Gefahr von zum Teil lebensgefährlichen Toxizitäten höher
 bewertet als den Nutzen. Beide Arten von Fehlern sind klinisch gleich
 zu bewerten, einem Patienten sollte nicht unnötig Toxizität
-zugemutete werden, jedoch auch keine potentiell verträgliche und
-wirksame Therapie vorenthalten bekommen. Aus diesem Grund erfolgt die
-Auswahl des Cut-off-Wertes so, dass sich beide Fehler etwa die Waage
-halten, sich also Sensitivität und Spezifität annähern. Bei einem
-Cut-off von 0,22 ergibt sich eine Übereinstimmung von Vorhersage und
-tatsächlicher Konferenzentscheidung von 95\%, eine Sensitivität von
-85\% und eine Spezifität von 96\%.
+zugemutet, jedoch auch keine potentiell verträgliche und
+wirksame Therapie vorenthalten werden. Aus diesem Grund erfolgt die
+Auswahl des prinzipiell frei wählbaren Cut-off-Wertes so, dass sich
+beide Fehler etwa die Waage halten, sich also Sensitivität und
+Spezifität annähern. Bei einem Cut-off von 0,22 ergibt sich eine
+Übereinstimmung von Vorhersage und tatsächlicher Konferenzentscheidung
+von 95\%, eine Sensitivität von 0,85 und eine Spezifität von 0,96
+(Tabelle~\ref{tab:prediction_no2}).
+
+\begin{table}[htbp]
+\caption{Vergleich der Vorhersage der logistischen Regression
+  und des Konferenzbeschlusses, cut-off 0,22}
+\label{tab:prediction_no2}
+\centering
+\begin{tabular}{crrr}
+  \toprule
+  n=120&\multicolumn{2}{c}{Modellvorhersage}\\
+  Konferenzbeschluss&no go&go\\ 
+  \midrule
+  no go &  11 &   2 \\ 
+  go    &   4 & 103 \\  
+  \bottomrule
+\end{tabular}
+\end{table}
 
 \subsubsection{Ausmaß der Therapiefähigkeit}
 
@@ -1087,9 +1109,9 @@ sind beide Möglichkeiten ähnlich wahrscheinlich. Wegen der zusätzlich
 höheren Zahl der Prädiktoren wurde bei diesem Modell eine Aufteilung
 zwischen Trainings- und Test-Set von drei Viertel, ein Viertel
 gewählt. Erneut wurden an mehreren zufällig erstellten Trainings-Sets
-die Prädiktoren bestimmt. Ähnlich Wie beim erklärenden Modell hatten der
+die Prädiktoren bestimmt. Ähnlich wie beim erklärenden Modell hatten der
 MMST-Wert, der Tinetti-Wert, das Alter, der MNA-Wert und der Charlson-Wert den
-höchsten Einfluss. Das Merkmal Alleinlebend hatte nicht dauerhaft in
+höchsten Einfluss. Das Merkmal \emph{alleinlebend} hatte nicht dauerhaft in
 den Trainings-Sets Signifikanz und wurde daher weggelassen.
 Das ermittelte Modell wird durch Gleichung~\ref{eq:logistic4}
 beschrieben, die entpsprechenden Koeffizienten des Modells eines
@@ -1146,7 +1168,7 @@ Cut-off von 0,5 nicht zusätlich geändert wird.
 \end{tabular}
 \end{table}
 
-\subsubsection{ROC-Charackteristik des Modells}
+\subsubsection{ROC-Charakteristik des Modells}
 
 Die \ac{AUC} der \acs{ROC}-Kurven eines vorhersagenden Modells sind
 ein vom gewählten Cut-off-Wert unabhängiges Maß für die

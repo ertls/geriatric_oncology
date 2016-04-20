@@ -13,41 +13,33 @@
 % und der
 % DNB - Deutsche Nationalbibliothek
 
-\chapter{Anhang}
+\chapter{Quelldateien}
 
-\section{Abkürzungsverzeichnis}
+Wie in Abschnitt~\ref{sec:reproducability} beschrieben ist jede
+wissenschaftliche Forschung ohne die Möglichkeit der
+Reproduzierbarkeit sowohl der vorgestellten Ergebnisse als auch der
+gefolgerten Ergebnisse vergebens. Aus diesem Grund wurde in dieser
+Arbeit die bestmögliche Dokumentation der Herkunft der Daten, der
+durchgeführten Berechnungen und der daraus abgeleiteten Ergebnisse
+angestrebt. Alle von mir erstellten und verwendeten Quelldateien sind
+im Internet unter der Adresse
+\url{https://github.com/ertls/geriatric_oncology} einsehbar und mit
+entsprechender Kennzeichnung der Herkunft weiter verwendbar. Enhalten
+sind die R-Skripte, die zur Aufbereitung der Daten und zur
+anschließenden statistischen Analyse verwendet wurden und die
+Latex-Dateien, aus denen das vorliegende Dokument erstellt wurde. Aus
+datenschutzrechtlichen Bedenken habe ich mich trotz Anonymisierung der
+Patientendaten gegen ein Veröffentlichung des verwendeten Datensatzes
+entschieden. Sollte ein begründetes, wissenschaftliches Interesse an
+der Einsicht und gegebenefalls Weiterverwendung der Daten bestehen, so
+bitte ich um Kontaktaufnahme mit mir.
 
-\begin{acronym}
-  \acro{ADL}{Aktivitäten des täglichen Lebens}
-  \acro{AIC}{Akaike Information Criterion}
-  \acro{AUC}{Area Under the Curve}
-  \acro{BMI}{Body Mass Index}
-  \acro{CGA}{Comprehensive geriatric assessment}
-  \acro{CLL}{Chronisch Lymphatische Leukämie}
-  \acro{cm}{Zentimeter}
-  \acro{DemTect}{Demenz-Detektion}
-  \acro{DIA}{Depression im Alter}
-  \acro{ECOG}{Eastern Cooperative Oncology Group}
-  \acro{GDS}{Geriatric Depression Score}
-  \acro{IADL}{Instrumentelle Aktivitäten des täglichen Lebens}
-  \acro{IQR}{Interquartile Range}
-  \acro{kg}{Kilogramm}
-  \acro{m}{Meter}
-  \acro{MMST}{Mini Mental Status Test}
-  \acro{MNA}{Mini Nutritional Assessment}
-  \acro{NA}{Not available}
-  \acro{WHO}{World Health Organisation}
-  \acro{PS}{Performance Status}
-  \acro{ROC}{Receiver Operating Characteristics}
-  \acro{s}{Sekunden}
-  \acro{TUG}{Timed up and go}
-\end{acronym}
+\chapter{Verwendete Dokumente}
 
-\section{Quelldateien}
-
-\url{https://github.com/ertls/geriatric_oncology}
-
-\section{Quelldokumente}
+Im folgenden sind die bei der Durchführung des umfassenden
+geriatrischen Assessments verwendeten Dokumente der einzelnen Tests
+abgebildet. Zusätzlich wurden die verwendete Einverständniserklärung
+und das Votum der Ethikkommission eingefügt.
 
 \begin{figure}[htbp]
   \centering
@@ -132,3 +124,79 @@
   \caption{MNA}
   \label{fig:mna}
 \end{figure}
+
+\chapter{Abkürzungsverzeichnis}
+
+\begin{acronym}
+  \acro{ADL}{Aktivitäten des täglichen Lebens}
+  \acro{AIC}{Akaike Information Criterion}
+  \acro{AUC}{Area Under the Curve}
+  \acro{BMI}{Body Mass Index}
+  \acro{CGA}{Comprehensive geriatric assessment}
+  \acro{CLL}{Chronisch Lymphatische Leukämie}
+  \acro{cm}{Zentimeter}
+  \acro{CTCAE}{Common Terminology for Adverse Events}
+  \acro{DemTect}{Demenz-Detektion}
+  \acro{DIA}{Depression im Alter}
+  \acro{ECOG}{Eastern Cooperative Oncology Group}
+  \acro{GDS}{Geriatric Depression Score}
+  \acro{IADL}{Instrumentelle Aktivitäten des täglichen Lebens}
+  \acro{IQR}{Interquartile Range}
+  \acro{kg}{Kilogramm}
+  \acro{m}{Meter}
+  \acro{MMST}{Mini Mental Status Test}
+  \acro{MNA}{Mini Nutritional Assessment}
+  \acro{NA}{Not available}
+  \acro{WHO}{World Health Organisation}
+  \acro{PS}{Performance Status}
+  \acro{ROC}{Receiver Operating Characteristics}
+  \acro{s}{Sekunden}
+  \acro{TUG}{Timed up and go}
+\end{acronym}
+
+%\newpage
+%\addcontentsline{toc}{chapter}{D Abbildungsverzeichnis}
+\chapter{Abbildungsverzeichnis}
+
+\renewcommand\listfigurename{}
+\begingroup
+\let\clearpage\relax
+\listoffigures
+\endgroup
+
+%\newpage
+%\addcontentsline{toc}{chapter}{E Tabellenverzeichnis}
+\chapter{Tabellenverzeichnis}
+
+\renewcommand\listtablename{}
+\begingroup
+\let\clearpage\relax
+\listoftables
+\endgroup
+
+%\newpage
+%\printglossary
+%\addcontentsline{toc}{part}{Abkürzungsverzeichnis}
+
+%\cleardoublepage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{F Literaturverzeichnis}
+
+\chapter{Literaturverzeichnis}
+
+% Literaturverzeichnis
+\defbibenvironment{bibliography}
+{\enumerate{}
+{\setlength{\leftmargin}{\bibhang}%
+\setlength{\itemindent}{-\leftmargin}%
+\setlength{\itemsep}{\bibitemsep}%
+\setlength{\parsep}{\bibparsep}}}
+{\endenumerate}
+{\item}
+
+\renewcommand\listtablename{}
+\begingroup
+\let\clearpage\relax
+\renewcommand{\bibname}{}
+\printbibliography
+\endgroup
