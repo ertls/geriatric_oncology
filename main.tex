@@ -90,13 +90,6 @@
 % Inhalts-, Abbildungs*-, Tabellen*-Verzeichnis
 \tableofcontents
 
-\newpage
-\setcounter{page}{1}
-
-% Seitennummerierung im Hauptteil
-\pagenumbering{arabic}
-\pagestyle{myheadings} 
-
 % Kapitel
 \onehalfspacing % eigener Befehl aus dem empfohlenen Paket setspace,
                 % Deckblätter auch mit anderthalbfachem Zeilenabstand?
@@ -105,6 +98,15 @@
 \include{ergebnisse} % eigene ergebnisse.tex Datei mit den
                      % numerischen Ergebnissen, benötigt für
                      % chapter03.tex
+
+\newdoublepage
+
+% Seitennummerierung im Hauptteil
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\pagestyle{myheadings} 
+
 \include{chapter01}
 \include{chapter02}
 \include{chapter03}
