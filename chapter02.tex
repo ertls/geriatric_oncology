@@ -843,6 +843,30 @@ also berücksichtigt. Dabei entspricht ein niedrigerer Wert einem
 besseren Modell.
 
 \subsection{Das statistische Modell als diagnostischer Test}
-Spezifität
-Sensitivität
-ROC
+
+Nach der Erstellung eines statistischen Modells kann die Vorhersage
+der abhängigen Variable im Vergleich mit der tatsächlichen Variablen dieses
+Modells wie ein statistischer Test analysiert werden. Dazu gehören bei
+binären Tests die Kennzahlen Spezifität und Sensitivität, die
+jeweils vom gewählten Cut-off Wert abhängen.
+
+Die Sensitivität ist definiert als die richtig positiv Rate, also die
+Zahl der Fälle, die tatsächlich das vorhergesagte Merkmal tragen. Die
+Spezifität ist definiert als die richtig negativ Rate, also die Zahl
+der Fälle, in denen korrekt das Fehlen des Merkmals vorhergesagt
+wird. Eine möglichst hohe Sensitivität ermöglicht also das Vermeiden
+von falsch negativen Tests, also Patienten, die das Merkmal tragen,
+aber vom Test nicht erkannt werden. Eine möglichst hohe Spezifität
+hingegen ermöglicht die Vermeidung von falsch positiven Test, also
+Patienten die das Merkmal nicht tragen, vom Test jedoch als solche
+identifiziert werden.
+
+Die Auftragung der Sensitivität gegen die Spezifität in Abhängigkeit
+vom jeweiligen Cut-off Wert ergibt die sogenannte \acs{ROC}-Kurve,
+\acl{ROC}. Die \ac{AUC} dieser Kurve ist ein Maß für die Güte des
+diagnostischen Tests, wobei 1 eine vollkommene Vorhersagequalität
+anzeigt und 0,5 eine rein zufällige.
+
+Direkte Anschaulichkeit besitzt das Maß der Übereinstimmung, welches
+die relative Zahl der richtig vorhergesagten Fälle in Bezug auf die
+Zahl der Gesamtfälle ausdrückt.
