@@ -21,15 +21,23 @@
 
 \section{Beschreibung des Patientenkollektivs}
 
-Von \ersterPatient{} bis \letzterPatient{} wurden \nPatients{} Patienten in der
-geria\-trisch"=onkolo\-gischen Konferenz besprochen, \nMale{} Männer (\percentMale{}\%)
-und \nFemale{} Frauen (\percentFemale{}\%). Größe und Gewicht sind bei
-\percentWeightHeight{}\% der Patienten verfügbar. Wie erwartet folgen
-beide Variablen einer Normalverteilung. 
+Seit 2012 wird an den Kliniken Essen-Mitte bei allen onkologischen
+Patienten ab einem Alter von 65 Jahren vor der Festlegung des
+Therapiekonzeptes ein umfassendes geriatrisches Assessment
+durchgeführt. Anschließend wird in der geria\-trisch"=onkolo\-gischen
+Konferenz eine Einschätzung der Behandlungsfähigkeit abgegeben.
+Der Erfassungszeitraum für die vorliegende Arbeit reichte von 
+\ersterPatient{} bis \letzterPatient{}. In diser Zeit wurden
+\nPatients{}, \nMale{} Männer (\percentMale{}\%)
+und \nFemale{} Frauen (\percentFemale{}\%) in der
+geria\-trisch"=onkolo\-gischen Konferenz besprochen. Größe und Gewicht
+sind bei \percentWeightHeight{}\% der Patienten verfügbar.
+Beide Variablen damit auch der daraus berechnete \ac{BMI} sind
+normalverteilt.
 Tabelle~\ref{tab:patienten} fasst Alter, Größe, Gewicht und den
 berechneten BMI der untersuchten Patienten zusammen.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Beschreibung des Patientenkollektivs; minimales, medianes und
   maximales Alter, Durchschnitt und Standardabweichung von Größe, Gewicht und
   BMI}
@@ -54,7 +62,7 @@ Insgesamt wurde bei \nUnterAltersDef{} Patienten, die jünger waren als
 Abschnitt~\ref{sec:patientenkollektiv} werden die Gründe für das
 formal fälschlich durchgeführte Assessment diskutiert.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/altersverteilung.pdf}
   \caption{Alter der untersuchten Patienten, Markierung bei 65 Jahren
@@ -68,7 +76,7 @@ Altersverteilung aller in der onkologischen Klinik behandelten
 Patienten aus den Jahren 2014 und 2015. \percentGeriatrischOnkologie{}\%
 der Patienten waren 65 Jahre oder älter.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/altersverteilungAllgemein.pdf}
   \caption{Alter aller Patienten der Klinik für internistische
@@ -80,7 +88,7 @@ der Patienten waren 65 Jahre oder älter.
 Die unterschiedlichen Diagnosen der untersuchten Patienten sind in
 Abbildung~\ref{fig:diagnosen} gezeigt.
 
-\begin{figure}[htbp]
+\begin{figure}[tb]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/diagnosen.pdf}
   \caption{Diagnosen und Häufigkeit der untersuchten Patienten}
@@ -89,11 +97,25 @@ Abbildung~\ref{fig:diagnosen} gezeigt.
 
 \section{Umfassendes Geriatrisches Assessment}
 
-Eine Zusammenfassung der nachfolgend beschriebenen Ergebnisse ist in
-Tabelle~\ref{tab:cga_summary} und in
-Abbildung~\ref{fig:cga_summary_boxplot} dargestellt.
+Die wichtigsten beschreibenden Merkmale der Verteilungsfunktionen der
+Messwerte sind in Tabelle~\ref{tab:cga_summary} zusammengefasst und in
+Abbildung~\ref{fig:cga_summary_boxplot} grafisch dargestellt.
+Bei allen Variablen außer dem Sozialassessment handelt es sich um
+Ordinalskalen, bei diesen wurde zur Beschreibung der Median dem
+Durchschnitt als Maß des Mittelwerts vorgezogen.
+Das Sozialassessment wird in einer Nominalskala ausgedrückt
+(\emph{alleinlebend} oder \emph{nicht alleinlebend}), die aus
+dem beim Assessment dokumentierten freien Text erstellt
+wurde (Abschnitt~\ref{sec:sozial}). Die gemessenen Variablen folgen
+keiner üblichen Verteilungsfunktion, daher kommen als
+statistische Tests nicht-parametrische Verfahren zur Anwendung. Alle
+erhobenen Parameter sind zu mindestens 85\%
+vollständig. Lediglich der \ac{DemTect} wurde nur in 79\% der Fälle
+durchgeführt; die häufigsten Gründe der Antwortausfälle in diesem
+Bereich waren Sprachprobleme oder eine bereits erkennbare
+Überforderung der Patienten während des \ac{MMST}.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Zusammenfassung der erhobenen Daten innerhalb des
   Assessments}
 \label{tab:cga_summary}
@@ -123,7 +145,7 @@ Sozial & 379 & 90 &  &  &  \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/cga_summary_boxplot.pdf}
   \caption{Box-Whisker-Plot der einzelnen Tests des CGA, die Boxen
@@ -183,7 +205,7 @@ resultiert je nach Punktwert die in Tabelle~\ref{tab:mmst} gezeigte
 Unterteilung. Zusätzlich zeigt die Tabelle den Anteil der untersuchten
 Patienten in der jeweiligen Kategorie.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Einteilung einer Demenz nach \ac{MMST} \autocite{LeitlinieDemenz2009}}
 \label{tab:mmst}
 \centering
@@ -210,7 +232,7 @@ maximal 30 Punkte erreicht, der Median lag bei 13 Punkten.
 Tabelle \ref{tab:demtect} zeigt den Anteil der Paienten in den
 jeweiligen Kategorien.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Demenz-Detektions-Test \autocite{Kalbe2004}}
 \label{tab:demtect}
 \centering
@@ -276,7 +298,7 @@ der Median bei 1 Punkt. Drei oder mehr relevante Komorbitäten hatten
 Tabelle~\ref{tab:charlson} den jeweiligen Anteil der Patienten zum
 Punktwert des Charlson-Komorbiditätsindex.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Charlson-Komorbiditätsindex}
 \label{tab:charlson}
 \centering
@@ -298,7 +320,7 @@ Die einzelnen Grenzwerte und
 Kategorien laut \ac{MNA} sowie der Anteil der Patienten in der jeweiligen
 Kategorie sind in Tabelle~\ref{tab:mna} gezeigt.
 
-\begin{table}[htbp]
+\begin{table}[tb]
 \caption{Mini Nutritional Assessment \autocite{Guigoz1997}}
 \label{tab:mna}
 \centering
@@ -339,7 +361,7 @@ minimal bestanden keine Defizite, maximal 6, der Median lag bei 2
 Defiziten, die Häufigkeitsverteilung ist in Tabelle~\ref{tab:defizite}
 gezeigt.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Anzahl der Defizite im Assessment}
 \label{tab:defizite}
 \centering
@@ -356,7 +378,7 @@ Anteil in \%*       & 12& 21& 20& 15& 13& 13& 6 \\
 Die Altersverteilung der 35 Patienten, die im Assessment kein
 messbares Defizit aufweisen zeigt Tabelle~\ref{tab:defiziteAlter}.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Anzahl der Patienten ohne Defizit im Assessment in Abhängigkeit vom Alter}
 \label{tab:defiziteAlter}
 \centering
@@ -380,7 +402,7 @@ bei 2 Defiziten (Minimum 0, Maximum 5). Die Häufigkeitsverteilung ist
 in Tabelle~\ref{tab:defiziteWedding} gezeigt. Die Unterschiede werden
 in Abschnitt~\ref{sec:defizite_discussion} diskutiert.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Anzahl der Defizite im Assessment nach Definition von
   \autocite{Wedding2007}}
 \label{tab:defiziteWedding}
@@ -403,7 +425,7 @@ Standardfehler (siehe Gleichung~\ref{eq:spearman})
 aufgeführt. Berücksichtigt wurden Korrelationen größer als 0,4;
 sortiert wurde nach abnehmendem Betrag der Korrelation.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Rangkorrelationskoeffizienten}
 \label{tab:correlation}
 \centering
@@ -444,7 +466,7 @@ verschiedenen Einschätzungsmöglichkeiten dar. In den
 folgenden Tabellen, die die Ergebnisse des Assessments darstellen
 wurden dann auch die absoluten Häufigkeiten mit angegeben.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Relative Häufigkeiten der einzelnen Kategorien verschiedener
   Einschätzungsmöglichkeiten}
 \label{tab:classification}
@@ -475,15 +497,27 @@ Wilcoxon-Rangsummentest und p-Wert Korrektur mittels
 Bonferroni-Methode wurde bei signifikantem Kruskal-Wallis-Test
 durchgeführt (Abschnitt~\ref{subsec:Signifikanztests}).
 
+Eine Dreiteilung der untersuchten Patientenpopulation wurde zur
+besseren Vergleichbarkeit mit der Dreiteilung der Behandlungsfähigkeit
+vorgenommen. Wie auch die Dreiteilung der Behandlungsfähigkeit sind
+andere Unterteilungen denkbar.
+Eine signifikante Trennung zeigt sich bei allen durchgeführten Tests,
+außer den Depressionsassessments (sowohl \ac{GDS} als auch \ac{DIA}),
+der Komorbidität und dem Ernährungsstatus. Eine unterschiedliche
+Häufigkeit alleinlebender Patienten wurde nicht beobachtet.
 Der Tinetti-Test trennt als einziger Test alle drei Gruppen auch
 untereinander signifikant (Wilcoxon-Rangsummentest).
-Zusammenfassend ist zu bemerken, dass alle durch die Tests
+Zusammenfassend ist also zu bemerken, dass alle durch die Tests
 abgedeckten Bereiche signifikant altersabhängig sind. Lediglich die
 Komorbidität, gemessen durch den Charlson-Komorbiditätsindex, und die
 psychische Belastung, gemessen durch die \ac{GDS} oder die \ac{DIA},
 sind altersunabhängig.
 
-\begin{table}[htbp]
+Die mediane Anzahl der Defizite betrug in der Gruppe der 75 bis 84
+jährigen und der 85 bis 94 jährigen 3, bei den unter 75 jährigen
+2. Dieser Unterschied ist signifikant.
+
+\begin{table}[htb]
 \caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
   geriatrischen Assessments, eingeteilt nach verschiedenen Altersgruppen}
 \label{tab:cga_alter}
@@ -512,7 +546,7 @@ sind altersunabhängig.
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
   geriatrischen Assessments nach Unterteilung durch Vorschlag von
   Balducci}
@@ -544,7 +578,7 @@ sind altersunabhängig.
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
   geriatrischen Assessments nach Einschätzung des Behandlers}
 \label{tab:cga_personal}
@@ -576,7 +610,7 @@ sind altersunabhängig.
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Medianwerte der erhobenen Daten innerhalb des umfassenden
   geriatrischen Assessments nach Unterteilung durch die Konferenz}
 \label{tab:cga_konferenz}
@@ -673,7 +707,7 @@ Konferenz wurde als Beschluss
 eine Therapie empfohlen, jedoch keine Angabe zur eingeschätzten
 Behandlungsfähigkeit gegeben.
 
-\begin{figure}[htbp]
+\begin{figure}[tb]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/beschlussverteilung.pdf}
   \caption{Alter der untersuchten Patienten, aufgeteilt nach
@@ -693,7 +727,7 @@ Patienten jeder einzelnen Kategorie des Konferenzbeschlusses.
 Abbildung~\ref{fig:cga_konferenz} stellt die Ergebnisse der einzelnen
 Assessmenttests für die Aufteilung nach Konferenzbeschluss grafisch dar.
 
-\begin{figure}[htbp]
+\begin{figure}[p]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/cga_konferenz.pdf}
   \caption{Box-Whisker-Plot der einzelnen Tests des CGA aufgeteilt nach
@@ -706,6 +740,7 @@ Assessmenttests für die Aufteilung nach Konferenzbeschluss grafisch dar.
 \end{figure}
 
 \subsection{Vergleich der unterschiedlichen Möglichkeiten}
+\label{subsec:vergleich}
 
 \subsubsection{Einteilung nach Alter und nach Einschätzung des
   Behandlers}
@@ -717,9 +752,9 @@ Das $\chi^2$ beträgt 50 und ist somit signifikant (p<0,001).
 Cohens gewichtetes Kappa beträgt $\kappa = 0,30$. Es bestand
 Übereinstimmung in 54\% der Fälle.
 
-\begin{table}[htbp]
-\caption{Vergleich der Einteilung nach Konferenzbeschluss und der
-  Einteilung allein nach dem Alter}
+\begin{table}[htb]
+\caption{Vergleich Einteilung nach Einschätzung des Behandlers versus
+  Einteilung nach dem Alter}
 \label{tab:alter_personal}
 \centering
 \begin{tabular}{crrr}
@@ -743,9 +778,9 @@ Behandlers und der Einteilung nach dem Vorschlag von Balducci.
 Für \nBalducciPersonal{} Patienten standen
 beide Beurteilungen zur Verfügung.
 
-\begin{table}[htbp]
-\caption{Vergleich der primären Einschätzung des Behandlers
-  und der Einteilung nach dem Vorschlag von Balducci}
+\begin{table}[htb]
+\caption{Vergleich primäre Einschätzung des Behandlers versus
+  Einteilung nach Balducci}
 \label{tab:personal_balducci}
 \centering
 \begin{tabular}{crrr}
@@ -784,8 +819,8 @@ der Übereinstimmung kann Cohens gewichtetes Kappa ($\kappa = 0,83$)
 verwendet werden. Anschaulicher ist der Anteil an Übereinstimmung mit
 \percentAgreementKP{}\% der Fälle.
 
-\begin{table}[htbp]
-\caption{Vergleich der primären Einschätzung des Behandlers und der Einteilung
+\begin{table}[htb]
+\caption{Vergleich primäre Einschätzung des Behandlers versus Einteilung
   nach Konferenzbeschluss}
 \label{tab:konferenz_personal}
 \centering
@@ -819,9 +854,9 @@ Tabelle~\ref{tab:konferenz_balducci} zeigt die Kontingenztafel der
 Einteilung nach dem Vorschlag von Balducci und dem Konferenzbeschluss.
 Beide Klassifikationen lagen in \nBalducciKonferenz{} Fällen vor.
 
-\begin{table}[htbp]
-\caption{Vergleich der Einteilung nach dem Vorschlag von
-  Balducci und der Einteilung nach Konferenzbeschluss}
+\begin{table}[htb]
+\caption{Vergleich Einteilung nach Balducci versus Einteilung nach
+  Konferenzbeschluss}
 \label{tab:konferenz_balducci}
 \centering
 \begin{tabular}{crrr}
@@ -904,7 +939,7 @@ voneinander zu differenzieren sind. Die Regressionskoeffizienten
 inklusive Standardfehler und p-Wert sind in
 Tabelle~\ref{tab:logistic1} zusammengefasst.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Logistische Regression der Therapiefähigkeit}
 \label{tab:logistic1}
 \centering
@@ -953,7 +988,7 @@ Modell wurde das festgelegt, in dem alle verwendeten Parameter
 signifikanten Einfluss hatten und gleichzeitig die beste Regression
 gemessen durch das \ac{AIC} resultierte.
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Logistische Regression des Ausmaßes der Therapiefähigkeit}
 \label{tab:logistic2}
 \centering
@@ -1019,7 +1054,7 @@ Trainings-Datensatzes sind in Tabelle~\ref{tab:logistic3} aufgeführt.
 \text{logit}(P(no\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
 \end{equation}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Logistische Regression der Therapiefähigkeit, vorhersagend}
 \label{tab:logistic3}
 \centering
@@ -1050,7 +1085,7 @@ eine Spezifität von 99,6\%. Die Festlegung des Cut-off Wertes ist an
 sich willkürlich, kann sich aber aus der klinischen Beurteilung der Relevanz
 eines Fehlers 1. Art ($\alpha$-Fehler) oder 2. Art ($\beta$-Fehler) ergeben.
 
-\begin{table}[htbp]
+\begin{table}[tb]
 \caption{Vergleich der Vorhersage der logistischen Regression
   und des Konferenzbeschlusses, cut-off 0,5}
 \label{tab:prediction_no5}
@@ -1071,7 +1106,7 @@ der vom Modell als nicht therapiefähig klassifiziert wird, von der
 Konferenz jedoch als therapiefähig. Bei dieser Art von Fehler würde
 dem Patienten eine wirksame und potentiell gut verträgliche Therapie
 vorenthalten werden. Ein Fehler 2. Art entspräche dem umgekehrten
-Fall, also einen Patienten, den das Modell als therapiefähig
+Fall, also einem Patienten, den das Modell als therapiefähig
 klassifiziert, die Konferenz jedoch als nicht therapiefähig
 einschätzt. Bei dieser Art von Fehler würde
 eine Therapie begonnen werden, obwohl die geriatrisch-onkologische
@@ -1087,7 +1122,7 @@ Spezifität annähern. Bei einem Cut-off von 0,22 ergibt sich eine
 von 95\%, eine Sensitivität von 0,85 und eine Spezifität von 0,96
 (Tabelle~\ref{tab:prediction_no2}).
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Vergleich der Vorhersage der logistischen Regression
   und des Konferenzbeschlusses, cut-off 0,22}
 \label{tab:prediction_no2}
@@ -1124,7 +1159,7 @@ aufgeführt.
 \text{logit}(P(slow\_go)) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_4 + \beta_5 X_5
 \end{equation}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 \caption{Logistische Regression des Ausmaßes der Therapiefähigkeit, vorhersagend}
 \label{tab:logistic4}
 \centering
@@ -1153,7 +1188,7 @@ eine Spezifität von 0,85. Bei diesem Modell sind Fehler 1. und 2. Art
 schon bei einem Cut-off von 0,5 fast perfekt balanciert, sodass der
 Cut-off von 0,5 nicht zusätlich geändert wird.
 
-\begin{table}[htbp]
+\begin{table}[tb]
 \caption{Vergleich der Vorhersage der logistischen Regression
   und des Konferenzbeschlusses}
 \label{tab:prediction_slow}
@@ -1184,7 +1219,7 @@ Vorhersagequalität des Modells des Ausmaßes der
 Behandlungsfähigkeit. Die \ac{AUC} beträgt 0,88 (95\%
 Konfidenzintervall: 0,84-0,92).
 
-\begin{figure}[htbp]
+\begin{figure}[tb]
   \centering
   \includegraphics[width=\textwidth]{Grafiken/roc_both.pdf}
   \caption{ROC-Kurven des Vorhersagemodells der Behandlungsfähigkeit
