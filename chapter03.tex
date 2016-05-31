@@ -880,7 +880,8 @@ Fälle.
 
 \section{Statistisches Modell der Konferenzentscheidung}
 
-\subsection{Erklärendes Modell}
+\subsection{Beschreibendes Modell}
+\label{subsec:model_coeff}
 
 Um die Effekte verschiedener Prädiktoren vergleichen zu können, wurden
 die potentiellen Prädiktoren nach Gleichung~\ref{eq:scale} auf die
@@ -955,16 +956,20 @@ $\beta_2$ (MMST) & -0,99 & 0,21 & <0,001\\
 \end{tabular}
 \end{table}
 
-Da die Parameter normiert sind, spiegelt die Höhe des Koeffizienten
-den Einfluss des Parameters wieder. Es zeigt sich also, dass der
-Barthel-Index den höchsten Einfluss besitzt und dass beide Parameter
+Da die Parameter normiert sind, spiegelt der Betrag der Koeffizienten
+die Höhe des Einflusses des Parameters wieder. Das Vorzeichen der
+Parameter zeigt an ob es sich um eine proportionale oder umgekehrt
+proportionale von Koeffizient und entsprechender Wahrscheinlichkeit
+handelt. Es zeigt sich also, dass der
+Barthel-Index den höchsten Einfluss besitzt und dass aufgrund des
+negativen Vorzeichens beide Parameter
 mit abnehmenden Werten die Wahrscheinlichkeit der Kategorie
-\emph{nicht behandlungsfähig} erhöhen. Dieses Ergebnis ist naheliegend, da
+\emph{nicht therapiefähig} erhöhen. Dieses Ergebnis ist naheliegend, da
 niedrigere Barthel-Indices mit einer höheren Pflegebedürftigkeit und
 niedrigere Werte des MMST mit einer schlechteren kognitiven Funktion
 einhergehen; beide beeinflussen die Behandlungsfähigkeit eines
-Patienten negativ. Eine Diskussion des Modells findet in
-Abschnitt~\ref{subsec:model_expl} Diskussionsteil statt.
+Patienten negativ. Eine Diskussion des Modells inklusive
+Beispielrechnungen finden in Abschnitt~\ref{subsec:model_expl} statt.
 
 \subsubsection{Ausmaß der Therapiefähigkeit}
 
@@ -1013,6 +1018,22 @@ uneingeschränkt behandelbar haben also der Tinetti-Test, das Alter,
 der Umstand, ob ein Patient alleinlebend ist, oder nicht, der
 Charlson-Score, der \ac{MMST}-Wert und der \ac{MNA}-Wert einen
 signifikante Einfluss.
+
+Den größten Einfluss für das Ausmaß der
+Therapiefähigkeit, erkennbar am größten Betrag des Koeffizienten, hat
+mit Abstand die Mobilität, ausgedrück durch den Tinetti-Index. Als
+nächstes folgt das Alter und die Komorbidität. Das Merkmal
+\emph{alleinlebend} steht dann noch bezüglich der Höhe des Einflusses
+vor dem kognitiven Status und dem Ernährungszustand.
+
+Die Koeffizienten des Tinetti-Tests, des MMST, und des MNA sind
+jeweils negativ, schlechtere (niedrigere) Testergebnisse erhöhen also
+die Wahrscheinlichkeit nur eingeschränkt behandlungsfähig zu
+sein. Umgekehrt sind die Koeffizienten des Alters, des Charlson-Index
+und des Merkmals Alleinlebend positiv. Dies bedeutet, dass zunehmendes
+Alter, zunehmende Komorbidität und das vorhandene Merkmal
+\emph{alleinlebend}, zusammen oder einzeln die Wahrscheinlichkeit
+\emph{eingeschränkt therapiefähig} zu sein, erhöhen. 
 
 Wie bereits beschrieben wurden die Prädiktoren mit Hilfe des
 arithmetischen Mittels und der Stichprobenvarianz normiert. Eine
