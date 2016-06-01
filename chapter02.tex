@@ -46,11 +46,14 @@ geriatrisches Assessment bei Krebspatienten geschildert. Um diese
 Anforderungen bestmöglich zu erfüllen wurden verschiedene Tests
 vorgeschlagen; die genaue Zusammensetzung des umfassenden
 geriatrischen Assessments ist mit zunehmender prospektiver Evaluation
-der Tests in Entwicklung. An den Kliniken Essen-Mitte hat sich
-ausgehend von den aktuellen internationalen Empfehlungen
-\autocite{Hurria2014_1} ein Standard für das umfassende geriatrische
-Assessment etabliert:
+der Tests in Entwicklung.
 
+An den Kliniken Essen-Mitte hat sich
+ausgehend von den aktuellen internationalen
+Empfehlungen \autocite{Hurria2014_1} ein Standard für das umfassende
+geriatrische Assessment etabliert:
+
+\begin{samepage}
 \begin{itemize}
 \item Funktioneller Status
   \begin{itemize}
@@ -82,6 +85,7 @@ Assessment etabliert:
   \item \ac{MNA}, inklusive Größe, Gewicht, \ac{BMI}
   \end{itemize}
 \end{itemize}
+\end{samepage}
 
 \subsection{Funtionalität}
 
@@ -376,6 +380,7 @@ unter \url{https://github.com/ertls/geriatric_oncology} verfügbar.
 
 Das Codebook eines statistischen Datensatzes beschreibt:
 
+\begin{samepage}
 \begin{enumerate}
   \item die durchgeführte Studie, wer hat warum was gemacht,
   \item die analysierte Population, wie wurde ausgewählt,
@@ -383,6 +388,7 @@ Das Codebook eines statistischen Datensatzes beschreibt:
   \item Struktur des Datensatzes,
   \item genauer Aufbau inklusive Volltext von durchgeführten Tests.
 \end{enumerate}
+\end{samepage}
 
 Das Ziel eines Codebooks ist, eine durchgeführte Studie knapp aber
 vollständig zu beschreiben und die anschließende statistische Analyse
@@ -423,8 +429,7 @@ September 2014 durch den DIA-S ersetzt. Alle anderen punktuellen NA
 dokumentieren im Einzelfall nicht erhobene Befunde und damit auch in
 der Konferenz nicht zur Verfügung stehende Parameter.
 
-Die einzelnen Datenfelder werden in Tabelle~\ref{tab:datensatz}
-beschrieben.
+Die einzelnen Datenfelder werden in Tabelle~\ref{tab:datensatz} beschrieben.
 
 \begin{table}[p]
 \caption{Beschreibung des Datensatzes}
@@ -451,22 +456,22 @@ konferenz & Datum der Konferenz, Date format (R base package) \\
 beschluss & freier Text des Konferenzbeschlusses \\
 diagnose & freier Text der Diagnose \\
 personal\_\newline assessment & freier Text der persönlichen Einschätzung der Behandlers \\
-sex & kategorielle Variable, ungeordnet, \emph{male} und \emph{female} \\
-beschluss\_f & kategorielle Variable, geordnet, \emph{no\_go}, \emph{slow\_go}, \emph{go\_go} \\
+sex & kategoriale Variable, ungeordnet, \emph{male} und \emph{female} \\
+beschluss\_f & kategoriale Variable, geordnet, \emph{no\_go}, \emph{slow\_go}, \emph{go\_go} \\
 personal\_\newline assessment\_f & kategorielle Variable, geordnet, \emph{no\_go}, \emph{slow\_go}, \emph{go\_go} \\
 alter & Verhältnisskala des Alters in Jahren von 60 bis 93 \\
-tug\_possible & kategorielle Variable, \emph{TRUE}, \emph{FALSE}, beschreibt, ob TUG Test möglich war oder nicht \\
+tug\_possible & kategoriale Variable, \emph{TRUE}, \emph{FALSE}, beschreibt, ob TUG Test möglich war oder nicht \\
 tinetti1 & Tinetti-Test, Ordinalskala von 0 bis 16, erster Teil\\
 tinetti2 & Tinetti-Test, Ordinalskala von 0 bis 12 zweiter Teil\\
 bmi & Body Mass Index, kontinuierliche Skala aus height und weight berechnet\\
-living\_ alone & kategorielle Variable, \emph{TRUE}, \emph{FALSE}, aus Variable sozial gebildet, beschreibt alleinlebend oder nicht \\
+living\_ alone & kategoriale Variable, \emph{TRUE}, \emph{FALSE}, aus Variable sozial gebildet, beschreibt alleinlebend oder nicht \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\newpage
 \subsubsection{Zusammenfassung der Datenmanipulationen}
 
+\begin{samepage}
 \begin{enumerate}
 \item Dateien aus Intranet lokal kopieren.
 \item Script \textit{gather\_data\_V3.Rmd} ausführen, Geschlecht nach
@@ -483,6 +488,7 @@ living\_ alone & kategorielle Variable, \emph{TRUE}, \emph{FALSE}, aus Variable 
 \item Script \textit{modell.Rmd} berechnet und evaluiert statistische
   Modelle und generiert beschreibende Grafiken.
 \end{enumerate}
+\end{samepage}
 
 Die erstellten R-Scripte sind im Internet unter
 \url{https://github.com/ertls/geriatric_oncology} einsehbar. Eine
@@ -606,6 +612,7 @@ Das beeinflusst die nachfolgenden statistischen Verfahren und die
 gefolgerten Aussagen. Es werden drei grundsätzliche
 Mechanismen unterschieden, warum einzelne Daten fehlen können.
 
+\begin{samepage}
 \begin{enumerate}
 \item Unabhängiges und zufälliges Fehlen, Missingness completely at random
 \item Zufälliges Fehlen, Missingness at random
@@ -616,6 +623,7 @@ Mechanismen unterschieden, warum einzelne Daten fehlen können.
 \item Fehlende Variablen, deren Fehlen von den fehlenden Variablen
   abhängt, Missingness that depends on the missing value itself
 \end{enumerate}
+\end{samepage}
 
 \subsubsection{Mechanismen der Antwortausfälle beim vorliegenden
   Datensatz}
@@ -795,39 +803,42 @@ sich ein Gleichungssystem mit zwei Gleichungen. Die
 Wahrscheinlichkeit, in die dritte Klasse zu fallen ergibt sich aus der
 Tatsache, dass sich alle drei Wahrscheinlichkeiten zu $1$ summieren. 
 
-Die Erweiterung kann die Tatsache der Ordnung der Klassen
-bei ordinalen Skalen, wie im vorliegenden Fall, berücksichtigen oder
-nicht. Wenn die Ordnung berücksichtigt wird
+Die Erweiterung kann die hier vorliegende Ordnung der Klassen
+bei ordinalen Skalen berücksichtigen oder nicht. Wenn die Ordnung
+berücksichtigt wird 
 (Proportional Odds Model), ist die sogenannte proportional odds
 assumption Voraussetzung dafür. Diese besagt, dass die Beziehung
 zwischen den Stufenpaaren gleich ist. Es lässt sich statistisch
 zeigen, dass dies bei den vorliegenden Daten nicht der Fall
-ist. Aus der eigenen klinischen Erfahrung aber auch der Erfahrung in
-der geriatrisch-onkologischen Konferenz erklärt sich die Verletzung
-dieser Voraussetzung recht einfach. Der Unterschied im
-Allgemeinzustand eines Patienten, der nicht behandlungsfähig
-eingeschätzt wird ist viel gravierender, als die manchmal nur
-minimalen Unterschiede die bei Patienten bestehen, die eingeschränkt
+ist.
+
+Anschaulich lässt sich dieses statistische Ergebnis auch aus der
+Erfahrung in der geriatrisch-onkologischen Konferenz erklären.
+Der Unterschied im Allgemeinzustand zwischen Patienten, die nicht
+behandlungsfähig oder eingeschränkt behandlungsfähig eingeschätzt
+werden ist viel gravierender, als der manchmal nur
+minimale Unterschied zwischen Patienten, die eingeschränkt
 oder uneingeschränkt therapiefähig sind.
 
 Wenn die Ordnung nicht berücksichtigt wird, die ordinale Skala also
-wie eine diskrete benutzt wird, geht zwar die Zusatzinformation der
+wie eine diskrete benutzt wird, geht die Zusatzinformation der
 Ordnung verloren. Die oben beschriebene Voraussetzung ist dann jedoch
 nicht mehr nötig. Dieser Ansatz benutzt jedoch nur einen Satz von
-Prädiktoren. Dabei kommt also erstens nicht zur Darstellung, dass sich
+Prädiktoren. Dabei kommt also nicht zur Darstellung, dass sich
 die Prädiktoren die zwischen therapiefähig und nicht therapiefähig
 unterscheiden andere sein könnten, als die Prädiktoren, die das Maß
-der Therapiefähigkeit bestimmen und umgekehrt.
+der Therapiefähigkeit bestimmen.
+
 Bei einem vollständig pflegebedürftigen und dementen Patienten könnte
 die Komorbidität und der Ernährungszustand zum Beispiel keine Rolle
-mehr spielen. Für die Einteilung in die Kategorien könnten also
+mehr spielen. Für die Einteilung in die Kategorie könnten also
 jeweils andere Prädiktoren von Bedeutung sein.
-Theoretisch macht dies noch keinen Unterschied, da die Prädiktoren
+Theoretisch betrachtet macht dies keinen Unterschied, da die Prädiktoren
 dann im vorliegenden Gleichungssystem niedrige Koeffizienten
 hätten. Praktisch ist das bei einem Datensatz mit möglichen fehlenden
 Werten jedoch von erheblicher Bedeutung, da jeder zusätzlicher
 Prädiktor in einer niedrigeren Fallzahl resultiert, die damit die
-Analyse erschwert.
+Analyse weniger aussagekräftig macht.
 
 Daher wurde bei der Erstellung des statistischen Modells ein
 zweischrittiger Ansatz gewählt. In einer ersten binomialen
