@@ -181,22 +181,3 @@ und das Votum der Ethikkommission eingefügt.
 %\cleardoublepage
 %\phantomsection
 %\addcontentsline{toc}{chapter}{F Literaturverzeichnis}
-
-\chapter{Literaturverzeichnis}
-
-% Literaturverzeichnis
-\defbibenvironment{bibliography}
-{\enumerate{}
-{\setlength{\leftmargin}{\bibhang}%
-\setlength{\itemindent}{-\leftmargin}%
-\setlength{\itemsep}{\bibitemsep}%
-\setlength{\parsep}{\bibparsep}}}
-{\endenumerate}
-{\item}
-
-\renewcommand\listtablename{}
-\begingroup
-\let\clearpage\relax
-\renewcommand{\bibname}{}
-\printbibliography
-\endgroup

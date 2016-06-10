@@ -44,9 +44,9 @@
 \usepackage{acronym}
 %\usepackage[toc]{glossaries}
 %\makeglossary
-\makeatletter
-\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
-\makeatother
+%\makeatletter
+%\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+%\makeatother
 %wegen Sweave
 %\usepackage{color}
 %\usepackage{framed}
@@ -74,26 +74,27 @@
 \pagenumbering{roman}
 \pagestyle{empty} 
 
+\onehalfspacing % eigener Befehl aus dem empfohlenen Paket setspace,
+                % Deckblätter auch mit anderthalbfachem Zeilenabstand?
+                % Dann Befehl an den Anfang stellen
+
 % Titelblatt
 \include{titlepage}
 \maketitle
 
-% Widmung*
-%\include{dedication}
+% Widmung missbraucht, Gutachter eingefügt
+\include{dedication}
 
 % Danksagung*
 %\include{acknowledgement}
 
 % Zusammenfassung/Abstract
-\include{abstract}
+%\include{abstract}
   
 % Inhalts-, Abbildungs*-, Tabellen*-Verzeichnis
 \tableofcontents
 
 % Kapitel
-\onehalfspacing % eigener Befehl aus dem empfohlenen Paket setspace,
-                % Deckblätter auch mit anderthalbfachem Zeilenabstand?
-                % Dann Befehl an den Anfang stellen
 
 \include{ergebnisse} % eigene ergebnisse.tex Datei mit den
                      % numerischen Ergebnissen, benötigt für
@@ -111,7 +112,26 @@
 \include{chapter04}
 \include{chapter05}
 % usw.
- 
+
+\chapter{Literaturverzeichnis}
+
+% Literaturverzeichnis
+\defbibenvironment{bibliography}
+{\enumerate{}
+{\setlength{\leftmargin}{\bibhang}%
+\setlength{\itemindent}{-\leftmargin}%
+\setlength{\itemsep}{\bibitemsep}%
+\setlength{\parsep}{\bibparsep}}}
+{\endenumerate}
+{\item}
+
+\renewcommand\listtablename{}
+\begingroup
+\let\clearpage\relax
+\renewcommand{\bibname}{}
+\printbibliography
+\endgroup
+
 % Anhang*
 \appendix
 \include{appendixA}

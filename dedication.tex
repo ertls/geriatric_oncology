@@ -13,9 +13,27 @@
 % und der
 % DNB - Deutsche Nationalbibliothek
 
-\thispagestyle{empty}
+%\thispagestyle{empty}
+%\vspace*{\fill}
+%\begin{center}
+%Für unsere Patienten.
+%\end{center}
+%\vspace*{\fill}
+
+\makeatletter
+\cleardoublepage
 \vspace*{\fill}
-\begin{center}
-Für unsere Patienten.
-\end{center}
-\vspace*{\fill}
+\begin{table}[h!]
+\begin{tabular}{ll}
+Dekan:        &\@Dekan \\
+1. Gutachter: & \@GutachterA \\
+2. Gutachter: & \@GutachterB \\
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabular}{l}
+Tag der m\"undlichen Pr\"ufung: \@Pruefungsdatum \\
+\end{tabular}
+\end{table}
+\makeatother
