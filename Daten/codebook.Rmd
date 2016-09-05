@@ -1,0 +1,37 @@
+---
+title: "Codebook"
+author: "Sebastian W. Ertl"
+date: "5. Juni 2015"
+output: word_document
+---
+
+5.6.2015
+gather_data_V3.Rmd
+
+Feldnummer, Feldname, NAs, optional Kommentar
+1, Dateiname, 0
+2, Nachname, 0
+3, Vorname, 0
+4, Fallnummer, 7, alle NAs ueperprueft - alle nicht eingegen
+5, Geburtsdatum, 0
+6, Station, 81, etwa Juli 2014 alle Stationsangaben in das Feld des Schluesselwortes geschrieben, daher nicht erkannt; zu viel Aufwand diese zu beheben; daher vorerst belassen
+7, Stationsarzt, 44, Stichprobe gemacht; Arzt nicht eingegeben
+8, Aufnahmedatum, 30, eine angeschaut, nicht eingegeben
+9, Barthel-Index, 5, 2014 4 NAs dokumentiert; 2015 einer dazugekommen; nachgeschaut nicht eingetragen
+10, IADL, 17, 2 nachgeschaut nicht eingetragen
+11, MMST, 15, 2 nachgeschaut nicht eingetragen
+12, DemTect, 273, erst seit Mitte Februar zusaetzlich erhoben
+13, GDS, 175, durch DIA ersätzt
+14, DIA, 135, siehe GDS
+15, TUG, 6
+16, Tinetti, 5
+17, Größe, 4
+18, Gewicht, 3
+19, BMI eingetragen, 5
+20, MNA, 42
+21, Charlson-Score, 15
+22, Sozialfragebogen, 35
+23, Datum der Konferenz, 22
+24, Konferenzbeschluss, 0
+25, Diagnose, 88, einige über Diagnose-Feld drübergeschrieben daher nicht erkannt
+26, persönliche Einschätzung, 67, erst seit Mai 2014 abgefragt

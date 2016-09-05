@@ -1,0 +1,304 @@
+---
+title: "tidying_data.Rmd"
+author: "Sebastian W. Ertl"
+date: "Monday, February 16, 2015"
+output: html_document
+---
+
+Aktueller Stand: 20.2.2015
+
+# Data Tidying
+
+## Introduction
+
+In the first script "gather\_data.Rmd", I read the data from the xlsx files and save the cluttered list to xlsx\_data.rds
+
+Now I have to check the numbers and gather some more, where they weren't read properly (in gather\_data.Rmd). Additionally the numbers must be labeled as numbers.
+
+```{r}
+library(stringr)
+my_data <- as.data.frame(readRDS("xlsx_data.rds"), stringsAsFactors = FALSE)
+par(mar=c(5.1,4.1,4.1,2.1))
+```
+
+In summary there are `r length(my_data[[1]])` data entries.
+
+## Barthel-Index
+```{r}
+my_data$barthel <- as.numeric(as.character(my_data$barthel))
+summary(my_data$barthel)
+```
+
+`r sum(is.na(my_data$barthel))` NA's, checked, all also NA in original Excel-Sheets.
+
+## Konferenzbeschluss
+So früh in der Analyse, da das Datum des Konferenzbeschlusses für die Berechnung des Alters benötigt wird.
+```{r}
+my_data$konferenz_bak <- my_data$konferenz
+my_data$konferenz <- str_replace(my_data$konferenz, "Konferenzbeschluss vom", "")
+my_data$konferenz <- str_replace(my_data$konferenz, " ", "")
+my_data$konferenz <- str_replace(my_data$konferenz, "11\\.09\\.\\.14",
+                                 "11.9.2014")
+my_data$konferenz <- as.Date(my_data$konferenz, format = "%d.%m.%Y")
+my_data$konferenz[is.na(my_data$konferenz)] <-
+    as.Date(as.integer(my_data$konferenz_bak[is.na(my_data$konferenz)]),
+            origin = "1899-12-30")
+
+my_data$aufnahme <- as.Date(as.integer(my_data$aufnahme), origin = "1899-12-30")
+```
+
+```{r}
+my_data$beschluss <- as.character(my_data$beschluss)
+
+tidy_beschluss <- function(a_string) {
+    ret <- NA
+    if (grepl("(uneingeschränkt)|(voll) (therapie?fh?ähig|behandlungsfähig)|(Patient(in)? Therapie fähig)",
+              a_string))
+        ret <- 2
+    else if (grepl("[Ee]ingeschränk?te? ([Tt]herapie ?[Ff]ähig[keit]?|behandlungsfähig)|(Cis)|((wahrscheinlich)|(fraglich) Therapie fähig)|(TACE)",
+                   a_string))
+        ret <- 1
+    else if (grepl("nicht (therapiefähig|behandlungsfähig)|([Bb]est supportive care)",
+                   a_string))
+        ret <- 0
+    else if (grepl("(unvollständig)|(verstorben)|(fehlt)|(nicht beurteilbar)|(kein geriatrischer Patient)|(Assessment nicht vollständig)",
+                   a_string))
+        ret <- NA
+    ret
+}
+
+my_data$beschluss_f <- unlist(sapply(my_data$beschluss, tidy_beschluss))
+my_data$beschluss_f <-
+    factor(my_data$beschluss_f, ordered = FALSE, levels = c(0:2),
+           labels = c("no_go", "slow_go", "go_go"))
+```
+
+## Eigene Einschätzung
+
+Vergleich mit Konferenzbeschluss angestrebt
+```{r}
+my_data$personal_assessment <- as.character(my_data$personal_assessment)
+my_data$personal_assessment_f <-
+    unlist(sapply(my_data$personal_assessment, tidy_beschluss))
+my_data$personal_assessment_f <-
+    factor(my_data$personal_assessment_f, ordered = FALSE, levels = c(0:2),
+           labels = c("no_go", "slow_go", "go_go"))
+summary(my_data$personal_assessment_f)
+```
+
+## Geburtsdatum
+as.Date Objekt, neue Spalte 'alter' mit Referenz Datum des Konferenzbeschlusses.
+```{r}
+# neccessary because of internal representation of integers, as.integer(1) is false!
+is.wholenumber <- function(x, tol = .Machine$double.eps^0.5)
+    ifelse(is.numeric(x), abs(x - round(x)) < tol, FALSE)
+
+geb_datum <- as.integer(as.character(my_data$geburt))
+
+#conversion:
+geb_datum <- as.Date(geb_datum, origin = "1899-12-30")
+#strange Excel date origin
+geb_datum[is.na(geb_datum)] <- as.Date(my_data$geburt[is.na(geb_datum)])
+#dates read as strings from Excel, filling the NA's mentioned earlier
+
+my_data$geburt <- geb_datum
+rm(geb_datum)
+konf_isna <- is.na(my_data$konferenz)
+my_data$alter[!konf_isna] <-
+    my_data$konferenz[!konf_isna] - my_data$geburt[!konf_isna]
+
+#Wenn kein Konferenzdatum, Aufnahmedatum stattdessen
+my_data$alter[konf_isna] <- my_data$aufnahme[konf_isna] - my_data$geburt[konf_isna]
+
+for (f in my_data[is.na(my_data$alter),1]){
+    if ((length(grep("2015", f))) > 0)
+        my_data$alter[my_data$file_name == f] <-
+            as.Date("31.3.2015", format = "%d.%m.%Y") -
+            my_data$geburt[my_data$file_name == f]
+    else
+        if ((length(grep("2014", f))) > 0)
+            my_data$alter[my_data$file_name == f] <-
+                as.Date("30.6.2015", format = "%d.%m.%Y") -
+                my_data$geburt[my_data$file_name == f]
+        
+}
+# alter in days
+# conversion to years:
+my_data$alter <- trunc(my_data$alter / 365.25)
+```
+
+`r sum(is.na(my_data$geburt))` NA's.
+
+```{r}
+summary(trunc(as.numeric(my_data$alter / 365)))
+hist(as.numeric(my_data$alter))
+```
+
+Age is normally distributed.
+
+## IADL
+
+```{r}
+my_data$iadl <- as.integer(my_data$iadl)
+summary(my_data$iadl)
+```
+
+## MMST
+
+```{r}
+my_data$mmst <- substr(my_data$mmst, 1, 2) # first two characters
+my_data$mmst <- as.integer(my_data$mmst)
+summary(my_data$mmst)
+```
+
+## DEMTECT
+
+```{r}
+my_data$DemTect <- as.numeric(str_replace_all(my_data$DemTect, "[:alpha:]", ""))
+summary(my_data$DemTect)
+```
+
+## GDS
+
+```{r}
+my_data$gds <- as.numeric(as.character(my_data$gds))
+summary(my_data$gds)
+```
+
+## DIA-S
+
+```{r}
+my_data$dia <- as.numeric(as.character(my_data$dia))
+summary(my_data$dia)
+```
+
+## Timed up and go
+
+If the TUG test is not possible it is a special information, other than if it is only not available. So I define a new column tug_categorical which is factorial, " not possible" is the worst outcome of the test, the number of seconds in the variable tug and NA in both if it is simple not available.
+
+```{r}
+my_data$tug_possible[1:length(my_data$tug)] <-
+    logical()
+my_data$tug_possible[substr(my_data$tug, 1, 5) == "nicht"] <- FALSE
+my_data$tug_possible[!substr(my_data$tug, 1, 5) == "nicht"] <- TRUE
+my_data$tug <- as.integer(str_extract(my_data$tug, "[0-9]+"))
+summary(my_data$tug_possible)
+summary(my_data$tug)
+```
+
+## Tinetti Test
+
+Format in the original data is 12+5/17, which means first part of the test 12, second part 5, combined score of 17. I have to extract both numbers on either side of the plus sign.
+
+```{r}
+my_data$tinetti_1 <- as.integer(str_extract(my_data$tinetti, "[0-9]+"))
+# tinetti_1 0..16
+my_data$tinetti_2 <- str_extract(my_data$tinetti, "\\++[0-9]+")
+my_data$tinetti_2 <- as.integer(substr(my_data$tinetti_2, 2, 4))
+# tinetti_2 0..12
+# if tinetti is 28 than _1 is 16 an _2 is 12
+my_data$tinetti_1[my_data$tinetti=="28"] <- 16
+my_data$tinetti_2[my_data$tinetti=="28"] <- 12
+my_data$tinetti_1[my_data$tinetti=="100" | my_data$tinetti=="0"] <- NA
+my_data$tinetti_2[my_data$tinetti=="100" | my_data$tinetti=="0"] <- NA
+summary(my_data$tinetti_1)
+summary(my_data$tinetti_2)
+my_data$tinetti <- my_data$tinetti_1 + my_data$tinetti_2
+```
+
+## Height, Weight, BMI
+
+Mostly formatting and converting.
+
+```{r}
+my_data$height <- str_replace_all(my_data$height, "[^0-9.]+", "")
+my_data$height <- as.numeric(my_data$height)
+my_data$height[!is.na(my_data$height) & my_data$height < 3] <-
+    my_data$height[!is.na(my_data$height) & my_data$height < 3] * 100
+my_data$height <- as.integer(my_data$height)
+summary(my_data$height)
+hist(my_data$height)
+```
+
+```{r}
+my_data$weight <- str_replace_all(my_data$weight, "[^0-9,\\..]+", "")
+my_data$weight <- str_replace_all(my_data$weight, ",", ".")
+my_data$weight <- str_replace_all(my_data$weight, "\\.{2,2}", ".")
+my_data$weight <- round(as.numeric(my_data$weight), 1)
+summary(my_data$weight)
+hist(my_data$weight)
+```
+
+Height and weight are normally distributed!
+
+```{r}
+my_data$bmi <- round(my_data$weight/(my_data$height/100)^2, 2)
+summary(my_data$bmi)
+hist(my_data$bmi)
+```
+
+## MNA
+
+```{r}
+my_data$mna <- gsub("[^0-9,\\.]", "", my_data$mna)
+my_data$mna <- as.numeric(gsub(",", ".", my_data$mna))
+summary(my_data$mna)
+```
+
+## Charlson Score
+
+```{r}
+my_data$charlson <- as.numeric(gsub("[^0-9]", "", my_data$charlson))
+summary(my_data$charlson)
+```
+
+## Sozialfragebogen
+
+```{r}
+my_data$sozial <- as.character(my_data$sozial)
+
+is_living_alone <- function(a_string) {
+    ret <- FALSE
+    ifelse(grep("(L?lebt allein)|(alleine? lebend)|(Ehemann verstorben)",
+                a_string) == 1, ret <- TRUE)
+    ret
+}
+
+my_data$living_alone <- unlist(lapply(my_data$sozial, is_living_alone))
+summary(my_data$living_alone)
+```
+
+## Diagnose
+
+```{r}
+
+# my_data$diagnose <- as.character(my_data$diagnose) #nicht mehr noetig, da vorher
+# schon mit stringAsFactor = FALSE eingelesen
+```
+
+## Indikatorvariablen ob einzelne Tests verfügbar waren
+Nötig um später zu entscheiden, ob ein Wert fehlt, weil der Test nicht durchgeführt wurde, oder der Test nicht verfügbar war.
+Persönliche Einschätzung ab 1.4.2014
+GDS bis 31.8.2014
+DIA-S seit 1.9.2014
+DemTect seit 1.2.2015
+```{r}
+my_data$personal_assessment_a <-
+    my_data$konferenz>=as.Date("1.4.2014", format="%d.%m.%Y")
+my_data$gds_a <-
+    my_data$konferenz<=as.Date("31.8.2014", format="%d.%m.%Y")
+my_data$dia_a <-
+    my_data$konferenz>=as.Date("1.9.2014", format="%d.%m.%Y")
+my_data$DemTect_a <-
+    my_data$konferenz>=as.Date("1.2.2015", format="%d.%m.%Y")
+```
+
+## Conclusion
+
+In the end there is a tidy data frame with one row per patient and one column per category.
+```{r}
+my_tidy_data <- my_data[,c(-4:-1,-15,-20,-22,-24)]
+head(my_tidy_data)
+
+saveRDS(my_tidy_data, "tidy_data.rds")
+```

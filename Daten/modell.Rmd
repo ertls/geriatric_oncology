@@ -1,0 +1,249 @@
+---
+title: "Logistische Regression, geriatrisch-onkologische Konferenz"
+author: "Sebastian W. Ertl"
+date: "18. Januar 2016"
+output: html_document
+---
+
+```{r}
+library(ggplot2) # für Grafik ROC-Kurve, zitieren
+library(pROC) # für ROC-Kurve und AUC-Berechnung + Confidenzintervall, zitieren!
+geon.all <- readRDS("tidy_data.rds")
+```
+
+NA wenn keine Informationen vorliegend, vorher nur FALSE
+
+```{r}
+geon.all$living_alone[is.na(geon.all$sozial)] <- NA
+```
+
+Daten für erklärendes Modell nogo ohne iadl (zu hohe Kolinearität zu barthel, daher Einfluss jeder Variable schlechter zu erklären)
+
+```{r}
+geon.scales1.exp <- with(geon.all, data.frame(
+    barthel = scale(barthel),
+    mmst = scale(mmst),
+    beschluss = beschluss_f))
+geon.scales1.exp <- geon.scales1.exp[complete.cases(geon.scales1.exp),]
+geon.scales1.exp$prediction_p <- numeric(nrow(geon.scales1.exp))
+geon.scales1.exp$beschluss <- geon.scales1.exp$beschluss != "no_go"
+geon.scales1.exp$beschluss <-
+    factor(as.numeric(geon.scales1.exp$beschluss),
+           levels = 0:1, labels=c("no_go", "go"))
+```
+
+Erklärendes Modell nogo: iadl wegen hoher Kolinearität mit barthel ausgeschlossen
+
+```{r}
+g1 <- glm(beschluss=="no_go" ~ barthel + mmst,
+          data=geon.scales1.exp, family="binomial")
+summary(g1)
+nrow(geon.scales1.exp) # n=358
+```
+
+Daten für vorhersagendes Modell nogo mit iadl
+
+```{r}
+geon.scales1.conf <- with(geon.all, data.frame(barthel_o = barthel,
+                                          barthel = scale(barthel),
+                                          mmst_o = mmst,
+                                          mmst = scale(mmst),
+                                          iadl = scale(iadl),
+                                          beschluss = beschluss_f))
+geon.scales1.conf <- geon.scales1.conf[complete.cases(geon.scales1.conf),]
+geon.scales1.conf$prediction_p <- numeric(nrow(geon.scales1.conf))
+geon.scales1.conf$beschluss <- geon.scales1.conf$beschluss != "no_go"
+geon.scales1.conf$beschluss <-
+    factor(as.numeric(geon.scales1.conf$beschluss),
+           levels = 0:1, labels=c("no_go", "go"))
+```
+
+Vorhersagendes Modell nogo: iadl wegen besserem fit belassen
+
+```{r}
+set.seed(1) #Reproduzierbarkeit!
+train <- sample(nrow(geon.scales1.conf), round(0.66*nrow(geon.scales1.conf)))
+# 66 % im Trainingset, da nur wenig nogo-Fälle
+
+g3 <- glm(beschluss=="no_go" ~ barthel + mmst + iadl,
+          data=geon.scales1.conf, family="binomial", subset = train)
+summary(g3)
+nrow(geon.scales1.conf) # n=354, 4 weniger wegen IADL NA
+length(train) # n für Trainingsdatensatz
+```
+
+Vorhersage:
+nogo entspricht positives Outcome (für Berechnung Senitivität und Spezifität)
+```{r}
+geon.scales1.conf$prediction_p <-
+    predict(g3, geon.scales1.conf, type = "response")
+geon.scales1.conf$prediction <-
+    factor(as.numeric(geon.scales1.conf$prediction_p < 0.22),
+           levels = 0:1, labels=c("no_go", "go"))
+pred.tb <- 
+    table(konferenz = geon.scales1.conf$beschluss[-train],
+          modell = geon.scales1.conf$prediction[-train])
+pred.tb
+round(sum(diag(pred.tb))/sum(pred.tb),2)
+(sens <- pred.tb[1,1]/sum(pred.tb[1,]))
+(spec <- pred.tb[2,2]/sum(pred.tb[2,]))
+```
+
+ROC-Kurve, AUC, CI, inklusive Grafik
+
+```{r}
+g3.roc <- roc(geon.scales1.conf$beschluss, geon.scales1.conf$prediction_p,
+              smooth=T, auc=T, ci=T,plot=T)
+g3.roc
+
+#Grafik:
+g3.data <- data.frame(sens=g3.roc$sensitivities, spec=g3.roc$specificities)
+textSize = 10
+g3.p <- ggplot(aes(x=1-spec, y=sens), data=g3.data) +
+    geom_line() +
+    labs(x = "1 - Spezifität", y = "Sensitivität") +
+    theme(axis.title.x = element_text(size=textSize),
+          axis.title.y = element_text(size=textSize))
+g3.p
+ggsave('./Grafiken/roc_nogo.pdf', dpi = 300,
+       width = 3, height = 3)
+```
+
+Daten für erklärendes Modell slowgo, mit living_alone
+
+```{r}
+geon.scales2.exp <- with(geon.all, data.frame(mmst = scale(mmst),
+                                         tinetti = scale(tinetti),
+                                         alter = scale(alter),
+                                         mna = scale(mna),
+                                         charlson = scale(charlson),
+                                         living_alone = living_alone,
+                                         beschluss = beschluss_f))
+
+geon.scales2.exp <- geon.scales2.exp[complete.cases(geon.scales2.exp),]
+geon.scales2.exp <- geon.scales2.exp[geon.scales2.exp$beschluss!="no_go",]
+geon.scales2.exp$prediction_p <- numeric(nrow(geon.scales2.exp))
+geon.scales2.exp$beschluss <-
+    factor(as.numeric(geon.scales2.exp$beschluss)-2,
+           levels = 0:1, labels=c("slow_go", "go_go"))
+```
+
+Erklärendes Modell slowgo
+
+```{r}
+g2 <- glm(beschluss=="slow_go" ~ mmst + tinetti + alter + living_alone +
+              charlson + mna,
+          data=geon.scales2.exp, family="binomial")
+summary(g2)
+nrow(geon.scales2.exp) # n=244
+```
+
+Daten für vorhersagendes Modell slowgo, ohne living_alone
+
+```{r}
+geon.scales2.conf <- with(geon.all, data.frame(mmst = scale(mmst),
+                                          tinetti = scale(tinetti),
+                                          alter = scale(alter),
+                                          mna = scale(mna),
+                                          charlson = scale(charlson),
+                                          beschluss = beschluss_f))
+
+geon.scales2.conf <- geon.scales2.conf[complete.cases(geon.scales2.conf),]
+geon.scales2.conf <- geon.scales2.conf[geon.scales2.conf$beschluss!="no_go",]
+geon.scales2.conf$prediction_p <- numeric(nrow(geon.scales2.conf))
+geon.scales2.conf$beschluss <-
+    factor(as.numeric(geon.scales2.conf$beschluss)-2,
+           levels = 0:1, labels=c("slow_go", "go_go"))
+```
+
+Vorhersagendes Modell slowgo, ohne living_alone, da nicht dauerhaft signifikant in den Trainings-Sets
+
+```{r}
+set.seed(1) #Reproduzierbarkeit!
+train <- sample(nrow(geon.scales2.conf), round(0.75*nrow(geon.scales2.conf))) # 75 % im Trainingset, da jetzt slowgo gogo ähnlich zahlreich
+
+g4 <- glm(beschluss=="slow_go" ~ mmst + tinetti + alter + mna + charlson,
+          data=geon.scales2.conf, family="binomial", subset = train)
+summary(g4)
+nrow(geon.scales2.conf)
+length(train)
+```
+
+Vorhersage, slowgo entspricht positivem Outcome (für Berechnung Sensitivität und Spezifität)
+
+```{r}
+geon.scales2.conf$prediction_p <-
+    predict(g4, geon.scales2.conf, type = "response")
+geon.scales2.conf$prediction <-
+    factor(as.numeric(geon.scales2.conf$prediction_p < 0.5),
+           levels = 0:1, labels=c("slow_go", "go_go"))
+
+pred.tb <- 
+    table(konferenz = geon.scales2.conf$beschluss[-train],
+          modell = geon.scales2.conf$prediction[-train])
+pred.tb
+round(sum(diag(pred.tb))/sum(pred.tb),2)
+(sens <- pred.tb[1,1]/sum(pred.tb[1,]))
+(spec <- pred.tb[2,2]/sum(pred.tb[2,]))
+```
+
+ROC-Kurve, AUC, CI, inklusive Grafik
+
+```{r}
+g4.roc <- roc(geon.scales2.conf$beschluss, geon.scales2.conf$prediction_p,
+    smooth=T, auc=T, ci=T,plot=T)
+g4.roc
+
+#Grafik
+g4.data <- data.frame(sens=g4.roc$sensitivities, spec=g4.roc$specificities)
+g4.p <- ggplot(aes(x=1-spec, y=sens), data=g4.data) +
+    geom_line() +
+    labs(x = "1 - Spezifität", y = "Sensitivität") +
+    theme(axis.title.x = element_text(size=textSize),
+          axis.title.y = element_text(size=textSize))
+g4.p
+ggsave('./Grafiken/roc_slowgo.pdf', dpi = 300,
+       width = 3, height = 3)
+```
+
+```{r}
+#Chang2013, R Graphics Cookbook}
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+    library(grid)
+    
+    # Make a list from the ... arguments and plotlist
+    plots <- c(list(...), plotlist)
+    
+    numPlots = length(plots)
+    
+    # If layout is NULL, then use 'cols' to determine layout
+    if (is.null(layout)) {
+        # Make the panel
+        # ncol: Number of columns of plots
+        # nrow: Number of rows needed, calculated from # of cols
+        layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                         ncol = cols, nrow = ceiling(numPlots/cols))
+    }
+    
+    if (numPlots==1) {
+        print(plots[[1]])
+        
+    } else {
+        # Set up the page
+        grid.newpage()
+        pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+        
+        # Make each plot, in the correct location
+        for (i in 1:numPlots) {
+            # Get the i,j matrix positions of the regions that contain this subplot
+            matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+            
+            print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                            layout.pos.col = matchidx$col))
+        }
+    }
+}
+# multiplots müssen von Hand gespeichert werden
+multiplot(g3.p, g4.p, cols=2)
+```
+

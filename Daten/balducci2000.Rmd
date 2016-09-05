@@ -1,0 +1,43 @@
+---
+title: "Klassifikation nach Balducci"
+author: "Sebastian W. Ertl"
+date: "18. September 2015"
+output: html_document
+---
+
+Daten einlesen, aufräumen, Alter in Jahren
+```{r}
+geon <- readRDS("tidy_data.rds")
+```
+
+Einteilung nach Balducci2000
+```{r}
+balducci2000 <- function(adl, iadl, charlson){
+    if (is.na(adl) | is.na(iadl) | is.na(charlson))
+        return(NA)
+    if (adl == 100)
+        if (iadl == 8){
+            if (charlson == 0)
+                return("go_go")
+            if (charlson < 3)
+                return("slow_go")
+        }
+    if (adl == 100)
+        if (charlson < 3)
+            return("slow_go")
+    return("no_go")
+}
+
+geon$balducci <- factor(NA, levels = c("no_go", "slow_go", "go_go"))
+
+for (i in (1:nrow(geon))){
+    geon$balducci[i] <- balducci2000(geon$barthel[i], geon$iadl[i],
+                                     geon$charlson[i])
+}
+```
+
+```{r}
+geon$living_alone[is.na(geon$sozial)] <- NA
+saveRDS(geon, "geon.rds")
+```
+

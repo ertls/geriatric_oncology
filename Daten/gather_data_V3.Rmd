@@ -1,0 +1,159 @@
+---
+title: "Gather Data improved"
+author: "Sebastian W. Ertl"
+date: "5. Juni 2015"
+output: html_document
+---
+
+Data Gathering, recursive, omitting the *.pdf file.
+
+```{r}
+setwd("C:/Users/ertls/shared/Daten/")
+library(xlsx)
+library(gender)
+file_list <- list.files(".data/", recursive = TRUE)
+file_list <- paste(".data/", file_list, sep = "")
+
+mydata <- data.frame(NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,
+                     NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,
+                     NA,NA,NA,NA,NA,NA, stringsAsFactors = FALSE)
+names(mydata) <- as.character(1:23)
+
+is_xlsx <- function(a_name) {
+    ret <- FALSE
+    a_name <- strsplit(a_name, ".", fixed = TRUE)
+    a_name <- unlist(a_name)
+    if (a_name[length(a_name)] == "xlsx") ret <- TRUE
+    ret
+}
+
+which_field <- function(fieldx, fieldy, adf) {
+    # takes a the coordinates of a field of the xl data frame and the data
+    # frame itself, adf,
+    # returns a list with its first value as the column number of the data
+    # and the second value its value itself, the third and following values are
+    # optional
+    
+    if (length(grep("Nachname", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(2, as.character(adf[fieldx, fieldy + 1])))
+    if (length(grep("Vorname", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(3, as.character(adf[fieldx, fieldy + 1])))
+    if (length(grep("Fallnummer", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(4, as.character(adf[fieldx, fieldy + 1])))
+    if (length(grep("Geb.Datum", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(5, as.character(adf[fieldx, fieldy + 1])))
+    if (length(grep("Station", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(6, as.character(adf[fieldx, fieldy + 1])))
+    if (fieldx == 4 & fieldy == 1) {
+        if (length(grep("Zuständiger Assistenzarzt",
+                    as.character(adf[fieldx,fieldy]))) > 0)
+            return(list(7, as.character(adf[fieldx, fieldy + 1])))
+        return(list(7, as.character(adf[4,1])))
+    }
+    if (length(grep("Aufnahme", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(8, as.character(adf[fieldx, fieldy + 1])))
+    if (length(grep("Barthel", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(9, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("IADL", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(10, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("Mini-Mental", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(11, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("DemTect$", as.character(adf[fieldx,fieldy]))) > 0)
+        # $ matches ending position
+        return(list(12, as.character(adf[fieldx, fieldy + 2])))
+    else
+        if (length(grep("DemTect", as.character(adf[fieldx,fieldy]))) > 0)
+            return(list(12, as.character(adf[fieldx, fieldy])))
+    if (length(grep("GDS", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(13, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("DIA", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(14, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("Time", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(15, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("Tinetti-Test", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(16, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("Körpergröße", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(17, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("Körpergewicht", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(18, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("BMI", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(19, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("MNA", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(20, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("Charlson-Score", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(21, as.character(adf[fieldx, fieldy + 2])))
+    if (length(grep("Sozialfragebogen", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(22, as.character(adf[fieldx + 1, fieldy])))
+    if (length(grep("Konferenzbeschluss vom$",
+                    as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(23, as.character(adf[fieldx, fieldy + 1]),
+               as.character(adf[fieldx + 1, fieldy])))
+    else
+        if (length(grep("Konferenzbeschluss vom",
+                    as.character(adf[fieldx,fieldy]))) > 0)
+            return(list(23, as.character(adf[fieldx, fieldy]),
+                   as.character(adf[fieldx + 1, fieldy])))
+    if (length(grep("Diagnose", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(25, as.character(adf[fieldx + 1, fieldy])))
+    if (length(grep("Einschätzung", as.character(adf[fieldx,fieldy]))) > 0)
+        return(list(26, as.character(adf[fieldx + 1, fieldy])))
+    return(list(NA, NA, NA))
+}
+
+n <- 0
+
+for (f in file_list) {
+    if (is_xlsx(f)) {
+        n <- n + 1
+        xl <- read.xlsx(f, sheetIndex = 1, startRow = 2,
+                           endRow = 40, colIndex = 1:6,
+                           header = FALSE, encoding = "UTF-8")
+        mydata[n,1] <- f
+        print(f)
+        for (x in 1:nrow(xl)){
+            for (y in 1:ncol(xl)){
+                if (!is.na(xl[x,y])){
+                    data_field <- which_field(x, y, xl)
+                    if (!is.na(data_field[[1]]))
+                        if (data_field[[1]] == 23) {
+                            mydata[n,data_field[[1]]] <- data_field[[2]]
+                            mydata[n,24] <- data_field[[3]]
+                            }
+                        else
+                            mydata[n,data_field[[1]]] <- data_field[[2]]
+                }
+            }
+        }
+    }
+}
+names(mydata) <- c("file_name", "nachname", "vorname", "fallnummer", "geburt",
+                   "station", "stationsarzt", "aufnahme", "barthel", "iadl",
+                   "mmst", "DemTect", "gds", "dia", "tug",
+                   "tinetti", "height", "weight", "bmi_eingetragen", "mna",
+                   "charlson", "sozial", "konferenz", "beschluss", "diagnose",
+                   "personal_assessment")
+```
+
+```{r}
+library(gender)
+i <- 0
+mydata$sex <- NA
+for (a_name in mydata$vorname){
+    i <- i + 1
+    a_gender <- gender(a_name, method = "ipums")$gender
+    if (is.character(a_gender)) {
+        print(a_gender)
+        mydata$sex[i] <- a_gender
+    }
+# gender in excel in den fehlenden fällen nach vorname und sap händisch ergänzt
+}
+```
+
+```{r}
+mydata_bak <- mydata
+mydata <- mydata[,c(-4:-1)] # anonymisiert
+saveRDS(mydata, "xlsx_data.rds")
+number_read <- n
+n
+```
+

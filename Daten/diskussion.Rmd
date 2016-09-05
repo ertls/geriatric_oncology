@@ -1,0 +1,50 @@
+---
+title: "Diskussion"
+author: "Sebastian W. Ertl"
+date: "6. Januar 2016"
+output: html_document
+---
+
+Dieses Datei berechnet die Werte, die im Diskussionsteil benötigt werden. Auch die gezeigten Grafiken werden hier erstellt.
+
+```{r}
+setwd("C:/Users/ertls/shared/Daten") #for Windows
+geon <- readRDS("geon.rds")
+textSize = 10
+#options(digits=2, scipen=6)
+```
+
+```{r}
+library(ggplot2)
+vergleich <- ggplot(aes(x=jitter(as.integer(personal_assessment_f)),
+                        y=jitter(as.integer(beschluss_f))), data = geon) +
+    geom_point() +
+    scale_x_discrete(breaks = c(1, 2, 3), labels = c("no go", "slow go", "go go"),
+                     limits = c("1", "2", "3")) +
+    scale_y_discrete(breaks = c(1, 2, 3), labels = c("no go", "slow go", "go go"),
+                     limits = c("1", "2", "3")) +
+    labs(x = "Persönliche Einschätzung", y = "Konferenzeinschätzung") +
+    theme(axis.title.x = element_text(size=textSize),
+          axis.title.y = element_text(size=textSize))
+
+vergleich
+
+ggsave('./Grafiken/konferenz_personal.pdf', dpi = 300,
+       width = 5, height = 3)
+```
+
+```{r}
+geon$beschluss_n <- as.integer(geon$beschluss_f)
+geon$beschluss_n[is.na(geon$beschluss_n)] <- 4
+p <- ggplot(geon, aes(alter, fill = as.factor(beschluss_n))) +
+    geom_bar(binwidth = 1) +
+    scale_fill_discrete(labels = c("no go", "slow go", "go go", "NA")) +
+    xlab("Alter") + ylab("Patienten") +
+    theme(legend.title = element_blank(), axis.title.x = element_text(size=textSize),
+          axis.title.y = element_text(size=textSize))
+p
+
+ggsave('./Grafiken/konferenz-alter.pdf', dpi = 300,
+       width = 5, height = 3)
+```
+

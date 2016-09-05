@@ -1,0 +1,11 @@
+---
+title: "Spearmans Korrelationskoeffizienten"
+author: "Sebastian W. Ertl"
+date: "4. Dezember 2015"
+output: html_document
+---
+
+```{r}
+geon.all <- readRDS("geon.rds")
+round(cor(geon.all[,c(-13:-18,-20,-24:-29)], use = "pairwise.complete.obs", method = "spearman"),2)
+```

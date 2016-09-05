@@ -1,0 +1,126 @@
+---
+title: "Exploratory Data Analysis V2"
+author: "Sebastian W. Ertl"
+date: "27. Juli 2015"
+output: html_document
+---
+
+# Beschreibende Statistik
+
+```{r, echo=F}
+geon <- readRDS("geon.rds")
+```
+
+## Vergleich der persönlichen Einschätzung mit dem Konferenzbeschluss
+```{r}
+beschluss_t <- table("Persönliches Assessment" = geon$personal_assessment_f,
+                     "Konferenzbeschluss" = geon$beschluss_f)
+beschluss_t
+sum(beschluss_t)
+
+beschluss_t <- table("Persönliches Assessment" = geon$personal_assessment_f,
+                     "Beschluss nach Balducci" = geon$balducci)
+beschluss_t
+sum(beschluss_t)
+
+beschluss_t <- table("Beschluss nach Balducci" = geon$balducci,
+                     "Konferenzbeschluss" = geon$beschluss_f)
+beschluss_t
+sum(beschluss_t)
+
+library(ggplot2)
+qplot(beschluss_f, data = geon, geon = "histogram", fill = personal_assessment_f)
+qplot(personal_assessment_f, data = geon, geon = "histogram", fill = beschluss_f)
+qplot(jitter(as.integer(personal_assessment_f)),
+      jitter(as.integer(beschluss_f)), data = geon)
+```
+
+## Some Exploration
+
+```{r}
+qplot(alter, data = geon, geom = "histogram", binwidth = 1)
+qplot(alter, data = geon, geom = "histogram", binwidth = 1, fill = sex,
+      facets = beschluss_f~.)
+```
+
+```{r}
+p <- ggplot(geon, aes(alter, fill = beschluss_f))
+p <- p + geom_bar(binwidth = 1) + ggtitle("Altersverteilung und Konferenzbeschluss")
+p <- p + scale_fill_discrete(labels = c("no go", "slow go", "go go"))
+p <- p + xlab("Alter") + ylab("Patienten") + theme(legend.title = element_blank())
+p
+```
+
+```{r}
+summary(geon$sex)
+summary(geon$sex)/sum(summary(geon$sex))
+qplot(sex, data = geon, geom = "histogram", fill = beschluss_f)
+```
+
+```{r}
+g <- ggplot(geon, aes(x = beschluss_f, fill = personal_assessment_f)) + geom_bar() +
+    xlab("Konferenzbeschluss") +
+    ylab("Anzahl der Patienten") + 
+    scale_fill_discrete(name="Persönliche\nEinschätzung") + 
+    ggtitle("Konferenzbeschlüsse 2014 + 1-6/2015, n = 307")
+g
+```
+
+```{r}
+qplot(barthel, data = geon, geom = "histogram", binwidth = 5, fill = beschluss_f)
+qplot(beschluss_f, barthel, data = geon, geom = "boxplot")
+
+qplot(iadl, data = geon, binwidth = 1.0, fill = beschluss_f)
+qplot(beschluss_f, iadl, data = geon, geom = "boxplot")
+```
+
+```{r}
+qplot(tinetti, data = geon, binwidth = 1, fill = beschluss_f)
+qplot(beschluss_f, tinetti, data = geon, geom = "boxplot")
+qplot(beschluss_f, mmst, data = geon, geom = "boxplot")
+qplot(beschluss_f, tug, data = geon, geom = "boxplot")
+qplot(charlson, data = geon, geom = "histogram", binwidth = 1, fill = beschluss_f)
+qplot(beschluss_f, charlson, data = geon, geom = "boxplot")
+qplot(beschluss_f, mna, data = geon, geom = "boxplot")
+```
+
+```{r}
+deficits <- function(adl, iadl, mna, mmst, tinetti, charlson){
+    def <- 0
+    if (is.na(adl) | is.na(iadl) | is.na(mna) | is.na(mmst) | is.na(tinetti) |
+        is.na(charlson))
+        return(NA)
+    if (adl < 100)
+        def <- def + 1
+    if (iadl < 8)
+        def <- def + 1
+    if (mna < 24)
+        def <- def + 1
+    if (mmst < 24)
+        def <- def + 1
+    if (tinetti < 20)
+        def <- def + 1
+    if (charlson > 1)
+        def <- def + 1
+    return(def)
+}
+
+geon$def <- NA
+
+for (i in (1:nrow(geon))){
+    geon$def[i] <- deficits(geon$barthel[i], geon$iadl[i],
+                                geon$mna[i], geon$mmst[i],
+                                geon$tinetti[i], geon$charlson[i])
+}
+library(Hmisc)
+library(psych)
+
+table(geon$def)
+table(geon$def)/sum(!is.na(geon$def))
+Hmisc::describe(geon$def)
+describe(geon$def)
+describeBy(geon$def, geon$sex)
+describeBy(geon$def, geon$personal_assessment_f)
+describeBy(geon$def, geon$beschluss_f)
+```
+
